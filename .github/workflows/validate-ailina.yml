@@ -22,7 +22,7 @@ jobs:
       - name: Compile changed Python modules
         run: python -m compileall -q src
       - name: Run focused test suite
-        run: uv run pytest -q tests/test_ailina_practicality.py tests/test_telegram.py tests/test_analyzer.py tests/test_balanced_digest.py tests/test_summarizer.py tests/test_prompting.py
+        run: uv run pytest -q tests/test_ailina_practicality.py tests/test_ailina_editorial_feeds.py tests/test_rss.py tests/test_telegram.py tests/test_analyzer.py tests/test_balanced_digest.py tests/test_summarizer.py tests/test_prompting.py
       - name: Validate AiLina config and design assets
         run: |
           uv run python - <<'PY'
@@ -35,7 +35,17 @@ jobs:
           assert config.digest.category_groups['telegram'].limit == 5
           assert all(any(ch.channel.lower() == name for ch in config.sources.telegram.channels) for name in ('bugnotfeature', 'ai_machinelearning_big_data', 'omggpt', 'ict_moscow_ai', 'xor_journal', 'neurohub', 'ai_money_maker', 'neuraldvig', 'aidea4work', 'complete_ai'))
           assert any(ch.channel == 'robofuture' and ch.enabled for ch in config.sources.telegram.channels)
-          assert config.digest.max_items == 12
+          assert config.digest.max_items == 16
+          assert len(config.sources.rss) == 16
+          assert config.digest.category_groups['taaft_practice'].limit == 2
+          assert config.digest.category_groups['taaft_devices'].limit == 2
+          assert any(x.name == 'The Lancet Digital Health' for x in config.sources.rss)
+          assert any(x.name == 'Anthropic Research' for x in config.sources.rss)
+          assert any(x.name == 'Andrej Karpathy — Bearblog' for x in config.sources.rss)
+          from xml.etree import ElementTree as ET
+          rss=ET.fromstring(Path('data/taaft-feed.xml').read_bytes())
+          cats={e.text for e in rss.findall('.//item/category')}
+          assert {'taaft-prompt', 'taaft-device'} <= cats
           assert Path("docs/_layouts/ailina.html").exists()
           assert Path("docs/assets/css/ailina.css").exists()
           assert Path("docs/assets/js/ailina.js").exists()
