@@ -898,9 +898,17 @@ class HorizonOrchestrator:
             return -1.0
         # AiLina's preferred TAAFT newsletter gets a modest, transparent
         # selection advantage, but factual scoring is left untouched.
-        if item.metadata.get("feed_name") == "TAAFT":
-            return min(10.0, raw_score + 1.5)
-        return raw_score
+        priority_bonus = 1.5 if item.metadata.get("feed_name") == "TAAFT" else 0.0
+        practicality = item.processing.analysis.practicality_score
+        # A concrete, reproducible action for ordinary users earns up to +1.5
+        # ranking points. Low practicality never becomes a penalty or a made-up score.
+        practical_bonus = (
+            min(1.5, max(0.0, (practicality - 4.0) * 0.3))
+            if practicality is not None
+            and item.processing.classification.profile == "ailina"
+            else 0.0
+        )
+        return min(10.0, raw_score + priority_bonus + practical_bonus)
 
     def passes_profile_filter(
         self,
