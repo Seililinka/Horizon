@@ -86,6 +86,94 @@
         "enabled": true,
         "category": "open-source",
         "profile": "ailina"
+      },
+      {
+        "name": "Andrej Karpathy — Bearblog",
+        "url": "https://karpathy.bearblog.dev/feed/",
+        "category": "expert-ai",
+        "fetch_limit": 12,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "Andrej Karpathy — Blog",
+        "url": "https://karpathy.github.io/feed.xml",
+        "category": "expert-ai",
+        "fetch_limit": 12,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "Anthropic Research",
+        "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_research.xml",
+        "category": "research",
+        "fetch_limit": 12,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "Anthropic Engineering",
+        "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
+        "category": "agents",
+        "fetch_limit": 12,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "Anthropic News",
+        "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_news.xml",
+        "category": "models",
+        "fetch_limit": 15,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "OpenAI News",
+        "url": "https://openai.com/news/rss.xml",
+        "category": "models",
+        "fetch_limit": 15,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "Google DeepMind",
+        "url": "https://deepmind.google/blog/rss.xml",
+        "category": "models",
+        "fetch_limit": 15,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "Google Research",
+        "url": "https://research.google/blog/rss/",
+        "category": "research",
+        "fetch_limit": 12,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "Google AI",
+        "url": "https://blog.google/innovation-and-ai/technology/ai/rss/",
+        "category": "ai-tools",
+        "fetch_limit": 12,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "The New York Times — AI",
+        "url": "https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/spotlight/artificial-intelligence/rss.xml",
+        "category": "media-ai",
+        "fetch_limit": 12,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "MIT Technology Review — AI",
+        "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
+        "category": "media-ai",
+        "fetch_limit": 10,
+        "enabled": true,
+        "profile": "ailina"
       }
     ],
     "reddit": {
@@ -265,7 +353,7 @@
     "time_window_hours": 30
   },
   "digest": {
-    "max_items": 12,
+    "max_items": 16,
     "group_by": "category",
     "category_groups": {
       "taaft": {
@@ -275,11 +363,32 @@
           "taaft"
         ]
       },
+      "taaft_practice": {
+        "name": "TAAFT — промпт дня",
+        "limit": 2,
+        "categories": [
+          "taaft-prompt"
+        ]
+      },
+      "taaft_devices": {
+        "name": "TAAFT — устройства с ИИ",
+        "limit": 2,
+        "categories": [
+          "taaft-device"
+        ]
+      },
       "telegram": {
         "name": "Telegram — ИИ и практика",
         "limit": 5,
         "categories": [
           "telegram-ai"
+        ]
+      },
+      "experts": {
+        "name": "Авторы и экспертные блоги",
+        "limit": 2,
+        "categories": [
+          "expert-ai"
         ]
       },
       "models": {
@@ -300,10 +409,24 @@
       },
       "practice": {
         "name": "Исследования и применение",
-        "limit": 3,
+        "limit": 4,
         "categories": [
           "research",
           "agents"
+        ]
+      },
+      "media": {
+        "name": "Качественные СМИ",
+        "limit": 2,
+        "categories": [
+          "media-ai"
+        ]
+      },
+      "science": {
+        "name": "ИИ в медицине и науке",
+        "limit": 2,
+        "categories": [
+          "health-ai"
         ]
       }
     },
