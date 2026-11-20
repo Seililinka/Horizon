@@ -84,6 +84,17 @@ jobs:
         if: ${{ env.DEEPSEEK_API_KEY != '' }}
         run: uv run horizon --config data/config.ailina.json --hours 30
 
+      - name: Apply AiLina lavender layout to Russian digest
+        if: ${{ env.DEEPSEEK_API_KEY != '' }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for path in Path("docs/_posts").glob("*-summary-ru.md"):
+              current = path.read_text(encoding="utf-8")
+              if current.startswith("---") and "layout: default" in current[:120]:
+                  path.write_text(current.replace("layout: default", "layout: ailina", 1), encoding="utf-8")
+          PY
+
       - name: Deploy daily digest to GitHub Pages
         if: ${{ env.DEEPSEEK_API_KEY != '' }}
         uses: peaceiris/actions-gh-pages@v4
