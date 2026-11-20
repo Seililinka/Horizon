@@ -12,7 +12,7 @@ jobs:
     permissions:
       contents: write
     env:
-      DEEPSEEK_API_KEY: ${{ secrets.deepseek || secrets.DEEPSEEK_API_KEY }}
+      DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY || secrets.deepseek }}
 
     steps:
       - name: Checkout
