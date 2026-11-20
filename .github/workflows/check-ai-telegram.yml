@@ -13,7 +13,7 @@ jobs:
           python - <<'PY'
           from urllib.request import Request, urlopen
           import re
-          names = ['data_secrets','ai_machinelearning_big_data','SberAIScience','airi_research_institute','vibecoding_tg','aioftheday','seeallochnaya','dealerAI','bugnotfeature','gonzo_ML','robofuture']
+          names = ['bugnotfeature','ai_machinelearning_big_data','omggpt','ict_moscow_ai','xor_journal','neurohub','AI_Money_Maker','neuraldvig','aidea4work','complete_ai']
           for name in names:
               try:
                   req=Request('https://t.me/s/'+name,headers={'User-Agent':'Mozilla/5.0'})
