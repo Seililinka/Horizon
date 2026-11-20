@@ -29,5 +29,23 @@
       <description>TAAFT пересказывает эксперимент Northeastern University с 150 участниками, планировавшими поездку с чат-ботом. Умеренно выраженный стиль общения оценивали лучше, чем слишком холодный или навязчиво дружелюбный. Вывод относится к условиям описанного исследования.</description>
       <author>TAAFT editorial</author>
     </item>
+    <item>
+      <title>Промпт дня TAAFT: как использовать ИИ для диагностики бытовой техники</title>
+      <link>https://newsletter.theresanaiforthat.com/p/claude-ignores-your-think-hard</link>
+      <guid isPermaLink="false">taaft-2026-11-20-prompt-help-me-fix-it</guid>
+      <pubDate>Fri, 20 Nov 2026 04:10:31 +0000</pubDate>
+      <category>taaft-prompt</category>
+      <description>Практический сценарий: объясните ИИ симптомы неисправности, попросите предложить безопасные проверки, список нужных инструментов и условия, когда следует вызвать мастера. Опасные работы с электричеством, газом и внутренними компонентами техники без специалиста не выполняйте.</description>
+      <author>TAAFT editorial</author>
+    </item>
+    <item>
+      <title>ИИ-гаджет TRAPCUBE: ловушка для комаров с анализом звука крыльев</title>
+      <link>https://www.ces.tech/ces-innovation-awards/2027/trapcube-ai-powered-mosquito-trap-with-risk-alerts/</link>
+      <guid isPermaLink="false">taaft-2026-11-20-device-trapcube</guid>
+      <pubDate>Fri, 20 Nov 2026 04:10:31 +0000</pubDate>
+      <category>taaft-device</category>
+      <description>В TAAFT описано устройство HAVACAM TRAPCUBE, которое сочетает световую приманку, вентилятор, микрофон и анализ событий при помощи ИИ. Производитель заявляет подсчёт комаров и уведомления о росте активности; доступность и реальная эффективность требуют отдельной проверки.</description>
+      <author>TAAFT editorial</author>
+    </item>
   </channel>
 </rss>
