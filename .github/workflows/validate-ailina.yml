@@ -1,0 +1,39 @@
+name: Validate AiLina Telegram and Practicality
+on:
+  push:
+    paths:
+      - '.github/workflows/validate-ailina.yml'
+  workflow_dispatch:
+jobs:
+  test-ailina:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+      - name: Install dependencies
+        run: uv sync --extra dev
+      - name: Compile changed Python modules
+        run: python -m compileall -q src
+      - name: Run focused test suite
+        run: uv run pytest -q tests/test_ailina_practicality.py tests/test_telegram.py tests/test_analyzer.py tests/test_balanced_digest.py tests/test_summarizer.py tests/test_prompting.py
+      - name: Validate AiLina config and design assets
+        run: |
+          uv run python - <<'PY'
+          from pathlib import Path
+          import json
+          from src.models import Config
+          config = Config.model_validate(json.loads(Path("data/config.ailina.json").read_text()))
+          assert len(config.sources.telegram.channels) == 8
+          assert config.digest.max_items == 12
+          assert Path("docs/_layouts/ailina.html").exists()
+          assert Path("docs/assets/css/ailina.css").exists()
+          assert Path("docs/assets/js/ailina.js").exists()
+          assert "layout: ailina" in Path("docs/ailina.md").read_text()
+          print("AiLina Telegram, config and design assets validated")
+          PY
