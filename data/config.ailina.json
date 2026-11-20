@@ -1,0 +1,162 @@
+{
+  "ai": {
+    "provider": "deepseek",
+    "model": "deepseek-chat",
+    "base_url": "https://api.deepseek.com",
+    "api_key_env": "DEEPSEEK_API_KEY",
+    "temperature": 0.3,
+    "max_tokens": 8192,
+    "throttle_sec": 1,
+    "languages": [
+      "ru"
+    ],
+    "analysis_concurrency": 2,
+    "enrichment_concurrency": 2
+  },
+  "processing": {
+    "profiles_dir": "profiles",
+    "default_profile": "ailina",
+    "profile_settings": {
+      "ailina": {
+        "threshold": 6.5,
+        "topic_dedup": true
+      }
+    }
+  },
+  "sources": {
+    "github": [
+      {
+        "type": "repo_releases",
+        "owner": "huggingface",
+        "repo": "transformers",
+        "enabled": true,
+        "category": "models",
+        "profile": "ailina"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "vllm-project",
+        "repo": "vllm",
+        "enabled": true,
+        "category": "models",
+        "profile": "ailina"
+      },
+      {
+        "type": "repo_releases",
+        "owner": "langchain-ai",
+        "repo": "langchain",
+        "enabled": true,
+        "category": "agents",
+        "profile": "ailina"
+      }
+    ],
+    "hackernews": {
+      "enabled": true,
+      "fetch_top_stories": 25,
+      "min_score": 175,
+      "category": "research",
+      "profile": "ailina"
+    },
+    "rss": [
+      {
+        "name": "Simon Willison",
+        "url": "https://simonwillison.net/atom/everything/",
+        "enabled": true,
+        "category": "ai-tools",
+        "profile": "ailina"
+      },
+      {
+        "name": "vLLM Blog",
+        "url": "https://vllm.ai/blog/rss.xml",
+        "enabled": true,
+        "category": "models",
+        "profile": "ailina",
+        "content_extractor": "trafilatura"
+      },
+      {
+        "name": "GitHub Trending Daily",
+        "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml",
+        "enabled": true,
+        "category": "open-source",
+        "profile": "ailina"
+      }
+    ],
+    "reddit": {
+      "enabled": true,
+      "subreddits": [
+        {
+          "subreddit": "LocalLLaMA",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 10,
+          "min_score": 60,
+          "category": "models",
+          "profile": "ailina"
+        },
+        {
+          "subreddit": "MachineLearning",
+          "enabled": true,
+          "sort": "hot",
+          "time_filter": "day",
+          "fetch_limit": 10,
+          "min_score": 60,
+          "category": "research",
+          "profile": "ailina"
+        }
+      ],
+      "users": [],
+      "fetch_comments": 5
+    },
+    "telegram": {
+      "enabled": true,
+      "channels": [
+        {
+          "channel": "bugnotfeature",
+          "enabled": true,
+          "fetch_limit": 15,
+          "category": "ai-news",
+          "profile": "ailina"
+        }
+      ]
+    }
+  },
+  "collection": {
+    "time_window_hours": 30
+  },
+  "digest": {
+    "max_items": 9,
+    "group_by": "category",
+    "category_groups": {
+      "models": {
+        "name": "Модели и архитектуры",
+        "limit": 3,
+        "categories": [
+          "models"
+        ]
+      },
+      "products": {
+        "name": "Инструменты и продукты",
+        "limit": 3,
+        "categories": [
+          "ai-tools",
+          "open-source",
+          "ai-news"
+        ]
+      },
+      "practice": {
+        "name": "Исследования и применение",
+        "limit": 3,
+        "categories": [
+          "research",
+          "agents"
+        ]
+      }
+    },
+    "default_group": "other",
+    "default_group_limit": 2,
+    "profile_order": [
+      "ailina"
+    ]
+  }
+}
