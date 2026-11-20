@@ -12,7 +12,7 @@ jobs:
     permissions:
       contents: write
     env:
-      DEEPSEEK_API_KEY: ${{ secrets.deepseek }}
+      DEEPSEEK_API_KEY: ${{ secrets.deepseek || secrets.DEEPSEEK_API_KEY }}
 
     steps:
       - name: Checkout
@@ -20,7 +20,9 @@ jobs:
 
       - name: Check model credentials
         if: ${{ env.DEEPSEEK_API_KEY == '' }}
-        run: echo "::warning::Add the DEEPSEEK_API_KEY repository secret to enable AiLina news generation."
+        run: |
+          echo "::error::Missing GitHub Actions repository secret: deepseek (or DEEPSEEK_API_KEY)."
+          exit 1
 
       - name: Set up Python
         if: ${{ env.DEEPSEEK_API_KEY != '' }}
