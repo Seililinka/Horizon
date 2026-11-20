@@ -429,6 +429,11 @@ class DailySummarizer:
                 source_parts.append(item.published_at.strftime(f"%b {day}, %H:%M"))
         source_line = " \u00b7 ".join(source_parts)  # ·
 
+        if language == "ru" and meta.get("msg_url"):
+            telegram_url = _safe_url(meta["msg_url"])
+            if telegram_url and str(meta["msg_url"]) != raw_url:
+                source_line += f" · [Пост в Telegram]({telegram_url})"
+
         discussion_url = meta.get("discussion_url")
         if discussion_url:
             safe_discussion_url = _safe_url(discussion_url)
