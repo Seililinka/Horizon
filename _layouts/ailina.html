@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ff">
+  <meta name="description" content="AiLina — ежедневный русский ИИ-радар: практичные новости, модели, исследования, инструменты и источники.">
+  <title>{{ page.title | default: 'ИИ-радар' | escape }} · AiLina</title>
+  <link rel="icon" type="image/svg+xml" href="{{ '/assets/ailina-favicon.svg' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/ailina.css' | relative_url }}">
+  <link rel="alternate" type="application/atom+xml" title="AiLina — ИИ-радар RSS" href="{{ '/feed.xml' | relative_url }}">
+</head>
+<body>
+  <div class="ailina-shell">
+    <header class="site-header">
+      <a href="{{ '/ailina/' | relative_url }}" class="brand" aria-label="AiLina — на главную">
+        <span class="brand-symbol" aria-hidden="true">✳</span>
+        <span>AiLina <small>ИИ-радар</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <a href="{{ '/ailina/' | relative_url }}">Выпуски</a>
+        <a href="https://t.me/newsAILina" target="_blank" rel="noopener">Telegram</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="ailina-hero-title">
+      <div class="hero-glow hero-glow-left" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-right" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span class="status-dot"></span> ЕЖЕДНЕВНЫЙ ИИ-РАДАР <span class="eyebrow-divider">·</span> ОБНОВЛЕНИЕ ПО УТРАМ</p>
+        <h1 id="ailina-hero-title">В мире ИИ важно <span>не пропустить главное.</span></h1>
+        <p class="hero-description">Новые модели, полезные инструменты и исследования — с короткими объяснениями, оценками и идеями для применения.</p>
+        <div class="hero-tags"><span>Модели и агенты</span><span>Практика</span><span>Исследования</span><span>Инструменты</span></div>
+      </div>
+    </section>
+
+    <div class="content-layout">
+      <main class="content-panel {% if page.date %}is-issue{% else %}is-archive{% endif %}" id="content">
+        {{ content }}
+      </main>
+      <aside class="aside-panel" aria-label="Об источниках и обновлениях">
+        <section class="aside-card">
+          <p class="aside-eyebrow">КАК ЭТО РАБОТАЕТ</p>
+          <h2>Меньше шума, больше смысла</h2>
+          <p>Horizon собирает публикации, DeepSeek оценивает их новизну и пользу, а AiLina сохраняет лучшие темы для чтения и будущих постов.</p>
+          <div class="aside-divider"></div>
+          <p class="aside-eyebrow">ИСТОЧНИКИ</p>
+          <div class="source-tags"><span>TAAFT</span><span>Telegram</span><span>GitHub</span><span>RSS</span><span>Hacker News</span></div>
+        </section>
+        <section class="aside-card aside-accent">
+          <p class="aside-eyebrow">ОБНОВЛЕНИЯ</p>
+          <h2>Каждый день</h2>
+          <p>Новые выпуски появляются автоматически после 09:00 по Москве. Предыдущие подборки остаются в архиве.</p>
+          <a class="aside-link" href="{{ '/ailina/' | relative_url }}">Все выпуски <span aria-hidden="true">↗</span></a>
+        </section>
+      </aside>
+    </div>
+
+    <footer class="site-footer">
+      <span><strong>AiLina</strong> — ИИ понятным языком</span>
+      <a href="https://github.com/Seililinka/Horizon" target="_blank" rel="noopener">Как устроен радар ↗</a>
+    </footer>
+  </div>
+  <script src="{{ '/assets/js/ailina.js' | relative_url }}" defer></script>
+</body>
+</html>
