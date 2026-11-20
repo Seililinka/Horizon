@@ -30,7 +30,8 @@ jobs:
           import json
           from src.models import Config
           config = Config.model_validate(json.loads(Path("data/config.ailina.json").read_text()))
-          assert len(config.sources.telegram.channels) == 8
+          assert len(config.sources.telegram.channels) >= 8
+          assert any(ch.channel == 'robofuture' and ch.enabled for ch in config.sources.telegram.channels)
           assert config.digest.max_items == 12
           assert Path("docs/_layouts/ailina.html").exists()
           assert Path("docs/assets/css/ailina.css").exists()
