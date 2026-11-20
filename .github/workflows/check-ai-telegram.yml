@@ -1,0 +1,26 @@
+name: Check Telegram public channels
+on:
+  push:
+    paths:
+      - '.github/workflows/check-ai-telegram.yml'
+  workflow_dispatch:
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe AI channels
+        run: |
+          python - <<'PY'
+          from urllib.request import Request, urlopen
+          import re
+          names = ['data_secrets','ai_machinelearning_big_data','SberAIScience','airi_research_institute','vibecoding_tg','aioftheday','seeallochnaya','dealerAI','bugnotfeature','gonzo_ML']
+          for name in names:
+              try:
+                  req=Request('https://t.me/s/'+name,headers={'User-Agent':'Mozilla/5.0'})
+                  with urlopen(req, timeout=12) as f:
+                      page=f.read(900000).decode('utf-8','replace')
+                      posts=re.findall(r'data-post=["\']([^"\']+)["\']',page)
+                      print('CHANNEL',name,'STATUS',f.status,'POSTS',len(posts),'VIEWS',page.count('tgme_widget_message_views'),'REACTIONS',page.count('tgme_widget_message_reactions'),'FORWARDS',page.count('tgme_widget_message_forwards'), 'LAST',posts[-1] if posts else '')
+              except Exception as e:
+                  print('CHANNEL',name,'ERROR',str(e)[:140])
+          PY
