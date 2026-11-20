@@ -12,7 +12,7 @@ jobs:
     permissions:
       contents: write
     env:
-      DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY || secrets.deepseek }}
+      DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
 
     steps:
       - name: Checkout
@@ -21,7 +21,7 @@ jobs:
       - name: Check model credentials
         if: ${{ env.DEEPSEEK_API_KEY == '' }}
         run: |
-          echo "::error::Missing GitHub Actions repository secret: deepseek (or DEEPSEEK_API_KEY)."
+          echo "::error::Missing GitHub Actions repository secret: DEEPSEEK_API_KEY."
           exit 1
 
       - name: Set up Python
