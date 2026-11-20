@@ -59,6 +59,7 @@ class ContentAnalysis(BaseModel):
     """Profile-driven first-pass analysis."""
 
     score: Optional[float] = Field(default=None, ge=0, le=10, allow_inf_nan=False)
+    practicality_score: Optional[float] = Field(default=None, ge=0, le=10, allow_inf_nan=False)
     reason: str
     summary: str
     tags: List[str] = Field(default_factory=list)
