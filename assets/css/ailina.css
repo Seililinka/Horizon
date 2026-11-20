@@ -116,3 +116,54 @@ a:hover{text-decoration:underline}
   .site-footer{padding-bottom:22px;flex-direction:column;gap:4px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.issue-link{transition:none}}
+
+
+/* AiLina reading-size pass, especially for Safari on iPhone.
+   Keep the gentle lilac design while making news comfortable to read. */
+body{font-size:17px;line-height:1.72}
+.hero h1{font-size:clamp(32px,3.9vw,49px)}
+.hero-description{font-size:17px}
+.eyebrow{font-size:12px}
+.hero-tags span{font-size:12px}
+.content-panel h1{font-size:29px}
+.content-panel h2{font-size:24px}
+.content-panel h3{font-size:21px}
+.content-panel p,.content-panel li{font-size:16px}
+.content-panel > ol li{font-size:16px;line-height:1.6}
+.is-issue .story-card h3{font-size:22px}
+.is-issue .story-card p{font-size:16px;line-height:1.75}
+.is-issue .story-card p.source-line{font-size:13px}
+.is-issue .story-card p.practicality-line{font-size:14px}
+.is-issue .story-card p.tag-line{font-size:13px}
+.is-issue .story-card .tag-line code{font-size:13px}
+.score-badge{font-size:13px}
+.archive-intro{font-size:16px}
+.issue-date{font-size:14px}
+.issue-name{font-size:17px}
+.mini-note{font-size:14px}
+.aside-card h2{font-size:20px}
+.aside-card p:not(.aside-eyebrow){font-size:15px}
+.aside-eyebrow,.source-tags span{font-size:12px}
+.aside-link,.site-footer,.site-footer a{font-size:13px}
+@media(max-width:640px){
+  body{font-size:17px}
+  .hero h1{font-size:33px}
+  .hero-description{font-size:16px}
+  .eyebrow{font-size:10px}
+  .hero-tags span{font-size:11px}
+  .content-panel h1{font-size:26px}
+  .content-panel h2{font-size:22px}
+  .content-panel > ol li{font-size:15px}
+  .is-issue .story-card h3{font-size:20px;line-height:1.38}
+  .is-issue .story-card p{font-size:16px;line-height:1.76}
+  .is-issue .story-card p.source-line{font-size:13px}
+  .is-issue .story-card p.practicality-line{font-size:14px}
+  .is-issue .story-card p.tag-line{font-size:13px}
+  .score-badge{font-size:12px}
+  .archive-intro{font-size:16px}
+  .issue-date{font-size:12px}
+  .issue-name{font-size:16px}
+  .site-nav a{font-size:13px}
+  .mini-note{font-size:14px}
+  .aside-card p:not(.aside-eyebrow){font-size:15px}
+}
