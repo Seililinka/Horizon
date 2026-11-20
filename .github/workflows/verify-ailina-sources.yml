@@ -1,0 +1,54 @@
+name: Verify AiLina editorial RSS sources
+on:
+  push:
+    paths:
+      - '.github/workflows/verify-ailina-sources.yml'
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check feeds from GitHub runner
+        run: |
+          python - <<'PY'
+          from concurrent.futures import ThreadPoolExecutor, as_completed
+          from urllib.request import Request, urlopen
+          from urllib.error import HTTPError
+          import xml.etree.ElementTree as ET
+          feeds = {
+              "Karpathy Blog": "https://karpathy.github.io/feed.xml",
+              "Karpathy Bearblog": "https://karpathy.bearblog.dev/feed/",
+              "Anthropic Research (unofficial RSS)": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_research.xml",
+              "Anthropic Engineering (unofficial RSS)": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
+              "Anthropic News (unofficial RSS)": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_news.xml",
+              "OpenAI News": "https://openai.com/news/rss.xml",
+              "Google DeepMind": "https://deepmind.google/blog/rss.xml",
+              "Google Research": "https://research.google/blog/rss/",
+              "The Lancet Digital Health": "https://www.thelancet.com/rssfeed/landig_online.xml",
+              "NYT Artificial Intelligence": "https://www.nytimes.com/svc/collections/v1/publish/https://www.nytimes.com/spotlight/artificial-intelligence/rss.xml",
+              "NYT Technology": "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml",
+              "MIT Technology Review AI": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
+              "Nature Machine Intelligence": "https://www.nature.com/natmachintell.rss",
+              "Google AI Products": "https://blog.google/innovation-and-ai/technology/ai/rss/",
+          }
+          def check(item):
+              label, url = item
+              try:
+                  req = Request(url, headers={"User-Agent":"Mozilla/5.0 (compatible; AiLinaNewsRadar/1.0)","Accept":"application/rss+xml,application/atom+xml,application/xml,*/*"})
+                  with urlopen(req, timeout=15) as response:
+                      payload = response.read(1300000)
+                      final = response.geturl()
+                      status = response.status
+                  root = ET.fromstring(payload)
+                  items = root.findall(".//item")
+                  if not items: items = root.findall("{http://www.w3.org/2005/Atom}entry")
+                  first = items[0] if items else None
+                  title = ((first.findtext("title") or first.findtext("{http://www.w3.org/2005/Atom}title") or "") if first is not None else "")[:90]
+                  date = ((first.findtext("pubDate") or first.findtext("{http://www.w3.org/2005/Atom}updated") or first.findtext("{http://purl.org/dc/elements/1.1/}date") or "") if first is not None else "")[:38]
+                  return (label, status, len(items), title, date, final, "")
+              except Exception as e:
+                  return (label, None, 0, "", "", url, type(e).__name__ + ":" + str(e)[:100])
+          with ThreadPoolExecutor(max_workers=5) as pool:
+              for result in sorted(pool.map(check, feeds.items())):
+                  print("FEED_STATUS", repr(result), flush=True)
+          PY
