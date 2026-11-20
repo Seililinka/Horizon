@@ -445,7 +445,21 @@ class DailySummarizer:
             lines.extend(["", summary])
         if primary_content.strip():
             lines.extend(["", primary_content])
+        if language == "ru" and meta.get("channel"):
+            engagement = []
+            if isinstance(meta.get("views"), int):
+                engagement.append(f"просмотры: {meta['views']:,}".replace(",", " "))
+            if isinstance(meta.get("reactions"), int):
+                engagement.append(f"реакции: {meta['reactions']:,}".replace(",", " "))
+            if engagement:
+                source_line += " · " + " · ".join(engagement)
         lines.extend(["", source_line])
+
+        if language == "ru" and analysis and analysis.practicality_score is not None:
+            lines.extend([
+                "",
+                f"**Практичность:** {analysis.practicality_score:g}/10",
+            ])
 
         if artifact:
             for block in artifact.blocks:
