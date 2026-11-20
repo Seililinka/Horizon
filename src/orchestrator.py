@@ -619,7 +619,12 @@ class HorizonOrchestrator:
                 )
             else:
                 requested_profile = (item.profile or "auto").strip() or "auto"
-            key = (*_deduplication_url_key(str(item.url)), requested_profile)
+            # An issue of TAAFT contains several distinct stories sharing one permalink.
+            # Keep them separate here; semantic topic dedup still removes real repeats.
+            if item.metadata.get("feed_name") == "TAAFT":
+                key = ("taaft_story", item.id, requested_profile)
+            else:
+                key = (*_deduplication_url_key(str(item.url)), requested_profile)
             url_groups.setdefault(key, []).append(item)
 
         merged = []
@@ -709,7 +714,7 @@ class HorizonOrchestrator:
 
         def score_of(idx: int) -> float:
             analysis = items[idx].processing.analysis if items[idx].processing else None
-            return analysis.score if analysis and analysis.score is not None else float("-inf")
+            return self.editorial_rank_score(items[idx])
 
         # Keep valid indices only; groups that share an item describe one topic
         if not isinstance(duplicate_groups, list):
@@ -790,11 +795,7 @@ class HorizonOrchestrator:
             if self.passes_profile_filter(item, threshold):
                 threshold_items.append(item)
         threshold_items.sort(
-            key=lambda item: (
-                item.processing.analysis.score
-                if item.processing and item.processing.analysis and item.processing.analysis.score is not None
-                else -1
-            ),
+            key=self.editorial_rank_score,
             reverse=True,
         )
 
@@ -824,13 +825,7 @@ class HorizonOrchestrator:
                 else:
                     deduped_items.extend(profile_items)
             deduped_items.sort(
-                key=lambda item: (
-                    item.processing.analysis.score
-                    if item.processing
-                    and item.processing.analysis
-                    and item.processing.analysis.score is not None
-                    else -1
-                ),
+                key=self.editorial_rank_score,
                 reverse=True,
             )
         topic_dedup_removed = len(threshold_items) - len(deduped_items)
@@ -880,13 +875,7 @@ class HorizonOrchestrator:
             if self.passes_profile_filter(item, threshold)
         ]
         eligible.sort(
-            key=lambda item: (
-                item.processing.analysis.score
-                if item.processing
-                and item.processing.analysis
-                and item.processing.analysis.score is not None
-                else -1
-            ),
+            key=self.editorial_rank_score,
             reverse=True,
         )
         balanced = self.apply_balanced_digest(eligible, log=log)
@@ -898,6 +887,20 @@ class HorizonOrchestrator:
             balanced_digest=balanced,
             eligible_count=len(eligible),
         )
+
+    @staticmethod
+    def editorial_rank_score(item: ContentItem) -> float:
+        """Source-aware selection score without altering the factual AI score."""
+        if not item.processing or not item.processing.analysis:
+            return -1.0
+        raw_score = item.processing.analysis.score
+        if raw_score is None:
+            return -1.0
+        # AiLina's preferred TAAFT newsletter gets a modest, transparent
+        # selection advantage, but factual scoring is left untouched.
+        if item.metadata.get("feed_name") == "TAAFT":
+            return min(10.0, raw_score + 1.5)
+        return raw_score
 
     def passes_profile_filter(
         self,
@@ -913,8 +916,7 @@ class HorizonOrchestrator:
             effective_threshold = settings.threshold
         if effective_threshold is None:
             return True
-        score = item.processing.analysis.score
-        return score is not None and score >= effective_threshold
+        return self.editorial_rank_score(item) >= effective_threshold
 
     def apply_balanced_digest(
         self,
@@ -938,11 +940,7 @@ class HorizonOrchestrator:
 
         sorted_items = sorted(
             items,
-            key=lambda item: (
-                item.processing.analysis.score
-                if item.processing and item.processing.analysis and item.processing.analysis.score is not None
-                else -1
-            ),
+            key=self.editorial_rank_score,
             reverse=True,
         )
 
