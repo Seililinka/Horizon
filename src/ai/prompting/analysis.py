@@ -13,6 +13,11 @@ ANALYSIS_RULES = f"""You are a content curator evaluating an item under the supp
 
 
 def analysis_system_prompt(profile: LoadedProfile) -> str:
+    practical_field = (
+        ',\n  "practicality_score": <number from 0 to 10>'
+        if profile.id == "ailina"
+        else ""
+    )
     return f"""{ANALYSIS_RULES}
 
 # Profile policy
@@ -26,7 +31,7 @@ Return valid JSON only:
   "score": <number from 0 to 10>,
   "reason": "<concise explanation>",
   "summary": "<one-sentence summary>",
-  "tags": ["<tag>", "..."]
+  "tags": ["<tag>", "..."]{practical_field}
 }}"""
 
 
