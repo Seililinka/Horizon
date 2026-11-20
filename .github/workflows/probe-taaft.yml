@@ -3,6 +3,9 @@ on:
   push:
     paths:
       - '.github/workflows/probe-taaft.yml'
+      - 'data/taaft-feed.xml'
+      - 'data/config.ailina.json'
+      - 'src/orchestrator.py'
   workflow_dispatch:
 jobs:
   validate:
@@ -25,7 +28,7 @@ jobs:
           import xml.etree.ElementTree as ET
           from pathlib import Path
           import httpx
-          from src.models import Config
+          from src.models import Config, ProcessingResult, ClassificationResult, ContentAnalysis
           from src.scrapers.rss import RSSScraper
           from src.models import RSSSourceConfig
           from datetime import datetime, timedelta, timezone
@@ -38,7 +41,14 @@ jobs:
           cfg=Config.model_validate_json(Path('data/config.ailina.json').read_text())
           assert any(s.name=='TAAFT' for s in cfg.sources.rss)
           print('TAAFT_CONFIG_VALIDATED', len(cfg.sources.rss))
-          print('BONUS_DEFINED', hasattr(__import__('src.orchestrator',fromlist=['HorizonOrchestrator']).HorizonOrchestrator, 'editorial_rank_score'))
+          from src.orchestrator import HorizonOrchestrator
+          assert hasattr(HorizonOrchestrator, 'editorial_rank_score')
+          from src.models import ContentItem
+          sample=ContentItem(id='rss:taaft:test', source_type='rss', title='TAAFT test', url='https://newsletter.theresanaiforthat.com/', published_at=datetime.now(timezone.utc), metadata={'feed_name':'TAAFT'}, processing=ProcessingResult(classification=ClassificationResult(profile='ailina', method='source_override'), analysis=ContentAnalysis(score=5.0, reason='test', summary='test')))
+          assert HorizonOrchestrator.editorial_rank_score(sample) == 6.5
+          sample.metadata['feed_name']='Other'
+          assert HorizonOrchestrator.editorial_rank_score(sample) == 5.0
+          print('TAAFT_BONUS_VALIDATED', 1.5)
           async def check():
               async with httpx.AsyncClient(timeout=25) as http:
                   rss=RSSScraper([s for s in cfg.sources.rss if s.name=='TAAFT'],http)
