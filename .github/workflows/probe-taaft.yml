@@ -1,35 +1,49 @@
-name: Probe TAAFT public archive
+name: Validate TAAFT source and AiLina configuration
 on:
   push:
     paths:
       - '.github/workflows/probe-taaft.yml'
   workflow_dispatch:
 jobs:
-  probe:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Examine TAAFT public endpoints
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.11.26"
+      - run: uv sync
+      - name: Validate Python, JSON and RSS
         run: |
-          python - <<'PY'
-          import re
-          import urllib.request
-          import urllib.error
+          python -m py_compile src/orchestrator.py src/scrapers/rss.py
+          uv run python - <<'PY'
+          import asyncio
+          import json
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+          import httpx
+          from src.models import Config
+          from src.scrapers.rss import RSSScraper
+          from src.models import RSSSourceConfig
+          from datetime import datetime, timedelta, timezone
 
-          base = "https://newsletter.theresanaiforthat.com"
-          paths = ["/", "/archive", "/rss", "/feed", "/rss.xml", "/sitemap.xml", "/sitemap-posts.xml", "/p/claude-ignores-your-think-hard"]
-          for path in paths:
-              url = base + path
-              req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; AiLinaHorizon/1.0)", "Accept": "text/html,application/xml,application/rss+xml,*/*"})
-              try:
-                  with urllib.request.urlopen(req, timeout=12) as response:
-                      content = response.read(200000).decode("utf-8", errors="replace")
-                      print("PATH", path, "HTTP", response.status, "URL", response.url, "CONTENT_TYPE", response.headers.get("content-type"), "BYTES", len(content))
-                      print("TITLE", re.findall(r"<title[^>]*>(.*?)</title>", content, re.I|re.S)[:2])
-                      print("FEEDS", re.findall(r'<link[^>]*(?:rss|atom|alternate)[^>]*>', content, re.I)[:5])
-                      print("POST LINKS", list(dict.fromkeys(re.findall(r'href=["\']([^"\']*/p/[^"\']+)["\']', content)))[:7])
-                      print("HAS RSS", "<rss" in content[:500], "HAS XML", content.lstrip().startswith("<?xml"), "HAS ARCHIVE", "/p/" in content)
-              except urllib.error.HTTPError as e:
-                  print("PATH", path, "HTTP", e.code, "CONTENT_TYPE", e.headers.get("content-type"))
-              except Exception as e:
-                  print("PATH", path, "ERROR", type(e).__name__, str(e)[:160])
+          raw = Path('data/taaft-feed.xml').read_text(encoding='utf-8')
+          root = ET.fromstring(raw)
+          items = root.findall('./channel/item')
+          print('LOCAL_TAAFT_ITEMS',len(items))
+          assert len(items)>=3
+          cfg=Config.model_validate_json(Path('data/config.ailina.json').read_text())
+          assert any(s.name=='TAAFT' for s in cfg.sources.rss)
+          print('TAAFT_CONFIG_VALIDATED', len(cfg.sources.rss))
+          print('BONUS_DEFINED', hasattr(__import__('src.orchestrator',fromlist=['HorizonOrchestrator']).HorizonOrchestrator, 'editorial_rank_score'))
+          async def check():
+              async with httpx.AsyncClient(timeout=25) as http:
+                  rss=RSSScraper([s for s in cfg.sources.rss if s.name=='TAAFT'],http)
+                  result=await rss.fetch(datetime.now(timezone.utc)-timedelta(hours=48))
+                  print('REMOTE_TAAFT_FETCH',len(result.items),'FAILURES',result.failures)
+                  assert len(result.items)>=3
+          asyncio.run(check())
           PY
