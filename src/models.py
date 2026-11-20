@@ -318,6 +318,8 @@ class RSSSourceConfig(BaseModel):
     name: str
     url: HttpUrl
     enabled: bool = True
+    # Keep costly daily AI analysis bounded for high-volume editorial feeds.
+    fetch_limit: Optional[int] = Field(default=None, ge=1, le=100)
     category: Optional[str] = None
     content_extractor: Optional[str] = None
     profile: ProfileRoute = None
