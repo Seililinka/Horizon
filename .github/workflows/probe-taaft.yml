@@ -1,0 +1,35 @@
+name: Probe TAAFT public archive
+on:
+  push:
+    paths:
+      - '.github/workflows/probe-taaft.yml'
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Examine TAAFT public endpoints
+        run: |
+          python - <<'PY'
+          import re
+          import urllib.request
+          import urllib.error
+
+          base = "https://newsletter.theresanaiforthat.com"
+          paths = ["/", "/archive", "/rss", "/feed", "/rss.xml", "/sitemap.xml", "/sitemap-posts.xml", "/p/claude-ignores-your-think-hard"]
+          for path in paths:
+              url = base + path
+              req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (compatible; AiLinaHorizon/1.0)", "Accept": "text/html,application/xml,application/rss+xml,*/*"})
+              try:
+                  with urllib.request.urlopen(req, timeout=12) as response:
+                      content = response.read(200000).decode("utf-8", errors="replace")
+                      print("PATH", path, "HTTP", response.status, "URL", response.url, "CONTENT_TYPE", response.headers.get("content-type"), "BYTES", len(content))
+                      print("TITLE", re.findall(r"<title[^>]*>(.*?)</title>", content, re.I|re.S)[:2])
+                      print("FEEDS", re.findall(r'<link[^>]*(?:rss|atom|alternate)[^>]*>', content, re.I)[:5])
+                      print("POST LINKS", list(dict.fromkeys(re.findall(r'href=["\']([^"\']*/p/[^"\']+)["\']', content)))[:7])
+                      print("HAS RSS", "<rss" in content[:500], "HAS XML", content.lstrip().startswith("<?xml"), "HAS ARCHIVE", "/p/" in content)
+              except urllib.error.HTTPError as e:
+                  print("PATH", path, "HTTP", e.code, "CONTENT_TYPE", e.headers.get("content-type"))
+              except Exception as e:
+                  print("PATH", path, "ERROR", type(e).__name__, str(e)[:160])
+          PY
