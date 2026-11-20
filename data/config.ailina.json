@@ -173,6 +173,13 @@
           "fetch_limit": 7,
           "category": "telegram-ai",
           "profile": "ailina"
+        },
+        {
+          "channel": "robofuture",
+          "enabled": true,
+          "fetch_limit": 12,
+          "category": "telegram-ai",
+          "profile": "ailina"
         }
       ]
     }
