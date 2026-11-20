@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: ailina
 title: "Horizon Summary: 2026-11-20 (RU)"
 date: 2026-11-20
 lang: ru
