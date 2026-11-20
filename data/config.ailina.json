@@ -174,6 +174,14 @@
         "fetch_limit": 10,
         "enabled": true,
         "profile": "ailina"
+      },
+      {
+        "name": "The Lancet Digital Health",
+        "url": "https://www.thelancet.com/rssfeed/landig_online.xml",
+        "enabled": true,
+        "fetch_limit": 15,
+        "category": "health-ai",
+        "profile": "ailina"
       }
     ],
     "reddit": {
