@@ -236,6 +236,27 @@
           "fetch_limit": 6,
           "category": "telegram-ai",
           "profile": "ailina"
+        },
+        {
+          "channel": "aisetii",
+          "enabled": true,
+          "fetch_limit": 6,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "Howto_AI",
+          "enabled": true,
+          "fetch_limit": 6,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "neirofoto_ru",
+          "enabled": true,
+          "fetch_limit": 6,
+          "category": "telegram-ai",
+          "profile": "ailina"
         }
       ]
     }
