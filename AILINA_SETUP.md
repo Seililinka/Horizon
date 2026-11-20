@@ -11,7 +11,7 @@
 1. Создайте ключ в [DeepSeek Platform](https://platform.deepseek.com/api_keys). Доступность и стоимость зависят от поставщика.
 2. Откройте [Actions secrets](https://github.com/Seililinka/Horizon/settings/secrets/actions).
 3. Нажмите **New repository secret**.
-4. **Name:** `DEEPSEEK_API_KEY`.
+4. **Name:** `deepseek` (используется в GitHub Actions как переменная `DEEPSEEK_API_KEY`).
 5. **Secret:** вставьте ключ и нажмите **Add secret**.
 
 **Никогда не вставляйте ключ в файлы репозитория, публичные комментарии или чат.** GitHub Secrets скрывает его от публичного исходного кода.
@@ -33,4 +33,4 @@
 - `.github/workflows/ailina-digest.yml` — автоматический запуск в 06:00 UTC (09:00 по Москве).
 - `docs/ailina.md` — стартовая страница русских выпусков.
 
-**Примечание:** пока в GitHub Secrets нет `DEEPSEEK_API_KEY`, генерация в Action пропускается. Форк сам по себе не означает, что модель уже вызывается. Оплата использования API происходит у провайдера отдельно от подписки ChatGPT.
+**Примечание:** пока в GitHub Secrets нет `deepseek`, генерация в Action пропускается. Форк сам по себе не означает, что модель уже вызывается. Оплата использования API происходит у провайдера отдельно от подписки ChatGPT.
