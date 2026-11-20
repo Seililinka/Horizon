@@ -180,6 +180,62 @@
           "fetch_limit": 12,
           "category": "telegram-ai",
           "profile": "ailina"
+        },
+        {
+          "channel": "omggpt",
+          "enabled": true,
+          "fetch_limit": 6,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "ict_moscow_ai",
+          "enabled": true,
+          "fetch_limit": 6,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "xor_journal",
+          "enabled": true,
+          "fetch_limit": 6,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "neurohub",
+          "enabled": true,
+          "fetch_limit": 6,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "AI_Money_Maker",
+          "enabled": true,
+          "fetch_limit": 6,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "neuraldvig",
+          "enabled": true,
+          "fetch_limit": 6,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "aidea4work",
+          "enabled": true,
+          "fetch_limit": 6,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "complete_ai",
+          "enabled": true,
+          "fetch_limit": 6,
+          "category": "telegram-ai",
+          "profile": "ailina"
         }
       ]
     }
@@ -200,7 +256,7 @@
       },
       "telegram": {
         "name": "Telegram — ИИ и практика",
-        "limit": 3,
+        "limit": 5,
         "categories": [
           "telegram-ai"
         ]
