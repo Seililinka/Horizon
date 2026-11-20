@@ -59,6 +59,13 @@
     },
     "rss": [
       {
+        "name": "TAAFT",
+        "url": "https://raw.githubusercontent.com/Seililinka/Horizon/main/data/taaft-feed.xml",
+        "enabled": true,
+        "category": "taaft",
+        "profile": "ailina"
+      },
+      {
         "name": "Simon Willison",
         "url": "https://simonwillison.net/atom/everything/",
         "enabled": true,
@@ -128,6 +135,13 @@
     "max_items": 9,
     "group_by": "category",
     "category_groups": {
+      "taaft": {
+        "name": "Приоритетные новости TAAFT",
+        "limit": 3,
+        "categories": [
+          "taaft"
+        ]
+      },
       "models": {
         "name": "Модели и архитектуры",
         "limit": 3,
