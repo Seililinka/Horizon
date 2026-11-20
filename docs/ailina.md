@@ -1,24 +1,25 @@
 ---
-layout: default
-title: AiLina — ИИ-радар
+layout: ailina
+title: Ежедневные новости об ИИ
 permalink: /ailina/
+lang: ru
 ---
 
-# AiLina — ежедневный ИИ-радар
+## Свежие выпуски
 
-Короткие новости об ИИ на русском: модели, инструменты, агенты, исследования и практическое применение. Каждый материал содержит ссылку на первоисточник, оценку значимости и идею для поста.
-
-> Подборка обновляется по расписанию, только если в GitHub Actions настроен ключ DeepSeek. Это черновики для проверки, **не автоматическая публикация** в Telegram.
-
-## Свежие подборки
+<p class="archive-intro">Каждый день Horizon отбирает новые модели, полезные инструменты и исследования. Новости получают две оценки: значимость и практичность. Выбирай тему, которую хочется попробовать или обсудить.</p>
 
 {% assign ru_posts = site.posts | where: "lang", "ru" %}
+<div class="issue-list">
 {% for post in ru_posts limit:30 %}
-- [{{ post.date | date: "%d.%m.%Y" }} — новости ИИ]({{ post.url | relative_url }})
+  <a class="issue-link" href="{{ post.url | relative_url }}">
+    <span class="issue-date">{{ post.date | date: "%d.%m.%Y" }}</span>
+    <span class="issue-name">Главные новости ИИ за день</span>
+    <span class="issue-arrow" aria-hidden="true">↗</span>
+  </a>
 {% else %}
-Пока нет готовых выпусков. После первого успешного запуска они появятся здесь.
+  <p>Первый выпуск готовится. Когда он появится, ссылка отобразится здесь.</p>
 {% endfor %}
+</div>
 
----
-
-[Репозиторий и настройки](https://github.com/Seililinka/Horizon) · [Запуск вручную](https://github.com/Seililinka/Horizon/actions/workflows/ailina-digest.yml)
+<div class="mini-note">Обновление запускается автоматически после 09:00 по Москве. Публикации — редакторская подборка для проверки, а не автоматические посты в Telegram.</div>
