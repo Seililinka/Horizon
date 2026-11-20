@@ -52,3 +52,25 @@ jobs:
               for result in sorted(pool.map(check, feeds.items())):
                   print("FEED_STATUS", repr(result), flush=True)
           PY
+
+      - name: Test Lancet access and Google News fallback
+        run: |
+          python - <<'PY'
+          from urllib.request import Request,urlopen
+          from urllib.parse import urlencode
+          import xml.etree.ElementTree as ET
+          urls = {
+              "Lancet direct RSS": "https://www.thelancet.com/rssfeed/landig_online.xml",
+              "Lancet current RSS": "https://www.thelancet.com/rssfeed/landig_current.xml",
+              "Google News Lancet AI": "https://news.google.com/rss/search?" + urlencode({"q":"site:thelancet.com/journals/landig (artificial intelligence OR machine learning) when:7d","hl":"en-US","gl":"US","ceid":"US:en"}),
+          }
+          for name,url in urls.items():
+              try:
+                  with urlopen(Request(url,headers={"User-Agent":"Mozilla/5.0","Accept":"application/rss+xml,application/xml,text/xml,*/*"}),timeout=13) as rsp:
+                      raw=rsp.read(1200000)
+                  root=ET.fromstring(raw)
+                  items=root.findall(".//item")
+                  print("LANCET_SOURCE",name,"ROOT",root.tag[:80],"ITEMS",len(items),"FIRST",(items[0].findtext("title") or "")[:120] if items else "",flush=True)
+              except Exception as e:
+                  print("LANCET_SOURCE",name,"ERROR",str(e)[:120],flush=True)
+          PY
