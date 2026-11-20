@@ -30,7 +30,9 @@ jobs:
           import json
           from src.models import Config
           config = Config.model_validate(json.loads(Path("data/config.ailina.json").read_text()))
-          assert len(config.sources.telegram.channels) >= 8
+          assert len(config.sources.telegram.channels) == 17
+          assert config.digest.category_groups['telegram'].limit == 5
+          assert all(any(ch.channel.lower() == name for ch in config.sources.telegram.channels) for name in ('bugnotfeature', 'ai_machinelearning_big_data', 'omggpt', 'ict_moscow_ai', 'xor_journal', 'neurohub', 'ai_money_maker', 'neuraldvig', 'aidea4work', 'complete_ai'))
           assert any(ch.channel == 'robofuture' and ch.enabled for ch in config.sources.telegram.channels)
           assert config.digest.max_items == 12
           assert Path("docs/_layouts/ailina.html").exists()
