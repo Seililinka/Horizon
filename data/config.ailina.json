@@ -121,8 +121,57 @@
         {
           "channel": "bugnotfeature",
           "enabled": true,
-          "fetch_limit": 15,
-          "category": "ai-news",
+          "fetch_limit": 12,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "data_secrets",
+          "enabled": true,
+          "fetch_limit": 7,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "gonzo_ML",
+          "enabled": true,
+          "fetch_limit": 7,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "ai_machinelearning_big_data",
+          "enabled": true,
+          "fetch_limit": 7,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "SberAIScience",
+          "enabled": true,
+          "fetch_limit": 7,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "airi_research_institute",
+          "enabled": true,
+          "fetch_limit": 7,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "vibecoding_tg",
+          "enabled": true,
+          "fetch_limit": 7,
+          "category": "telegram-ai",
+          "profile": "ailina"
+        },
+        {
+          "channel": "aioftheday",
+          "enabled": true,
+          "fetch_limit": 7,
+          "category": "telegram-ai",
           "profile": "ailina"
         }
       ]
@@ -132,7 +181,7 @@
     "time_window_hours": 30
   },
   "digest": {
-    "max_items": 9,
+    "max_items": 12,
     "group_by": "category",
     "category_groups": {
       "taaft": {
@@ -140,6 +189,13 @@
         "limit": 3,
         "categories": [
           "taaft"
+        ]
+      },
+      "telegram": {
+        "name": "Telegram — ИИ и практика",
+        "limit": 3,
+        "categories": [
+          "telegram-ai"
         ]
       },
       "models": {
