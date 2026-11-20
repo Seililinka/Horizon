@@ -145,7 +145,12 @@ class RSSScraper(BaseScraper):
         ):
             raise ValueError("Invalid RSS/Atom feed")
 
-        for ordinal, entry in enumerate(feed.entries, start=1):
+        candidate_entries = (
+            feed.entries[:source.fetch_limit]
+            if source.fetch_limit is not None
+            else feed.entries
+        )
+        for ordinal, entry in enumerate(candidate_entries, start=1):
             try:
                 published_at = self._parse_date(entry)
                 if not published_at or published_at < since:
@@ -165,6 +170,17 @@ class RSSScraper(BaseScraper):
                             if full:
                                 content = full
 
+                entry_tags = [tag.term for tag in entry.get("tags", [])]
+                category = source.category
+                # TAAFT issue items may be stories, daily prompts, or useful
+                # AI devices. Keep separate editorial quotas for these topics.
+                if source.name == "TAAFT":
+                    categories = {tag.casefold() for tag in entry_tags}
+                    if "taaft-prompt" in categories:
+                        category = "taaft-prompt"
+                    elif "taaft-device" in categories:
+                        category = "taaft-device"
+
                 result.items.append(ContentItem(
                     id=self._generate_id("rss", feed_id, entry_hash),
                     source_type=SourceType.RSS,
@@ -176,8 +192,8 @@ class RSSScraper(BaseScraper):
                     profile=source.profile,
                     metadata={
                         "feed_name": source.name,
-                        "category": source.category,
-                        "tags": [tag.term for tag in entry.get("tags", [])],
+                        "category": category,
+                        "tags": entry_tags,
                     },
                 ))
             except Exception as exc:
