@@ -38,12 +38,21 @@ class TelegramScraper(BaseScraper):
         if not self.config.get("enabled", True):
             return result
 
-        tasks = []
-        for channel_cfg in self.telegram_config.channels:
-            if channel_cfg.enabled:
-                tasks.append(result.collect(channel_cfg.channel, self._fetch_channel(channel_cfg, since)))
+        # Keep a bounded number of public-preview requests in flight to reduce
+        # Telegram's rate limiting when several AI channels are configured.
+        slots = asyncio.Semaphore(3)
 
-        await asyncio.gather(*tasks)
+        async def fetch_one(channel_cfg: TelegramChannelConfig) -> None:
+            async with slots:
+                await result.collect(
+                    channel_cfg.channel, self._fetch_channel(channel_cfg, since)
+                )
+
+        await asyncio.gather(*(
+            fetch_one(channel_cfg)
+            for channel_cfg in self.telegram_config.channels
+            if channel_cfg.enabled
+        ))
         return result
 
     async def _fetch_channel(self, cfg: TelegramChannelConfig, since: datetime) -> List[ContentItem]:
@@ -154,6 +163,16 @@ class TelegramScraper(BaseScraper):
                 canonical_url = href
                 break
 
+        # Public Telegram preview provides approximate audience-interest signals.
+        # These are not proof of a story's accuracy and must not affect factual scores.
+        views = self._parse_public_count(
+            msg_el.select_one(".tgme_widget_message_views")
+        )
+        reactions = sum(
+            self._parse_public_count(el) or 0
+            for el in msg_el.select(".tgme_widget_message_reaction_count")
+        )
+
         return ContentItem(
             id=self._generate_id("telegram", channel, msg_id),
             source_type=SourceType.TELEGRAM,
@@ -163,8 +182,31 @@ class TelegramScraper(BaseScraper):
             author=channel,
             published_at=published_at,
             profile=cfg.profile,
-            metadata={"msg_url": msg_url, "channel": channel, "category": cfg.category},
+            metadata={
+                "msg_url": msg_url,
+                "channel": channel,
+                "category": cfg.category,
+                **({"views": views} if views is not None else {}),
+                **({"reactions": reactions} if reactions else {}),
+            },
         )
+
+    @staticmethod
+    def _parse_public_count(el) -> Optional[int]:
+        """Parse numbers such as 920, 1.2K, 3,4M shown by Telegram."""
+        if el is None:
+            return None
+        text = el.get_text(" ", strip=True).replace("\u00a0", "").replace(" ", "").replace(",", ".")
+        match = re.search(r"(\d+(?:\.\d+)?)\s*([KkMm]|тыс\.?|млн\.?)?", text)
+        if not match:
+            return None
+        amount = float(match.group(1))
+        suffix = (match.group(2) or "").lower().rstrip(".")
+        if suffix in ("k", "тыс"):
+            amount *= 1000
+        elif suffix in ("m", "млн"):
+            amount *= 1000000
+        return int(amount)
 
     @staticmethod
     def _make_title(text: str) -> str:
