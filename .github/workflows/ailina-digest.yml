@@ -40,6 +40,46 @@ jobs:
         if: ${{ env.DEEPSEEK_API_KEY != '' }}
         run: uv sync
 
+      - name: Verify DeepSeek API access
+        if: ${{ env.DEEPSEEK_API_KEY != '' }}
+        run: |
+          uv run python - <<'PY'
+          import json
+          import os
+          import sys
+          import urllib.error
+          import urllib.request
+
+          url = "https://api.deepseek.com/chat/completions"
+          body = json.dumps({
+              "model": "deepseek-chat",
+              "messages": [{"role": "user", "content": "Reply OK"}],
+              "max_tokens": 5,
+              "stream": False,
+          }).encode("utf-8")
+          req = urllib.request.Request(url, data=body, headers={
+              "Authorization": "Bearer " + os.environ["DEEPSEEK_API_KEY"],
+              "Content-Type": "application/json",
+          })
+          try:
+              with urllib.request.urlopen(req, timeout=25) as response:
+                  if response.status != 200:
+                      raise RuntimeError("Unexpected DeepSeek HTTP status")
+              print("DeepSeek API access verified.")
+          except urllib.error.HTTPError as exc:
+              if exc.code == 401:
+                  problem = "DeepSeek rejected the API key (HTTP 401). Create a valid API key in DeepSeek Platform and update the GitHub Actions secret."
+              elif exc.code in (402, 403):
+                  problem = f"DeepSeek API access/billing was denied (HTTP {exc.code}). Check account access and balance."
+              else:
+                  problem = f"DeepSeek API returned HTTP {exc.code}. Inspect provider status and configuration."
+              print("::error::" + problem)
+              sys.exit(1)
+          except Exception as exc:
+              print("::error::Cannot verify DeepSeek API access. Check network, provider availability and credentials (" + type(exc).__name__ + ").")
+              sys.exit(1)
+          PY
+
       - name: Generate AiLina Russian digest
         if: ${{ env.DEEPSEEK_API_KEY != '' }}
         run: uv run horizon --config data/config.ailina.json --hours 30
