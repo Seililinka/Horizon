@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>TAAFT — AiLina editor's feed</title>
+    <link>https://newsletter.theresanaiforthat.com/</link>
+    <description>Краткие пересказы новостей TAAFT для ИИ-радара AiLina. Без рекламных вставок и персональных трекинговых ссылок.</description>
+    <language>ru</language>
+    <item>
+      <title>TAAFT: Фраза «think hard» не всегда улучшает ответы Claude</title>
+      <link>https://newsletter.theresanaiforthat.com/p/claude-ignores-your-think-hard</link>
+      <guid isPermaLink="false">taaft-2026-11-20-claude-prompt</guid>
+      <pubDate>Fri, 20 Nov 2026 04:10:31 +0000</pubDate>
+      <description>В выпуске TAAFT разбирается, почему команда «think hard» в некоторых сценариях увеличивает ожидание, но не обязательно качество ответа. Практический вывод: задавать критерии результата и выбирать настройки глубины рассуждений по сложности задачи.</description>
+      <author>TAAFT editorial</author>
+    </item>
+    <item>
+      <title>TAAFT: Робот Stanford выполняет бытовые задачи почти с человеческой скоростью</title>
+      <link>https://newsletter.theresanaiforthat.com/p/claude-ignores-your-think-hard</link>
+      <guid isPermaLink="false">taaft-2026-11-20-stanford-robot</guid>
+      <pubDate>Fri, 20 Nov 2026 04:10:31 +0000</pubDate>
+      <description>TAAFT описывает подход Stanford: обучение робота непосредственным управлением его руками в темпе человека. По изложенным в рассылке данным, около 50 демонстраций на задачу дали успешность свыше 80% в показанных упражнениях; эти числа требуют проверки в первоисточнике.</description>
+      <author>TAAFT editorial</author>
+    </item>
+    <item>
+      <title>TAAFT: Умеренная персональность чат-бота влияет на доверие</title>
+      <link>https://newsletter.theresanaiforthat.com/p/claude-ignores-your-think-hard</link>
+      <guid isPermaLink="false">taaft-2026-11-20-chatbot-personality</guid>
+      <pubDate>Fri, 20 Nov 2026 04:10:31 +0000</pubDate>
+      <description>TAAFT пересказывает эксперимент Northeastern University с 150 участниками, планировавшими поездку с чат-ботом. Умеренно выраженный стиль общения оценивали лучше, чем слишком холодный или навязчиво дружелюбный. Вывод относится к условиям описанного исследования.</description>
+      <author>TAAFT editorial</author>
+    </item>
+  </channel>
+</rss>
