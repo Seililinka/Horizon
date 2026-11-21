@@ -461,3 +461,60 @@ def test_run_balances_after_twitter_reanalysis(tmp_path, monkeypatch) -> None:
     asyncio.run(orchestrator.run())
 
     assert enriched_ids == ["second"]
+
+
+def test_priority_minimums_reserve_sources_before_general_high_scoring_items() -> None:
+    config = DigestConfig(
+        max_items=5,
+        category_groups={
+            "taaft": CategoryGroupConfig(limit=3, min_items=1, categories=["taaft"]),
+            "karpathy": CategoryGroupConfig(limit=2, min_items=1, categories=["karpathy-ai"]),
+            "anthropic": CategoryGroupConfig(limit=2, min_items=1, categories=["anthropic-ai"]),
+            "telegram": CategoryGroupConfig(limit=8, categories=["telegram-ai"]),
+        },
+    )
+    articles = [
+        make_item(f"telegram-{i}", 9.0 - i * 0.05, "telegram-ai")
+        for i in range(8)
+    ]
+    articles += [
+        make_item("ta-a", 6.0, "taaft"),
+        make_item("karpathy-a", 5.3, "karpathy-ai"),
+        make_item("anthropic-a", 5.1, "anthropic-ai"),
+    ]
+    result = make_orchestrator(config).apply_balanced_digest(articles)
+    picked = [i.id for i in result.items]
+    assert len(picked) == 5
+    assert "ta-a" in picked
+    assert "karpathy-a" in picked
+    assert "anthropic-a" in picked
+    assert len(picked) == len(set(picked))
+
+
+def test_reserved_source_slots_never_insert_nonexistent_news() -> None:
+    digest = DigestConfig(max_items=4, category_groups={
+        "karpathy": CategoryGroupConfig(limit=3, min_items=2, categories=["karpathy-ai"]),
+        "other": CategoryGroupConfig(limit=4, categories=["other"]),
+    })
+    result = make_orchestrator(digest).apply_balanced_digest([
+        make_item(f"fresh-{i}", 7, "other") for i in range(4)
+    ])
+    assert len(result.items) == 4
+    assert not any(x.metadata["category"] == "karpathy-ai" for x in result.items)
+
+
+def test_minimum_raw_quality_floor_blocks_low_ranked_sources() -> None:
+    engine = make_orchestrator(DigestConfig())
+    engine.config.processing.profile_settings["tech-news"] = ProfileSettingsConfig(
+        threshold=5.0, minimum_raw_score=5.0
+    )
+    weak = make_item("weak-taaft", 4.0, "taaft")
+    weak.metadata["feed_name"] = "TAAFT"
+    strong = make_item("strong", 5.0, "taaft")
+    assert not engine.passes_profile_filter(weak)
+    assert engine.passes_profile_filter(strong)
+
+
+def test_category_group_minimum_cannot_exceed_limit() -> None:
+    with pytest.raises(ValidationError):
+        CategoryGroupConfig(limit=2, min_items=3, categories=["expert"])
