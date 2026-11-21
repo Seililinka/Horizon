@@ -1,1 +1,1 @@
-AiLina editorial expanded coverage test on 2026-11-21: threshold 5.0, cap 70, reserve fresh TAAFT/Anthropic/Karpathy articles, enrich top 14. Run requested to validate actual volume.
+AiLina expansion verification 2026-11-21: 22 RSS feeds, 20 deeper Telegram channels, Hacker News broadened; keep strict 5.0 raw quality floor, reserve TAAFT/Anthropic/Karpathy, up to 70 items and 14 deep dives.
