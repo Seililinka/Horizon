@@ -1,1 +1,1 @@
-AiLina digest manual refresh requested 2026-11-20 20:14 Europe/Moscow. Include latest TAAFT, 20 public Telegram channels, Karpathy, Anthropic and new official research feeds.
+AiLina editorial expanded coverage test on 2026-11-21: threshold 5.0, cap 70, reserve fresh TAAFT/Anthropic/Karpathy articles, enrich top 14. Run requested to validate actual volume.
