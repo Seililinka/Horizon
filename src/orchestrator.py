@@ -310,11 +310,16 @@ class HorizonOrchestrator:
                 self.console.print(f"      {self.icons['detail']} {source_key}: {count}")
             self.console.print("")
 
-            # 6. Search related stories + enrich with background knowledge (2nd AI pass)
-            enrichment_result = await self.enrich_items(important_items)
-            if enrichment_result.status == "failure":
+            # 6. Deep-dive only the best/reserved news; render the remaining
+            # qualifying AiLina items as concise, scored analysis cards.
+            enrich_cap = self.config.digest.enrichment_limit
+            enrichment_targets = (
+                important_items if enrich_cap is None else important_items[:enrich_cap]
+            )
+            enrichment_result = await self.enrich_items(enrichment_targets)
+            if enrichment_result.status == "failure" and enrichment_targets:
                 raise RuntimeError(
-                    f"Enrichment failed for all {len(important_items)} selected items: "
+                    f"Enrichment failed for all {len(enrichment_targets)} selected items: "
                     + ", ".join(enrichment_result.failed_ids)
                 )
 
@@ -323,7 +328,14 @@ class HorizonOrchestrator:
             for lang in self.config.ai.languages:
                 language_items = [
                     item for item in important_items
-                    if item.processing and lang in item.processing.artifacts
+                    if item.processing and (
+                        lang in item.processing.artifacts
+                        or (
+                            enrich_cap is not None
+                            and item.processing.analysis is not None
+                            and bool(item.processing.analysis.summary)
+                        )
+                    )
                 ]
                 summarizer = DailySummarizer(
                     profile_names=self.profiles.names,
@@ -896,9 +908,14 @@ class HorizonOrchestrator:
         raw_score = item.processing.analysis.score
         if raw_score is None:
             return -1.0
-        # AiLina's preferred TAAFT newsletter gets a modest, transparent
-        # selection advantage, but factual scoring is left untouched.
-        priority_bonus = 1.5 if item.metadata.get("feed_name") == "TAAFT" else 0.0
+        # Publisher priority only affects ordering, never the factual score.
+        source = item.metadata.get("feed_name", "")
+        priority_bonus = (
+            1.5 if source == "TAAFT"
+            else 0.8 if source.startswith("Anthropic ")
+            or source.startswith("Andrej Karpathy")
+            else 0.0
+        )
         practicality = item.processing.analysis.practicality_score
         # A concrete, reproducible action for ordinary users earns up to +1.5
         # ranking points. Low practicality never becomes a penalty or a made-up score.
@@ -922,6 +939,15 @@ class HorizonOrchestrator:
         effective_threshold = threshold
         if effective_threshold is None and settings is not None:
             effective_threshold = settings.threshold
+        if (
+            settings is not None
+            and settings.minimum_raw_score is not None
+            and (
+                item.processing.analysis.score is None
+                or item.processing.analysis.score < settings.minimum_raw_score
+            )
+        ):
+            return False
         if effective_threshold is None:
             return True
         return self.editorial_rank_score(item) >= effective_threshold
@@ -972,34 +998,53 @@ class HorizonOrchestrator:
 
         selected: List[tuple[ContentItem, str]] = []
         group_counts: Dict[str, int] = defaultdict(int)
+        selected_ids: set[str] = set()
         default_group = digest.default_group
 
-        for item in sorted_items:
+        def bucket(item: ContentItem) -> str:
             if digest.group_by == "profile":
                 category = (
                     item.processing.classification.profile if item.processing else None
                 )
             else:
                 category = item.metadata.get("category")
-            group_key = (
+            return (
                 category_to_group.get(category, default_group)
-                if isinstance(category, str)
-                else default_group
+                if isinstance(category, str) else default_group
             )
 
-            if group_key in groups:
-                limit = groups[group_key].limit
-            else:
-                limit = digest.default_group_limit
-
+        def add_if_eligible(item: ContentItem, group_key: str) -> bool:
+            if item.id in selected_ids:
+                return False
+            if max_items is not None and len(selected) >= max_items:
+                return False
+            limit = (
+                groups[group_key].limit
+                if group_key in groups
+                else digest.default_group_limit
+            )
             if limit is not None and group_counts[group_key] >= limit:
-                continue
-
+                return False
             selected.append((item, group_key))
+            selected_ids.add(item.id)
             group_counts[group_key] += 1
+            return True
 
-        if max_items is not None:
-            selected = selected[:max_items]
+        # Reserve slots only for existing, score-qualified news in priority groups.
+        # A quiet publisher contributes zero rather than recycling old stories.
+        for group_key, group in groups.items():
+            if not group.min_items:
+                continue
+            for item in sorted_items:
+                if group_counts[group_key] >= group.min_items:
+                    break
+                if bucket(item) == group_key:
+                    add_if_eligible(item, group_key)
+
+        for item in sorted_items:
+            if max_items is not None and len(selected) >= max_items:
+                break
+            add_if_eligible(item, bucket(item))
 
         final_counts: Dict[str, int] = defaultdict(int)
         for _, group_key in selected:
