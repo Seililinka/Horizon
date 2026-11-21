@@ -18,8 +18,9 @@
     "default_profile": "ailina",
     "profile_settings": {
       "ailina": {
-        "threshold": 6.5,
-        "topic_dedup": true
+        "threshold": 5,
+        "topic_dedup": true,
+        "minimum_raw_score": 5
       }
     }
   },
@@ -90,7 +91,7 @@
       {
         "name": "Andrej Karpathy — Bearblog",
         "url": "https://karpathy.bearblog.dev/feed/",
-        "category": "expert-ai",
+        "category": "karpathy-ai",
         "fetch_limit": 12,
         "enabled": true,
         "profile": "ailina"
@@ -98,7 +99,7 @@
       {
         "name": "Andrej Karpathy — Blog",
         "url": "https://karpathy.github.io/feed.xml",
-        "category": "expert-ai",
+        "category": "karpathy-ai",
         "fetch_limit": 12,
         "enabled": true,
         "profile": "ailina"
@@ -106,7 +107,7 @@
       {
         "name": "Anthropic Research",
         "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_research.xml",
-        "category": "research",
+        "category": "anthropic-ai",
         "fetch_limit": 12,
         "enabled": true,
         "profile": "ailina"
@@ -114,7 +115,7 @@
       {
         "name": "Anthropic Engineering",
         "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_engineering.xml",
-        "category": "agents",
+        "category": "anthropic-ai",
         "fetch_limit": 12,
         "enabled": true,
         "profile": "ailina"
@@ -122,7 +123,7 @@
       {
         "name": "Anthropic News",
         "url": "https://raw.githubusercontent.com/Olshansk/rss-feeds/main/feeds/feed_anthropic_news.xml",
-        "category": "models",
+        "category": "anthropic-ai",
         "fetch_limit": 15,
         "enabled": true,
         "profile": "ailina"
@@ -361,54 +362,66 @@
     "time_window_hours": 24
   },
   "digest": {
-    "max_items": 16,
+    "max_items": 70,
     "group_by": "category",
     "category_groups": {
       "taaft": {
-        "name": "Приоритетные новости TAAFT",
-        "limit": 3,
+        "name": "TAAFT — новости",
+        "limit": 14,
+        "min_items": 3,
         "categories": [
           "taaft"
         ]
       },
       "taaft_practice": {
-        "name": "TAAFT — промпт дня",
-        "limit": 2,
+        "name": "TAAFT — промпты и практика",
+        "limit": 5,
+        "min_items": 1,
         "categories": [
           "taaft-prompt"
         ]
       },
       "taaft_devices": {
         "name": "TAAFT — устройства с ИИ",
-        "limit": 2,
+        "limit": 7,
+        "min_items": 1,
         "categories": [
           "taaft-device"
         ]
       },
+      "karpathy": {
+        "name": "Андрей Карпаты",
+        "limit": 8,
+        "min_items": 1,
+        "categories": [
+          "karpathy-ai"
+        ]
+      },
+      "anthropic": {
+        "name": "Anthropic — исследования и релизы",
+        "limit": 15,
+        "min_items": 2,
+        "categories": [
+          "anthropic-ai"
+        ]
+      },
       "telegram": {
         "name": "Telegram — ИИ и практика",
-        "limit": 5,
+        "limit": 35,
         "categories": [
           "telegram-ai"
         ]
       },
-      "experts": {
-        "name": "Авторы и экспертные блоги",
-        "limit": 2,
-        "categories": [
-          "expert-ai"
-        ]
-      },
       "models": {
         "name": "Модели и архитектуры",
-        "limit": 3,
+        "limit": 24,
         "categories": [
           "models"
         ]
       },
       "products": {
         "name": "Инструменты и продукты",
-        "limit": 3,
+        "limit": 22,
         "categories": [
           "ai-tools",
           "open-source",
@@ -417,7 +430,7 @@
       },
       "practice": {
         "name": "Исследования и применение",
-        "limit": 4,
+        "limit": 20,
         "categories": [
           "research",
           "agents"
@@ -425,23 +438,24 @@
       },
       "media": {
         "name": "Качественные СМИ",
-        "limit": 2,
+        "limit": 12,
         "categories": [
           "media-ai"
         ]
       },
       "science": {
         "name": "ИИ в медицине и науке",
-        "limit": 2,
+        "limit": 8,
         "categories": [
           "health-ai"
         ]
       }
     },
     "default_group": "other",
-    "default_group_limit": 2,
+    "default_group_limit": 12,
     "profile_order": [
       "ailina"
-    ]
+    ],
+    "enrichment_limit": 14
   }
 }
