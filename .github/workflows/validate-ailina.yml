@@ -39,7 +39,10 @@ jobs:
           assert config.digest.enrichment_limit == 14
           assert config.processing.profile_settings['ailina'].threshold == 5.0
           assert config.processing.profile_settings['ailina'].minimum_raw_score == 5.0
-          assert len(config.sources.rss) == 16
+          assert len(config.sources.rss) == 22
+          assert all(ch.fetch_limit >= 14 for ch in config.sources.telegram.channels)
+          assert any(feed.name == 'The Guardian — AI' for feed in config.sources.rss)
+          assert any(feed.name == 'arXiv — Machine Learning' for feed in config.sources.rss)
           assert config.digest.category_groups['taaft_practice'].min_items == 1
           assert config.digest.category_groups['taaft_devices'].min_items == 1
           assert config.digest.category_groups['karpathy'].min_items == 1
