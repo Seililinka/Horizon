@@ -22,7 +22,7 @@ jobs:
       - name: Compile changed Python modules
         run: python -m compileall -q src
       - name: Run focused test suite
-        run: uv run pytest -q tests/test_ailina_practicality.py tests/test_ailina_editorial_feeds.py tests/test_rss.py tests/test_telegram.py tests/test_analyzer.py tests/test_balanced_digest.py tests/test_summarizer.py tests/test_prompting.py
+        run: uv run pytest -q tests/test_ailina_postprocess.py tests/test_ailina_practicality.py tests/test_ailina_editorial_feeds.py tests/test_rss.py tests/test_telegram.py tests/test_analyzer.py tests/test_balanced_digest.py tests/test_summarizer.py tests/test_prompting.py
       - name: Validate AiLina config and design assets
         run: |
           uv run python - <<'PY'
