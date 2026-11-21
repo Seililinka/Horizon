@@ -53,8 +53,8 @@
     ],
     "hackernews": {
       "enabled": true,
-      "fetch_top_stories": 25,
-      "min_score": 175,
+      "fetch_top_stories": 55,
+      "min_score": 85,
       "category": "research",
       "profile": "ailina"
     },
@@ -183,6 +183,54 @@
         "fetch_limit": 15,
         "category": "health-ai",
         "profile": "ailina"
+      },
+      {
+        "name": "The Guardian — AI",
+        "url": "https://www.theguardian.com/technology/artificialintelligenceai/rss",
+        "category": "media-ai",
+        "fetch_limit": 22,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "TechCrunch — AI",
+        "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
+        "category": "media-ai",
+        "fetch_limit": 22,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "The Verge — AI",
+        "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+        "category": "media-ai",
+        "fetch_limit": 20,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "Le Monde — AI",
+        "url": "https://www.lemonde.fr/en/artificial-intelligence/rss_full.xml",
+        "category": "media-ai",
+        "fetch_limit": 20,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "Hugging Face Blog",
+        "url": "https://huggingface.co/blog/feed.xml",
+        "category": "ai-tools",
+        "fetch_limit": 25,
+        "enabled": true,
+        "profile": "ailina"
+      },
+      {
+        "name": "arXiv — Machine Learning",
+        "url": "https://rss.arxiv.org/rss/cs.LG",
+        "category": "research",
+        "fetch_limit": 30,
+        "enabled": true,
+        "profile": "ailina"
       }
     ],
     "reddit": {
@@ -218,140 +266,140 @@
         {
           "channel": "bugnotfeature",
           "enabled": true,
-          "fetch_limit": 12,
+          "fetch_limit": 18,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "data_secrets",
           "enabled": true,
-          "fetch_limit": 7,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "gonzo_ML",
           "enabled": true,
-          "fetch_limit": 7,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "ai_machinelearning_big_data",
           "enabled": true,
-          "fetch_limit": 7,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "SberAIScience",
           "enabled": true,
-          "fetch_limit": 7,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "airi_research_institute",
           "enabled": true,
-          "fetch_limit": 7,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "vibecoding_tg",
           "enabled": true,
-          "fetch_limit": 7,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "aioftheday",
           "enabled": true,
-          "fetch_limit": 7,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "robofuture",
           "enabled": true,
-          "fetch_limit": 12,
+          "fetch_limit": 18,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "omggpt",
           "enabled": true,
-          "fetch_limit": 6,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "ict_moscow_ai",
           "enabled": true,
-          "fetch_limit": 6,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "xor_journal",
           "enabled": true,
-          "fetch_limit": 6,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "neurohub",
           "enabled": true,
-          "fetch_limit": 6,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "AI_Money_Maker",
           "enabled": true,
-          "fetch_limit": 6,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "neuraldvig",
           "enabled": true,
-          "fetch_limit": 6,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "aidea4work",
           "enabled": true,
-          "fetch_limit": 6,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "complete_ai",
           "enabled": true,
-          "fetch_limit": 6,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "aisetii",
           "enabled": true,
-          "fetch_limit": 6,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "Howto_AI",
           "enabled": true,
-          "fetch_limit": 6,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         },
         {
           "channel": "neirofoto_ru",
           "enabled": true,
-          "fetch_limit": 6,
+          "fetch_limit": 14,
           "category": "telegram-ai",
           "profile": "ailina"
         }
