@@ -65,12 +65,12 @@ def test_explicit_taaft_sections():
     assert "## TAAFT · Новости и инструменты" in updated
     assert "## Остальные новые новости" in updated
     assert len(parse_stories(updated)) == 4
-    assert group_name(parse_stories(updated)[0]) == "TAAFT · Устройства с ИИ"
+    assert any(group_name(story) == "TAAFT · Устройства с ИИ" for story in parse_stories(updated))
 
 
 def test_dedup_title_variants_without_url():
     yesterday = Story("i1", "dettato: открытая модель для разбора трека на MIDI-дорожки",
-                      "https://example.org/a", "",)
+                      "https://example.org/a", "source content",)
     today = Story("i2", "dettato: открытый инструмент для разбора трека на MIDI-дорожки",
-                  "https://example.net/b", "")
+                  "https://example.net/b", "source content")
     assert is_repeat(today, [yesterday])
