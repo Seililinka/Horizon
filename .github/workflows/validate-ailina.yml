@@ -1,4 +1,4 @@
-name: Validate AiLina Telegram and Practicality
+name: Validate AiLina Editorial Coverage
 # Run focused regression suite including AiLina daily freshness, TAAFT and correct fixtures.
 on:
   push:
@@ -32,16 +32,16 @@ jobs:
           config = Config.model_validate(json.loads(Path("data/config.ailina.json").read_text()))
           assert len(config.sources.telegram.channels) == 20
           assert all(any(ch.channel.lower() == name for ch in config.sources.telegram.channels) for name in ('aisetii', 'howto_ai', 'neirofoto_ru'))
-          assert config.digest.category_groups['telegram'].limit == 5
+          assert config.digest.category_groups['telegram'].limit == 35
           assert all(any(ch.channel.lower() == name for ch in config.sources.telegram.channels) for name in ('bugnotfeature', 'ai_machinelearning_big_data', 'omggpt', 'ict_moscow_ai', 'xor_journal', 'neurohub', 'ai_money_maker', 'neuraldvig', 'aidea4work', 'complete_ai'))
           assert any(ch.channel == 'robofuture' and ch.enabled for ch in config.sources.telegram.channels)
-          assert config.digest.max_items == 16
+          assert config.digest.max_items == 70\n          assert config.digest.enrichment_limit == 14\n          assert config.processing.profile_settings['ailina'].threshold == 5.0\n          assert config.processing.profile_settings['ailina'].minimum_raw_score == 5.0
           assert len(config.sources.rss) == 16
-          assert config.digest.category_groups['taaft_practice'].limit == 2
-          assert config.digest.category_groups['taaft_devices'].limit == 2
+          assert config.digest.category_groups['taaft_practice'].min_items == 1
+          assert config.digest.category_groups['taaft_devices'].min_items == 1\n          assert config.digest.category_groups['karpathy'].min_items == 1\n          assert config.digest.category_groups['anthropic'].min_items == 2
           assert any(x.name == 'The Lancet Digital Health' for x in config.sources.rss)
-          assert any(x.name == 'Anthropic Research' for x in config.sources.rss)
-          assert any(x.name == 'Andrej Karpathy — Bearblog' for x in config.sources.rss)
+          assert any(x.name == 'Anthropic Research' and x.category == 'anthropic-ai' for x in config.sources.rss)
+          assert any(x.name == 'Andrej Karpathy — Bearblog' and x.category == 'karpathy-ai' for x in config.sources.rss)
           from xml.etree import ElementTree as ET
           rss=ET.fromstring(Path('data/taaft-feed.xml').read_bytes())
           cats={e.text for e in rss.findall('.//item/category')}
