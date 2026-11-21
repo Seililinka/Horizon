@@ -478,7 +478,7 @@
       },
       "practice": {
         "name": "Исследования и применение",
-        "limit": 20,
+        "limit": 35,
         "categories": [
           "research",
           "agents"
