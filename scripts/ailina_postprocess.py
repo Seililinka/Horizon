@@ -89,6 +89,10 @@ def is_repeat(current: Story, history: list[Story]) -> bool:
 
 
 def group_name(story: Story) -> str:
+    if re.search(r"(?m)^rss · Andrej Karpathy", story.text):
+        return "Андрей Карпаты · Блог"
+    if re.search(r"(?m)^rss · Anthropic ", story.text):
+        return "Anthropic · Исследования и релизы"
     if not story.taaft:
         return "Остальные новые новости"
     title = title_key(story.title)
@@ -103,6 +107,8 @@ GROUP_ORDER = (
     "TAAFT · Новости и инструменты",
     "TAAFT · Устройства с ИИ",
     "TAAFT · Промпт дня",
+    "Андрей Карпаты · Блог",
+    "Anthropic · Исследования и релизы",
     "Остальные новые новости",
 )
 
@@ -127,13 +133,17 @@ def rewrite_digest(current: str, previous: list[str]) -> tuple[str, int, int]:
         groups[group_name(story)].append(story)
 
     taaft_count = sum(story.taaft for story in kept)
+    karpathy_count = len(groups["Андрей Карпаты · Блог"])
+    anthropic_count = len(groups["Anthropic · Исследования и релизы"])
     parts = [
         front,
         f"\n> Из {fetched} публикаций отобрано {len(kept)} новых тем. "
         f"Повторы предыдущих выпусков исключены ({removed}).\n\n",
         f"**AiLina — свежие новости · {date_label}**\n\n",
-        f"**Из TAAFT сегодня: {taaft_count}** · "
-        "отдельно новости, устройства с ИИ и практические промпты.\n\n",
+        f"**Источники дня:** TAAFT — {taaft_count}, "
+        f"Карпаты — {karpathy_count}, Anthropic — {anthropic_count}. "
+        "Показаны только новости, прошедшие отбор; "
+        "если у источника не было свежих материалов, раздел не заполняется старыми.\n\n",
         "---\n\n",
         "## Содержание выпуска\n\n",
     ]
