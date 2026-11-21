@@ -35,7 +35,7 @@ def test_removes_previous_story_by_exact_article_link():
     assert (kept, removed) == (1, 1)
     assert "Другое название того же материала" not in new
     assert "Новая полезная новость" in new
-    assert "Из TAAFT сегодня: 1" in new
+    assert "TAAFT — 1" in new
 
 
 def test_taaft_stories_with_same_issue_permalink_are_distinct():
@@ -74,3 +74,15 @@ def test_dedup_title_variants_without_url():
     today = Story("i2", "dettato: открытый инструмент для разбора трека на MIDI-дорожки",
                   "https://example.net/b", "7.0/10", "source content")
     assert is_repeat(today, [yesterday])
+
+
+def test_karpathy_and_anthropic_have_visible_sections_when_fresh():
+    current = digest("21", [
+        story("item-ailina-1", "Новый метод Карпаты", "https://karpathy.bearblog.dev/a", source="Andrej Karpathy — Bearblog"),
+        story("item-ailina-2", "Новая работа Anthropic", "https://www.anthropic.com/research/example", source="Anthropic Research"),
+    ])
+    updated, kept, removed = rewrite_digest(current, [])
+    assert kept == 2 and removed == 0
+    assert "## Андрей Карпаты · Блог" in updated
+    assert "## Anthropic · Исследования и релизы" in updated
+    assert "Карпаты — 1, Anthropic — 1" in updated
