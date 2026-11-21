@@ -70,7 +70,7 @@ def test_explicit_taaft_sections():
 
 def test_dedup_title_variants_without_url():
     yesterday = Story("i1", "dettato: открытая модель для разбора трека на MIDI-дорожки",
-                      "https://example.org/a", "source content",)
+                      "https://example.org/a", "7.0/10", "source content",)
     today = Story("i2", "dettato: открытый инструмент для разбора трека на MIDI-дорожки",
-                  "https://example.net/b", "source content")
+                  "https://example.net/b", "7.0/10", "source content")
     assert is_repeat(today, [yesterday])
