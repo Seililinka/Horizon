@@ -30,6 +30,14 @@ jobs:
               "MIT Technology Review AI": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
               "Nature Machine Intelligence": "https://www.nature.com/natmachintell.rss",
               "Google AI Products": "https://blog.google/innovation-and-ai/technology/ai/rss/",
+              "The Guardian AI": "https://www.theguardian.com/technology/artificialintelligenceai/rss",
+              "TechCrunch AI": "https://techcrunch.com/category/artificial-intelligence/feed/",
+              "The Verge AI": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
+              "Le Monde English AI": "https://www.lemonde.fr/en/artificial-intelligence/rss_full.xml",
+              "VentureBeat AI": "https://venturebeat.com/category/ai/feed",
+              "arXiv AI": "https://rss.arxiv.org/rss/cs.AI",
+              "arXiv Machine Learning": "https://rss.arxiv.org/rss/cs.LG",
+              "Hugging Face Blog": "https://huggingface.co/blog/feed.xml",
           }
           def check(item):
               label, url = item
