@@ -570,7 +570,15 @@ class CategoryGroupConfig(BaseModel):
 
     name: Optional[str] = None
     limit: int = Field(gt=0)
+    # Reserve a minimum number of eligible items in the final digest when available.
+    min_items: int = Field(default=0, ge=0)
     categories: List[str] = Field(min_length=1)
+
+    @model_validator(mode="after")
+    def validate_min_items(self) -> "CategoryGroupConfig":
+        if self.min_items > self.limit:
+            raise ValueError("min_items must not exceed limit")
+        return self
 
 
 class ProfileSettingsConfig(BaseModel):
@@ -579,6 +587,8 @@ class ProfileSettingsConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     threshold: Optional[float] = Field(default=None, ge=0, le=10)
+    # Keep editorial quality even for sources with a ranking bonus.
+    minimum_raw_score: Optional[float] = Field(default=None, ge=0, le=10)
     topic_dedup: bool = True
 
 
@@ -625,6 +635,8 @@ class DigestConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     max_items: Optional[int] = Field(default=None, gt=0)
+    # Only top stories need costly long-form AI enrichment.
+    enrichment_limit: Optional[int] = Field(default=None, gt=0)
     category_groups: Dict[str, CategoryGroupConfig] = Field(default_factory=dict)
     group_by: Literal["category", "profile"] = "category"
     default_group: str = "other"
