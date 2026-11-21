@@ -6,6 +6,54 @@
     <description>Краткие пересказы новостей TAAFT для ИИ-радара AiLina. Без рекламных вставок и персональных трекинговых ссылок.</description>
     <language>ru</language>
     <item>
+      <title>Роботакси Zoox начали принимать заказы через Uber в Лас-Вегасе</title>
+      <link>https://www.uber.com/us/en/newsroom/zoox-on-uber/</link>
+      <guid isPermaLink="false">taaft-2026-11-21-zoox-uber-las-vegas</guid>
+      <pubDate>Sat, 21 Nov 2026 03:58:12 +0000</pubDate>
+      <category>taaft-device</category>
+      <description>С 16 ноября пассажиру Uber в Лас-Вегасе могут назначить беспилотный электромобиль Zoox: система автономного вождения распознаёт дорожную обстановку и планирует движение. Это уже действующая услуга в ограниченной зоне, а не прототип; выбрать конкретное роботакси пока нельзя.</description>
+    </item>
+    <item>
+      <title>Uber Eats и Zipline запустили доставку еды автономными дронами</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-21-zipline-uber-eats-drone</guid>
+      <pubDate>Sat, 21 Nov 2026 03:58:12 +0000</pubDate>
+      <category>taaft-device</category>
+      <description>В пригороде Хьюстона Uber Eats предлагает доставку заказов дронами Zipline: автономная навигация и обнаружение воздушных препятствий помогают выполнить полёт, а заказ опускается на тросе. Сервис уже запущен для ограниченного круга адресов и ресторанов; обещание доставки менее чем за 10 минут не гарантируется каждому клиенту.</description>
+    </item>
+    <item>
+      <title>Google показала реконструкцию строительства Эйфелевой башни силами ИИ-агентов</title>
+      <link>https://x.com/Google/status/2122858128584720489</link>
+      <guid isPermaLink="false">taaft-2026-11-21-google-gemini-eiffel</guid>
+      <pubDate>Sat, 21 Nov 2026 03:58:12 +0000</pubDate>
+      <category>taaft</category>
+      <description>По сообщению Google, 32 агента Gemini в Antigravity сопоставили 70 исторических чертежей и фотографий, чтобы создать интерактивную 3D-реконструкцию возведения башни. Это демонстрация координации агентов и работы с архивами, а не независимая оценка точности модели.</description>
+    </item>
+    <item>
+      <title>MiniMind: открытый проект для обучения небольшой языковой модели</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-21-minimind-open-training</guid>
+      <pubDate>Sat, 21 Nov 2026 03:58:12 +0000</pubDate>
+      <category>taaft</category>
+      <description>MiniMind предлагает воспроизвести основные этапы обучения компактной языковой модели на собственном оборудовании. Авторы обещают сравнительно быстрый запуск на одной видеокарте, однако время обучения зависит от GPU и выбранной конфигурации.</description>
+    </item>
+    <item>
+      <title>Diagram Design помогает Claude Code и Codex создавать схемы</title>
+      <link>https://github.com/cathrynlavery/diagram-design</link>
+      <guid isPermaLink="false">taaft-2026-11-21-diagram-design-agent-skill</guid>
+      <pubDate>Sat, 21 Nov 2026 03:58:12 +0000</pubDate>
+      <category>taaft</category>
+      <description>Открытый навык Diagram Design превращает описание архитектуры или процесса в самостоятельную HTML/SVG-схему и поддерживает экспорт в графические форматы. Подойдёт для технической документации; корректность связей и данных всё равно нужно проверять вручную.</description>
+    </item>
+    <item>
+      <title>Промпт дня TAAFT: объяснять сложную тему до понимания</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-21-prompt-explain-until-clicks</guid>
+      <pubDate>Sat, 21 Nov 2026 03:58:12 +0000</pubDate>
+      <category>taaft-prompt</category>
+      <description>Предложите ИИ найти пробелы в понимании темы, объяснять её на близких примерах и задавать по одному проверочному вопросу. Это полезно для самостоятельного обучения, но ответы модели и факты следует перепроверять по надёжным источникам.</description>
+    </item>
+    <item>
       <title>TAAFT: Фраза «think hard» не всегда улучшает ответы Claude</title>
       <link>https://newsletter.theresanaiforthat.com/p/claude-ignores-your-think-hard</link>
       <guid isPermaLink="false">taaft-2026-11-20-claude-prompt</guid>
