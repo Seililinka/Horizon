@@ -1,5 +1,5 @@
 name: Validate AiLina Telegram and Practicality
-# Run focused regression suite after AiLina's profile update.
+# Run focused regression suite including AiLina daily freshness and TAAFT sections.
 on:
   push:
     paths:
