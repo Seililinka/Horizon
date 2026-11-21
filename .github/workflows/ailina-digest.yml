@@ -85,7 +85,7 @@ jobs:
 
       - name: Generate AiLina Russian digest
         if: ${{ env.DEEPSEEK_API_KEY != '' }}
-        run: uv run horizon --config data/config.ailina.json --hours 30
+        run: uv run horizon --config data/config.ailina.json --hours 24
 
       - name: Apply AiLina lavender layout to Russian digest
         if: ${{ env.DEEPSEEK_API_KEY != '' }}
@@ -97,6 +97,22 @@ jobs:
               if current.startswith("---") and "layout: default" in current[:120]:
                   path.write_text(current.replace("layout: default", "layout: ailina", 1), encoding="utf-8")
           PY
+
+      - name: Read recent published digests for freshness filtering
+        run: |
+          mkdir -p .ailina-history
+          git fetch --no-tags --depth=1 origin gh-pages
+          for offset in 1 2 3; do
+            day=$(date -u -d "$offset day ago" +%Y-%m-%d)
+            git show "FETCH_HEAD:_posts/${day}-summary-ru.md" > ".ailina-history/${day}-summary-ru.md" 2>/dev/null || rm -f ".ailina-history/${day}-summary-ru.md"
+          done
+          ls -lh .ailina-history || true
+
+      - name: Highlight TAAFT and exclude previously published stories
+        run: |
+          python scripts/ailina_postprocess.py \
+            --current "docs/_posts/$(date -u +%Y-%m-%d)-summary-ru.md" \
+            --history-dir .ailina-history
 
       - name: Deploy daily digest to GitHub Pages
         if: ${{ env.DEEPSEEK_API_KEY != '' }}
