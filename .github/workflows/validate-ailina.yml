@@ -1,5 +1,5 @@
 name: Validate AiLina Editorial Coverage
-# Validate AiLina morning/evening scheduling, non-overwriting posts, RSS and quality filters.
+# Validate two daily editions, Jekyll post metadata, deduplication, RSS and source quality.
 on:
   push:
     paths:
