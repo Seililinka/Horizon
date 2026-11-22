@@ -1,5 +1,5 @@
 name: Validate AiLina Editorial Coverage
-# Run focused regression suite including AiLina daily freshness, TAAFT and correct fixtures.
+# Validate AiLina morning/evening scheduling, non-overwriting posts, RSS and quality filters.
 on:
   push:
     paths:
