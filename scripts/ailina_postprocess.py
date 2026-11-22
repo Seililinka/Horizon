@@ -170,6 +170,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--current", required=True, type=Path)
     parser.add_argument("--history-dir", required=True, type=Path)
+    parser.add_argument("--edition", choices=("morning", "evening"), default="morning")
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     if not args.current.is_file():
         raise SystemExit(f"Missing current digest: {args.current}")
@@ -178,11 +180,55 @@ def main() -> None:
         for path in sorted(args.history_dir.glob("*-summary-ru.md"))
     ] if args.history_dir.is_dir() else []
     original = args.current.read_text(encoding="utf-8")
+def make_evening_issue(revised: str, kept: int, original: str) -> str:
+    """Label the evening issue separately and sort it after the morning post."""
+    date_match = re.search(r"(?m)^date: (\\d{4}-\\d{2}-\\d{2})$", original)
+    if not date_match:
+        raise ValueError("Daily source is missing date in Jekyll front matter")
+    date = date_match.group(1)
+    front_match = re.match(r"\\A(---\\n.*?\\n---\\n)", revised, flags=re.S)
+    if not front_match:
+        raise ValueError("Evening source is missing Jekyll front matter")
+    front = front_match.group(1)
+    front = re.sub(
+        r"(?m)^date: \\d{4}-\\d{2}-\\d{2}$",
+        f"date: {date} 19:00:00 +0300",
+        front,
+        count=1,
+    )
+    front = re.sub(
+        r'(?m)^title: .*?,
+        f'title: "AiLina — вечерние новости ИИ за {date}"',
+        front,
+        count=1,
+    )
+    front = front.replace("\\n---\\n", "\\nedition: evening\\n---\\n", 1)
+    body = revised[len(front_match.group(1)):]
+    body = body.replace("**AiLina — свежие новости ·", "**AiLina — вечернее обновление ·", 1)
+    if not kept:
+        body = (
+            "\\n> Вечернее обновление: новых материалов, прошедших отбор, нет.\\n\\n"
+            "Сегодня не добавляем повторы или новости сомнительного качества. "
+            "Утренний выпуск доступен в архиве AiLina.\\n"
+        )
+    return front + body
+
+
     revised, kept, removed = rewrite_digest(original, previous)
-    if kept:
-        args.current.write_text(revised, encoding="utf-8")
-    print(f"AiLina freshness filter: {kept} new stories, {removed} prior-issue repeats removed; "
-          f"{len(previous)} prior digests checked.")
+    if args.edition == "evening":
+        revised = make_evening_issue(revised, kept, original)
+    output = args.output or args.current
+    if kept or args.edition == "evening":
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(revised, encoding="utf-8")
+        # Horizon always generates a daily post. The evening issue uses a
+        # distinct permalink, so remove the generated daily file to avoid
+        # overwriting the published morning issue during deployment.
+        if output != args.current:
+            args.current.unlink()
+    print(f"AiLina {args.edition} freshness filter: {kept} new stories, "
+          f"{removed} prior-issue repeats removed; "
+          f"{len(previous)} earlier issues checked.")
 
 
 if __name__ == "__main__":
