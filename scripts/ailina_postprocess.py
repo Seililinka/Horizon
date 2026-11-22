@@ -182,12 +182,11 @@ def make_evening_issue(revised: str, kept: int, original: str) -> str:
         front,
         count=1,
     )
-    front = re.sub(
-        r'(?m)^title: .*?$',
-        f'title: "AiLina — вечерние новости ИИ за {date}"',
-        front,
-        count=1,
-    )
+    evening_title = f'title: "AiLina — вечерние новости ИИ за {date}"'
+    if re.search(r"(?m)^title:", front):
+        front = re.sub(r"(?m)^title:.*$", lambda _: evening_title, front, count=1)
+    else:
+        front = front.replace("\n---\n", f"\n{evening_title}\n---\n", 1)
     front = front.replace("\n---\n", "\nedition: evening\n---\n", 1)
     body = revised[len(front_match.group(1)):]
     body = body.replace("**AiLina — свежие новости ·", "**AiLina — вечернее обновление ·", 1)
