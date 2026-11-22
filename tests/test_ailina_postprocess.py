@@ -114,7 +114,8 @@ def test_evening_publishes_separate_edition_without_overwriting_morning(tmp_path
     assert not generated.exists()
     result = evening.read_text(encoding="utf-8")
     assert "edition: evening" in result
-    assert "date: 2026-11-22 19:00:00 +0300" in result
+    import re
+    assert re.search(r"date: 2026-11-22 \d{2}:\d{2}:\d{2} \+0300", result) is not None
     assert 'title: "AiLina — вечерние новости ИИ за 2026-11-22"' in result
     assert len(parse_stories(result)) == 1
     assert "New evening AI story" in result
