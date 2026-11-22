@@ -1,5 +1,5 @@
 name: Validate AiLina Editorial Coverage
-# Validate two daily editions, Jekyll post metadata, deduplication, RSS and source quality.
+# Validate twice-daily posts, actual Moscow publish time, archive, freshness and source quality.
 on:
   push:
     paths:
