@@ -6,6 +6,70 @@
     <description>Краткие пересказы новостей TAAFT для ИИ-радара AiLina. Без рекламных вставок и персональных трекинговых ссылок.</description>
     <language>ru</language>
     <item>
+      <title>Google тестирует ИИ-сценарии прямо на главной странице поиска</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-22-google-search-ai-home</guid>
+      <pubDate>Sun, 22 Nov 2026 04:46:02 +0000</pubDate>
+      <category>taaft</category>
+      <description>Google постепенно заменяет привычную кнопку поиска быстрыми действиями для генерации изображений, работы с файлами и диалога в AI Mode. Обычный поиск остаётся доступен, а новый интерфейс пока появляется не у всех.</description>
+    </item>
+    <item>
+      <title>Computor: бесплатный ИИ-наставник по Python не выдаёт готовый код</title>
+      <link>https://computor.at/</link>
+      <guid isPermaLink="false">taaft-2026-11-22-computor-lena-tutor</guid>
+      <pubDate>Sun, 22 Nov 2026 04:46:02 +0000</pubDate>
+      <category>taaft</category>
+      <description>Платформа TU Graz предлагает упражнения по Python с автоматической проверкой, а помощник Lena подсказывает направление исправления вместо готового решения. Это полезно для обучения через практику, хотя подсказки ИИ тоже могут ошибаться.</description>
+    </item>
+    <item>
+      <title>Eko: цифровой стетоскоп с ИИ помогает выявлять сердечные нарушения</title>
+      <link>https://www.ekohealth.com/pages/ai-stethoscope-ecg</link>
+      <guid isPermaLink="false">taaft-2026-11-22-eko-ai-stethoscope</guid>
+      <pubDate>Sun, 22 Nov 2026 04:46:02 +0000</pubDate>
+      <category>taaft-device</category>
+      <description>Реально применяемые цифровые стетоскопы Eko анализируют звуки сердца и ЭКГ, помогая врачу заметить шумы, мерцательную аритмию и признаки сниженной насосной функции. Алгоритмы получили разрешения FDA для определённых задач, но не заменяют медицинскую диагностику.</description>
+    </item>
+    <item>
+      <title>Эксперимент: друзья не всегда отличали ИИ-копию человека в переписке</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-22-ai-twin-friends-study</guid>
+      <pubDate>Sun, 22 Nov 2026 04:46:02 +0000</pubDate>
+      <category>taaft</category>
+      <description>Исследователь обучил цифрового двойника на многолетнем архиве сообщений и проверил его в коротких чатах со знакомыми. Результаты небольшого эксперимента не превосходили случайное угадывание статистически убедительно, поэтому говорить о доказанной неотличимости ИИ нельзя.</description>
+    </item>
+    <item>
+      <title>Claude и Lean: заявлено формальное доказательство гипотезы Римана</title>
+      <link>https://www.math.uwaterloo.ca/~mrubinst/alpoge_claude_grh/</link>
+      <guid isPermaLink="false">taaft-2026-11-22-claude-riemann-lean</guid>
+      <pubDate>Sun, 22 Nov 2026 04:46:02 +0000</pubDate>
+      <category>taaft</category>
+      <description>Математик Левент Альпёге сообщил о доказательстве с помощью Claude и опубликовал около 17 миллионов строк кода Lean; представители Lean и Mathlib заявили об успешной проверке. Полноценное общепринятое математическое признание и доступное человеку изложение ещё требуют времени.</description>
+    </item>
+    <item>
+      <title>Plannotator позволяет согласовать план кодового агента до выполнения</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-22-plannotator-agent-plan</guid>
+      <pubDate>Sun, 22 Nov 2026 04:46:02 +0000</pubDate>
+      <category>taaft</category>
+      <description>Открытый инструмент показывает план Claude Code, Codex или Gemini CLI в браузере и позволяет оставлять замечания до изменения кода. Это дополнительный этап человеческой проверки, не гарантирующий безопасность будущих правок.</description>
+    </item>
+    <item>
+      <title>ScanMySaaS заявляет проверку ИИ-сгенерированного кода на уязвимости</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-22-scanmysaas-code-audit</guid>
+      <pubDate>Sun, 22 Nov 2026 04:46:02 +0000</pubDate>
+      <category>taaft</category>
+      <description>Инструмент предлагает анализировать репозитории на утечки ключей и ошибки контроля доступа без запуска приложения. Возможности описаны разработчиком; для приватного кода важно заранее проверить условия доступа и обработки данных.</description>
+    </item>
+    <item>
+      <title>Промпт дня TAAFT: подготовка к поездке с ИИ</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-22-prompt-trip-prep</guid>
+      <pubDate>Sun, 22 Nov 2026 04:46:02 +0000</pubDate>
+      <category>taaft-prompt</category>
+      <description>ИИ последовательно уточняет маршрут и транспорт, затем помогает составить список вещей, график сборов и запасной план при задержках. Время выезда, правила перевозки и расписание нужно сверять с официальными источниками.</description>
+    </item>
+    <item>
       <title>Роботакси Zoox начали принимать заказы через Uber в Лас-Вегасе</title>
       <link>https://www.uber.com/us/en/newsroom/zoox-on-uber/</link>
       <guid isPermaLink="false">taaft-2026-11-21-zoox-uber-las-vegas</guid>
