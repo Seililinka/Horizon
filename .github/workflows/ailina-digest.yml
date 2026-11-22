@@ -5,9 +5,17 @@ on:
     paths:
       - 'data/ailina-refresh-request.txt'
   schedule:
-    # 06:00 UTC = 09:00 Moscow time; GitHub may start scheduled jobs later.
-    - cron: '0 6 * * *'
+    # Daily 08:55 Moscow; extra retries compensate for GitHub schedule delays.
+    # All retry runs skip processing if today's digest is already published.
+    - cron: '55 5 * * *'
+    - cron: '25 6 * * *'
+    - cron: '55 6 * * *'
   workflow_dispatch:
+
+# Serialise triggers to avoid publishing the same day concurrently.
+concurrency:
+  group: ailina-daily-digest
+  cancel-in-progress: false
 
 jobs:
   daily-ailina:
@@ -21,30 +29,43 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Check whether today's digest is already published
+        id: published
+        if: ${{ github.event_name == 'schedule' }}
+        run: |
+          git fetch --no-tags --depth=1 origin gh-pages
+          today=$(date -u +%Y-%m-%d)
+          if git cat-file -e "FETCH_HEAD:_posts/${today}-summary-ru.md" 2>/dev/null; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "AiLina for ${today} is already published; skip duplicate scheduled run."
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Check model credentials
-        if: ${{ env.DEEPSEEK_API_KEY == '' }}
+        if: ${{ steps.published.outputs.skip != 'true' && env.DEEPSEEK_API_KEY == '' }}
         run: |
           echo "::error::Missing GitHub Actions repository secret: DEEPSEEK_API_KEY."
           exit 1
 
       - name: Set up Python
-        if: ${{ env.DEEPSEEK_API_KEY != '' }}
+        if: ${{ steps.published.outputs.skip != 'true' && env.DEEPSEEK_API_KEY != '' }}
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Install uv
-        if: ${{ env.DEEPSEEK_API_KEY != '' }}
+        if: ${{ steps.published.outputs.skip != 'true' && env.DEEPSEEK_API_KEY != '' }}
         uses: astral-sh/setup-uv@v6
         with:
           version: "0.11.26"
 
       - name: Install dependencies
-        if: ${{ env.DEEPSEEK_API_KEY != '' }}
+        if: ${{ steps.published.outputs.skip != 'true' && env.DEEPSEEK_API_KEY != '' }}
         run: uv sync
 
       - name: Verify DeepSeek API access
-        if: ${{ env.DEEPSEEK_API_KEY != '' }}
+        if: ${{ steps.published.outputs.skip != 'true' && env.DEEPSEEK_API_KEY != '' }}
         run: |
           uv run python - <<'PY'
           import json
@@ -84,11 +105,11 @@ jobs:
           PY
 
       - name: Generate AiLina Russian digest
-        if: ${{ env.DEEPSEEK_API_KEY != '' }}
+        if: ${{ steps.published.outputs.skip != 'true' && env.DEEPSEEK_API_KEY != '' }}
         run: uv run horizon --config data/config.ailina.json --hours 24
 
       - name: Apply AiLina lavender layout to Russian digest
-        if: ${{ env.DEEPSEEK_API_KEY != '' }}
+        if: ${{ steps.published.outputs.skip != 'true' && env.DEEPSEEK_API_KEY != '' }}
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -99,6 +120,7 @@ jobs:
           PY
 
       - name: Read recent published digests for freshness filtering
+        if: ${{ steps.published.outputs.skip != 'true' }}
         run: |
           mkdir -p .ailina-history
           git fetch --no-tags --depth=1 origin gh-pages
@@ -109,13 +131,14 @@ jobs:
           ls -lh .ailina-history || true
 
       - name: Highlight TAAFT and exclude previously published stories
+        if: ${{ steps.published.outputs.skip != 'true' }}
         run: |
           python scripts/ailina_postprocess.py \
             --current "docs/_posts/$(date -u +%Y-%m-%d)-summary-ru.md" \
             --history-dir .ailina-history
 
       - name: Deploy daily digest to GitHub Pages
-        if: ${{ env.DEEPSEEK_API_KEY != '' }}
+        if: ${{ steps.published.outputs.skip != 'true' && env.DEEPSEEK_API_KEY != '' }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
