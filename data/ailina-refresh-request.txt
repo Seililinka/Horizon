@@ -1,1 +1,1 @@
-AiLina explicit manual refresh for Sunday 2026-11-22, latest TAAFT feed refreshed 2026-11-22 05:24 UTC, 22 RSS sources, 20 Telegram channels, strict quality 5/10 and priority sources. Requested after scheduled digest had not appeared by 09:38 Moscow.
+Manual evening AiLina edition refresh for 2026-11-22 at 20:21 Moscow. Generate a distinct 2026-11-22-evening-ru.md, use last 12h and deduplicate against today's morning and previous 3 days. Preserve quality threshold 5/10, TAAFT, Anthropic, Karpathy.
