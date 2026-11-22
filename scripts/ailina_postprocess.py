@@ -166,6 +166,40 @@ def rewrite_digest(current: str, previous: list[str]) -> tuple[str, int, int]:
     return "".join(parts), len(kept), removed
 
 
+def make_evening_issue(revised: str, kept: int, original: str) -> str:
+    """Label the evening issue separately and sort it after the morning post."""
+    date_match = re.search(r"(?m)^date: (\d{4}-\d{2}-\d{2})$", original)
+    if not date_match:
+        raise ValueError("Daily source is missing date in Jekyll front matter")
+    date = date_match.group(1)
+    front_match = re.match(r"\A(---\n.*?\n---\n)", revised, flags=re.S)
+    if not front_match:
+        raise ValueError("Evening source is missing Jekyll front matter")
+    front = front_match.group(1)
+    front = re.sub(
+        r"(?m)^date: \d{4}-\d{2}-\d{2}$",
+        f"date: {date} 19:00:00 +0300",
+        front,
+        count=1,
+    )
+    front = re.sub(
+        r'(?m)^title: .*?$',
+        f'title: "AiLina — вечерние новости ИИ за {date}"',
+        front,
+        count=1,
+    )
+    front = front.replace("\n---\n", "\nedition: evening\n---\n", 1)
+    body = revised[len(front_match.group(1)):]
+    body = body.replace("**AiLina — свежие новости ·", "**AiLina — вечернее обновление ·", 1)
+    if not kept:
+        body = (
+            "\n> Вечернее обновление: новых материалов, прошедших отбор, нет.\n\n"
+            "Сегодня не добавляем повторы или новости сомнительного качества. "
+            "Утренний выпуск доступен в архиве AiLina.\n"
+        )
+    return front + body
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--current", required=True, type=Path)
@@ -180,40 +214,6 @@ def main() -> None:
         for path in sorted(args.history_dir.glob("*-summary-ru.md"))
     ] if args.history_dir.is_dir() else []
     original = args.current.read_text(encoding="utf-8")
-def make_evening_issue(revised: str, kept: int, original: str) -> str:
-    """Label the evening issue separately and sort it after the morning post."""
-    date_match = re.search(r"(?m)^date: (\\d{4}-\\d{2}-\\d{2})$", original)
-    if not date_match:
-        raise ValueError("Daily source is missing date in Jekyll front matter")
-    date = date_match.group(1)
-    front_match = re.match(r"\\A(---\\n.*?\\n---\\n)", revised, flags=re.S)
-    if not front_match:
-        raise ValueError("Evening source is missing Jekyll front matter")
-    front = front_match.group(1)
-    front = re.sub(
-        r"(?m)^date: \\d{4}-\\d{2}-\\d{2}$",
-        f"date: {date} 19:00:00 +0300",
-        front,
-        count=1,
-    )
-    front = re.sub(
-        r'(?m)^title: .*?,
-        f'title: "AiLina — вечерние новости ИИ за {date}"',
-        front,
-        count=1,
-    )
-    front = front.replace("\\n---\\n", "\\nedition: evening\\n---\\n", 1)
-    body = revised[len(front_match.group(1)):]
-    body = body.replace("**AiLina — свежие новости ·", "**AiLina — вечернее обновление ·", 1)
-    if not kept:
-        body = (
-            "\\n> Вечернее обновление: новых материалов, прошедших отбор, нет.\\n\\n"
-            "Сегодня не добавляем повторы или новости сомнительного качества. "
-            "Утренний выпуск доступен в архиве AiLina.\\n"
-        )
-    return front + body
-
-
     revised, kept, removed = rewrite_digest(original, previous)
     if args.edition == "evening":
         revised = make_evening_issue(revised, kept, original)
