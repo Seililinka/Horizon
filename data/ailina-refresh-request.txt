@@ -1,1 +1,1 @@
-AiLina final calibrated expanded-digest check on 2026-11-21: 70 maximum, quality >=5, practice quota 35, 22 RSS, 20 Telegram, source reservation TAAFT/Anthropic/Karpathy, deep enrichment top 14.
+AiLina explicit manual refresh for Sunday 2026-11-22, latest TAAFT feed refreshed 2026-11-22 05:24 UTC, 22 RSS sources, 20 Telegram channels, strict quality 5/10 and priority sources. Requested after scheduled digest had not appeared by 09:38 Moscow.
