@@ -211,7 +211,7 @@ def main() -> None:
         raise SystemExit(f"Missing current digest: {args.current}")
     previous = [
         path.read_text(encoding="utf-8")
-        for path in sorted(args.history_dir.glob("*-summary-ru.md"))
+        for path in sorted(args.history_dir.glob("*-*-ru.md"))
     ] if args.history_dir.is_dir() else []
     original = args.current.read_text(encoding="utf-8")
     revised, kept, removed = rewrite_digest(original, previous)
