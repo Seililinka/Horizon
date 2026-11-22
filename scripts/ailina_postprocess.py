@@ -7,6 +7,8 @@ Uses only already-published prior digests, never private user data.
 from __future__ import annotations
 
 import argparse
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from dataclasses import dataclass
 from difflib import SequenceMatcher
 from pathlib import Path
@@ -176,9 +178,12 @@ def make_evening_issue(revised: str, kept: int, original: str) -> str:
     if not front_match:
         raise ValueError("Evening source is missing Jekyll front matter")
     front = front_match.group(1)
+    # Use actual completion time so Jekyll never suppresses a still-future
+    # 19:00 post when a fast GitHub runner finishes just before 19:00.
+    published_clock = datetime.now(ZoneInfo("Europe/Moscow")).strftime("%H:%M:%S %z")
     front = re.sub(
         r"(?m)^date: \d{4}-\d{2}-\d{2}$",
-        f"date: {date} 19:00:00 +0300",
+        f"date: {date} {published_clock}",
         front,
         count=1,
     )
