@@ -86,3 +86,102 @@ def test_karpathy_and_anthropic_have_visible_sections_when_fresh():
     assert "## Андрей Карпаты · Блог" in updated
     assert "## Anthropic · Исследования и релизы" in updated
     assert "Карпаты — 1, Anthropic — 1" in updated
+
+
+def test_evening_publishes_separate_edition_without_overwriting_morning(tmp_path, monkeypatch):
+    import sys
+    from scripts.ailina_postprocess import main
+
+    today = "2026-11-22"
+    history = tmp_path / "history"
+    history.mkdir()
+    morning = digest("22", [
+        story("item-ailina-1", "Morning AI story", "https://example.org/ai/morning"),
+    ])
+    (history / f"{today}-summary-ru.md").write_text(morning, encoding="utf-8")
+    generated = tmp_path / f"{today}-summary-ru.md"
+    generated.write_text(digest("22", [
+        story("item-ailina-1", "Morning AI story", "https://example.org/ai/morning"),
+        story("item-ailina-2", "New evening AI story", "https://example.org/ai/evening"),
+    ]), encoding="utf-8")
+    evening = tmp_path / f"{today}-evening-ru.md"
+    monkeypatch.setattr(sys, "argv", [
+        "ailina_postprocess", "--current", str(generated),
+        "--output", str(evening), "--edition", "evening",
+        "--history-dir", str(history),
+    ])
+    main()
+    assert not generated.exists()
+    result = evening.read_text(encoding="utf-8")
+    assert "edition: evening" in result
+    assert "date: 2026-11-22 19:00:00 +0300" in result
+    assert 'title: "AiLina — вечерние новости ИИ за 2026-11-22"' in result
+    assert len(parse_stories(result)) == 1
+    assert "New evening AI story" in result
+    assert "Morning AI story" not in result
+    assert (history / f"{today}-summary-ru.md").read_text(encoding="utf-8") == morning
+
+
+def test_evening_with_no_new_items_publishes_empty_status(tmp_path, monkeypatch):
+    import sys
+    from scripts.ailina_postprocess import main
+
+    history = tmp_path / "history"
+    history.mkdir()
+    (history / "2026-11-22-summary-ru.md").write_text(
+        digest("22", [story("item-ailina-1", "Existing", "https://example.org/repeated")]),
+        encoding="utf-8",
+    )
+    generated = tmp_path / "2026-11-22-summary-ru.md"
+    generated.write_text(
+        digest("22", [story("item-ailina-1", "Existing", "https://example.org/repeated")]),
+        encoding="utf-8",
+    )
+    output = tmp_path / "2026-11-22-evening-ru.md"
+    monkeypatch.setattr(sys, "argv", [
+        "ailina_postprocess", "--current", str(generated),
+        "--output", str(output), "--edition", "evening",
+        "--history-dir", str(history),
+    ])
+    main()
+    assert not generated.exists()
+    assert "новых материалов, прошедших отбор, нет" in output.read_text(encoding="utf-8")
+
+
+def test_morning_filters_stories_from_yesterday_evening(tmp_path, monkeypatch):
+    import sys
+    from scripts.ailina_postprocess import main
+
+    history = tmp_path / "history"
+    history.mkdir()
+    (history / "2026-11-21-evening-ru.md").write_text(
+        digest("21", [story("item-ailina-1", "Already last evening", "https://example.org/old")]),
+        encoding="utf-8",
+    )
+    generated = tmp_path / "2026-11-22-summary-ru.md"
+    generated.write_text(digest("22", [
+        story("item-ailina-1", "Already last evening", "https://example.org/old"),
+        story("item-ailina-2", "New for this morning", "https://example.org/new"),
+    ]), encoding="utf-8")
+    monkeypatch.setattr(sys, "argv", [
+        "ailina_postprocess", "--current", str(generated),
+        "--history-dir", str(history), "--edition", "morning",
+    ])
+    main()
+    result = generated.read_text(encoding="utf-8")
+    assert "New for this morning" in result
+    assert "Already last evening" not in result
+
+
+def test_workflow_has_separate_morning_evening_schedules_and_retry_guards():
+    from pathlib import Path
+    workflow = Path(".github/workflows/ailina-digest.yml").read_text(encoding="utf-8")
+    assert workflow.count("- cron:") == 6
+    assert "cron: '55 5 * * *'" in workflow
+    assert "cron: '55 15 * * *'" in workflow
+    assert "id: edition" in workflow
+    assert "steps.edition.outputs.post" in workflow
+    assert "steps.edition.outputs.hours" in workflow
+    assert 'today}-evening-ru.md' in workflow
+    assert "git show" in workflow
+    assert "cancel-in-progress: false" in workflow
