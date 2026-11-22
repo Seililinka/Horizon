@@ -1,16 +1,26 @@
-name: AiLina — Daily AI Digest
+name: AiLina — Morning & Evening AI Digest
 
 on:
   push:
     paths:
       - 'data/ailina-refresh-request.txt'
   schedule:
-    # Daily 08:55 Moscow; extra retries compensate for GitHub schedule delays.
-    # All retry runs skip processing if today's digest is already published.
+    # Morning and evening editions near 09:00 and 19:00 Moscow (UTC+3).
+    # Two retries per edition recover delayed or missed scheduled starts.
     - cron: '55 5 * * *'
     - cron: '25 6 * * *'
     - cron: '55 6 * * *'
+    - cron: '55 15 * * *'
+    - cron: '25 16 * * *'
+    - cron: '55 16 * * *'
   workflow_dispatch:
+    inputs:
+      edition:
+        description: "Select AiLina edition"
+        type: choice
+        options: [morning, evening]
+        default: morning
+        required: true
 
 # Serialise triggers to avoid publishing the same day concurrently.
 concurrency:
@@ -28,6 +38,35 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Determine edition and target post
+        id: edition
+        env:
+          SCHEDULE_EXPR: ${ github.event.schedule }}
+          MANUAL_EDITION: ${ inputs.edition }}
+        run: |
+          if [[ "$GITHUB_EVENT_NAME" == "schedule" ]]; then
+            case "$SCHEDULE_EXPR" in
+              '55 15 * * *'|'25 16 * * *'|'55 16 * * *') edition=evening ;;
+              *) edition=morning ;;
+            esac
+          elif [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
+            edition="${MANUAL_EDITION:-morning}"
+          else
+            hour=$(TZ=Europe/Moscow date +%H)
+            if (( 10#$hour >= 16 )); then edition=evening; else edition=morning; fi
+          fi
+          today=$(TZ=Europe/Moscow date +%Y-%m-%d)
+          echo "name=$edition" >> "$GITHUB_OUTPUT"
+          echo "today=$today" >> "$GITHUB_OUTPUT"
+          if [[ "$edition" == "evening" ]]; then
+            echo "post=_posts/${today}-evening-ru.md" >> "$GITHUB_OUTPUT"
+            echo "hours=12" >> "$GITHUB_OUTPUT"
+          else
+            echo "post=_posts/${today}-summary-ru.md" >> "$GITHUB_OUTPUT"
+            echo "hours=24" >> "$GITHUB_OUTPUT"
+          fi
+          echo "AiLina $edition edition for $today"
 
       - name: Check whether today's digest is already published
         id: published
