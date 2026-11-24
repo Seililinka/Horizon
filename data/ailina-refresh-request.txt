@@ -1,1 +1,1 @@
-Manual evening AiLina edition refresh for 2026-11-22 at 20:21 Moscow. Generate a distinct 2026-11-22-evening-ru.md, use last 12h and deduplicate against today's morning and previous 3 days. Preserve quality threshold 5/10, TAAFT, Anthropic, Karpathy.
+Manual morning digest requested for 2026-11-24 at 09:45 Moscow. Use current TAAFT feed, existing editorial filters and publisher previews. Publish today's morning edition.
