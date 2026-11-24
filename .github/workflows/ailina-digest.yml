@@ -196,7 +196,7 @@ jobs:
           fi
 
       - name: Add optional publisher previews without AI
-        if: ${{ steps.published.outputs.skip != 'true' && env.DEEPSEEK_API_KEY != '' }}
+        if: ${{ steps.published.outputs.skip != 'true' }}
         timeout-minutes: 2
         continue-on-error: true
         env:
