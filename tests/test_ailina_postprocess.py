@@ -174,15 +174,17 @@ def test_morning_filters_stories_from_yesterday_evening(tmp_path, monkeypatch):
     assert "Already last evening" not in result
 
 
-def test_workflow_has_separate_morning_evening_schedules_and_retry_guards():
+def test_workflow_runs_one_daily_edition_with_morning_retries():
     from pathlib import Path
     workflow = Path(".github/workflows/ailina-digest.yml").read_text(encoding="utf-8")
-    assert workflow.count("- cron:") == 6
-    assert "cron: '55 5 * * *'" in workflow
-    assert "cron: '55 15 * * *'" in workflow
-    assert "id: edition" in workflow
+    assert workflow.count("- cron:") == 2
+    assert "cron: '45 5 * * *'" in workflow
+    assert "cron: '15 6 * * *'" in workflow
+    assert "name=morning" in workflow
+    assert "hours=24" in workflow
+    assert "edition=evening" not in workflow
     assert "steps.edition.outputs.post" in workflow
-    assert "steps.edition.outputs.hours" in workflow
-    assert 'today}-evening-ru.md' in workflow
+    assert "steps.published.outputs.skip" in workflow
+    assert "github.event_name == 'schedule'" not in workflow
     assert "git show" in workflow
     assert "cancel-in-progress: false" in workflow
