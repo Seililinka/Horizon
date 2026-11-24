@@ -6,6 +6,54 @@
     <description>Краткие пересказы новостей TAAFT для ИИ-радара AiLina. Без рекламных вставок и персональных трекинговых ссылок.</description>
     <language>ru</language>
     <item>
+      <title>Tesla FSD v15 визуализирует дорожную обстановку с помощью ИИ</title>
+      <link>https://www.theverge.com/transportation/1039919/tesla-fsd-v15-reality-view-gta-nhtsa-safety-rollout</link>
+      <guid isPermaLink="false">taaft-2026-11-23-tesla-fsd-v15-reality-view</guid>
+      <pubDate>Mon, 23 Nov 2026 15:56:26 +0000</pubDate>
+      <category>taaft</category>
+      <description>Tesla начала ограниченное распространение обновления, которое строит изображение окружения автомобиля по данным камер и показывает предполагаемые манёвры. Заявленное компанией 25-кратное улучшение обработки критических ситуаций не подтверждает такое же снижение аварийности; контроль водителя по-прежнему обязателен.</description>
+    </item>
+    <item>
+      <title>Роботы Disney выбирают реплики и движения в ответ на действия посетителей</title>
+      <link>https://www.theverge.com/tech/1036729/disney-star-wars-anzellans-animatronic-amazon-aws-cloud-ai</link>
+      <guid isPermaLink="false">taaft-2026-11-23-disney-anzellans</guid>
+      <pubDate>Mon, 23 Nov 2026 15:56:26 +0000</pubDate>
+      <category>taaft-device</category>
+      <description>Disney представила три прототипа персонажей Star Wars, которые используют камеры, микрофоны и модели ИИ на AWS для выбора заранее записанных реплик и анимаций. Публичная демонстрация запланирована на AWS re:Invent, сроки появления в парках не объявлены.</description>
+    </item>
+    <item>
+      <title>ИИ-покупатели: текстовые ответы вместо оценок по пятибалльной шкале</title>
+      <link>https://arxiv.org/abs/2510.08338</link>
+      <guid isPermaLink="false">taaft-2026-11-23-synthetic-consumer-ssr</guid>
+      <pubDate>Mon, 23 Nov 2026 15:56:26 +0000</pubDate>
+      <category>taaft</category>
+      <description>В исследовании 2025 года авторы сопоставили свободные ответы языковых моделей с оценками намерения купить товар на материале 57 опросов и 9300 человеческих ответов. Полученный результат достиг 90% показателя повторной согласованности человеческих ответов, однако метод не заменяет проверку гипотез на реальных покупателях.</description>
+    </item>
+    <item>
+      <title>Palgu: контроль качества изменений, внесённых кодовыми агентами</title>
+      <link>https://www.srooter.ai/</link>
+      <guid isPermaLink="false">taaft-2026-11-23-palgu-governed-coding</guid>
+      <pubDate>Mon, 23 Nov 2026 15:56:26 +0000</pubDate>
+      <category>taaft</category>
+      <description>Инструмент объединяет правила разработки, тестирование, маршрутизацию моделей и независимое ревью изменений от Claude Code, Codex и других агентов. Возможности описаны разработчиком; эффективность следует проверять на собственном репозитории.</description>
+    </item>
+    <item>
+      <title>OpenComputer: развёртывание долгоживущих агентов из кода</title>
+      <link>https://opencomputer.dev/agents/</link>
+      <guid isPermaLink="false">taaft-2026-11-23-opencomputer-agent-deploy</guid>
+      <pubDate>Mon, 23 Nov 2026 15:56:26 +0000</pubDate>
+      <category>taaft</category>
+      <description>Платформа позволяет описать агента на TypeScript, подключить инструменты и опубликовать версионируемое развёртывание через CLI. Управляемые сессии и расписания позволяют запускать задачи без постоянно включённого личного компьютера.</description>
+    </item>
+    <item>
+      <title>Промпт дня TAAFT: настройка смартфона под свои привычки</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-23-prompt-phone-refresh</guid>
+      <pubDate>Mon, 23 Nov 2026 15:56:26 +0000</pubDate>
+      <category>taaft-prompt</category>
+      <description>Сценарий предлагает ИИ выяснить привычки владельца смартфона и составить план организации экрана, уведомлений и настроек энергопотребления. Советы нужно сверять с версией ОС, а улучшение автономности не гарантировано.</description>
+    </item>
+    <item>
       <title>Google тестирует ИИ-сценарии прямо на главной странице поиска</title>
       <link>https://newsletter.theresanaiforthat.com/</link>
       <guid isPermaLink="false">taaft-2026-11-22-google-search-ai-home</guid>
