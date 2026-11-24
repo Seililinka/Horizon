@@ -1,5 +1,5 @@
 name: Validate AiLina Editorial Coverage
-# Validate one daily morning digest, archive, previews, freshness and source quality.
+# Validate one daily morning digest, including all-repeat days, previews and source quality.
 on:
   push:
     paths:
