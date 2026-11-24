@@ -16,7 +16,7 @@ import socket
 from urllib.parse import urljoin, urlsplit, urlunsplit
 from urllib.request import Request, build_opener, HTTPRedirectHandler, ProxyHandler
 
-from ailina_postprocess import parse_stories, TITLE
+from scripts.ailina_postprocess import parse_stories, TITLE
 
 MAX_PREVIEWS = 15
 MAX_HTML = 512 * 1024
