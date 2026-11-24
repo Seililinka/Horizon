@@ -222,7 +222,8 @@ def main() -> None:
     if args.edition == "evening":
         revised = make_evening_issue(revised, kept, original)
     output = args.output or args.current
-    if kept or args.edition == "evening":
+    # Even if every candidate was already published, save the filtered result.
+    if kept or removed or args.edition == "evening":
         output.parent.mkdir(parents=True, exist_ok=True)
         output.write_text(revised, encoding="utf-8")
         # Horizon always generates a daily post. The evening issue uses a
