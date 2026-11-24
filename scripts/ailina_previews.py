@@ -21,7 +21,7 @@ from scripts.ailina_postprocess import parse_stories, TITLE
 MAX_PREVIEWS = 15
 MAX_HTML = 512 * 1024
 GENERIC = {"newsletter.theresanaiforthat.com", "t.co", "bit.ly", "tinyurl.com"}
-MARKER = re.compile(r'(?m)^<div class="ailina-preview-data" data-image="[^"]*"></div>\n?')
+MARKER = re.compile(r'\n\n<div class="ailina-preview-data" data-image="[^"]*"></div>')
 
 
 def public_url(value: str, *, image: bool = False) -> str | None:
