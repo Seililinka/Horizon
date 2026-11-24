@@ -195,6 +195,14 @@ jobs:
               --history-dir .ailina-history
           fi
 
+      - name: Add optional publisher previews without AI
+        if: ${{ steps.published.outputs.skip != 'true' && env.DEEPSEEK_API_KEY != '' }}
+        timeout-minutes: 2
+        continue-on-error: true
+        env:
+          DEEPSEEK_API_KEY: ""
+        run: python -m scripts.ailina_previews "docs/${{ steps.edition.outputs.post }}"
+
       - name: Deploy daily digest to GitHub Pages
         if: ${{ steps.published.outputs.skip != 'true' && env.DEEPSEEK_API_KEY != '' }}
         uses: peaceiris/actions-gh-pages@v4
