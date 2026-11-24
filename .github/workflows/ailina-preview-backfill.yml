@@ -1,0 +1,44 @@
+name: AiLina — Preview-only archive refresh
+on:
+  push:
+    paths:
+      - '.github/workflows/ailina-preview-backfill.yml'
+  workflow_dispatch:
+concurrency:
+  group: ailina-daily-digest
+  cancel-in-progress: false
+jobs:
+  previews:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify previews without network or AI
+        run: |
+          python -m pip install pytest -q
+          python -m pytest -q tests/test_ailina_previews.py tests/test_ailina_postprocess.py
+      - name: Add previews to three latest published issues
+        run: |
+          git fetch --no-tags --depth=1 origin gh-pages
+          git worktree add --detach "$RUNNER_TEMP/ailina-pages" FETCH_HEAD
+          pages="$RUNNER_TEMP/ailina-pages"
+          for post in $(find "$pages/_posts" -maxdepth 1 -name '*-ru.md' | sort | tail -n 3); do
+            python -m scripts.ailina_previews "$post"
+          done
+          # Ensure both published styles and scripts match the preview markup.
+          cp docs/assets/js/ailina.js "$pages/assets/js/ailina.js"
+          cp docs/assets/css/ailina.css "$pages/assets/css/ailina.css"
+          git -C "$pages" config user.name "github-actions[bot]"
+          git -C "$pages" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C "$pages" add _posts assets/js/ailina.js assets/css/ailina.css
+          if git -C "$pages" diff --cached --quiet; then
+            echo "No changes required"
+          else
+            git -C "$pages" commit -m "AiLina: lightweight publisher previews"
+            git -C "$pages" push origin HEAD:gh-pages
+          fi
