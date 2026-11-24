@@ -55,6 +55,8 @@ lang: ru
 <a id="item-ailina-1"></a>
 ### [Computor: бесплатный ИИ-наставник по Python без готового кода](https://computor.at/) ⭐️ 6.0/10
 
+<div class="ailina-preview-data" data-image=""></div>
+
 Платформа Computor от TU Graz предлагает бесплатные упражнения по Python с автоматической проверкой. Встроенный ИИ-наставник Lena подсказывает направление исправления, а не выдаёт готовое решение. В материале отмечено, что подсказки ИИ тоже могут ошибаться. Деталей об объёме курса, ограничениях и доступности в России нет.
 
 rss · TAAFT · Nov 22, 04:46
@@ -73,6 +75,8 @@ rss · TAAFT · Nov 22, 04:46
 
 <a id="item-ailina-2"></a>
 ### [Plannotator: согласование плана кодового агента до правок](https://newsletter.theresanaiforthat.com/) ⭐️ 6.0/10
+
+<div class="ailina-preview-data" data-image=""></div>
 
 Plannotator — открытый инструмент, который выводит план Claude Code, Codex или Gemini CLI в браузер, чтобы можно было оставить замечания до изменения кода. Это дополнительный этап человеческой проверки. В исходном материале нет ссылки на репозиторий, версий, дат и условий установки, а заявленная польза не подтверждена независимой проверкой.
 
@@ -93,6 +97,8 @@ rss · TAAFT · Nov 22, 04:46
 <a id="item-ailina-3"></a>
 ### [Google тестирует ИИ-сценарии на главной странице поиска](https://newsletter.theresanaiforthat.com/) ⭐️ 5.0/10
 
+<div class="ailina-preview-data" data-image=""></div>
+
 TAAFT сообщает, что Google тестирует на главной странице поиска быстрые действия для генерации изображений, работы с файлами и AI Mode. Обычный поиск при этом сохраняется. Новый интерфейс видят не все пользователи. Первоисточник, скриншоты и подтверждение от Google в материале отсутствуют.
 
 rss · TAAFT · Nov 22, 04:46
@@ -109,6 +115,8 @@ rss · TAAFT · Nov 22, 04:46
 
 <a id="item-ailina-5"></a>
 ### [Eko: цифровой стетоскоп с ИИ для выявления сердечных нарушений](https://www.ekohealth.com/pages/ai-stethoscope-ecg) ⭐️ 6.0/10
+
+<div class="ailina-preview-data" data-image=""></div>
 
 Цифровые стетоскопы Eko с ИИ анализируют звуки сердца и ЭКГ, помогая врачу заметить шумы, мерцательную аритмию и признаки сниженной насосной функции. Алгоритмы имеют разрешения FDA для отдельных задач, но не заменяют медицинскую диагностику. Конкретные модели, версии алгоритмов и клинические метрики в материале не указаны.
 
@@ -129,6 +137,8 @@ rss · TAAFT · Nov 22, 04:46
 <a id="item-ailina-12"></a>
 ### [Эксперимент: друзья не всегда отличали ИИ-копию человека в переписке](https://newsletter.theresanaiforthat.com/) ⭐️ 5.0/10
 
+<div class="ailina-preview-data" data-image=""></div>
+
 Исследователь обучил ИИ-двойника на многолетнем архиве сообщений и проверил его в коротких чатах со знакомыми. По данным пересказа в рассылке, результаты не превосходили случайное угадывание статистически убедительно. Поэтому говорить о доказанной неотличимости ИИ-копии от человека нельзя. Это небольшой самостоятельный эксперимент, а не рецензируемое исследование: детали методики, размер выборки и первоисточник в материале не раскрыты.
 
 rss · TAAFT · Nov 22, 04:46
@@ -147,6 +157,8 @@ rss · TAAFT · Nov 22, 04:46
 
 <a id="item-ailina-4"></a>
 ### [Промпт дня TAAFT: подготовка к поездке с ИИ](https://newsletter.theresanaiforthat.com/) ⭐️ 5.0/10
+
+<div class="ailina-preview-data" data-image=""></div>
 
 TAAFT в рассылке предложил промпт дня для подготовки к поездке. ИИ последовательно уточняет маршрут и транспорт, затем помогает составить список вещей, график сборов и запасной план при задержках. Время выезда, правила перевозки и расписание нужно сверять с официальными источниками. Точный текст промпта и примеры в материале не приводятся.
 
@@ -169,6 +181,8 @@ rss · TAAFT · Nov 22, 04:46
 <a id="item-ailina-6"></a>
 ### [Claude и гипотеза Римана: заявление математика Anthropic и проверка Lean](https://www.theguardian.com/technology/2026/nov/21/anthropic-riemann-hypothesis-solved-claude-ai) ⭐️ 8.0/10
 
+<div class="ailina-preview-data" data-image="https://i.guim.co.uk/img/media/d3154f68df589c297fc3d173e2bb3d95faca05c9/530_0_4678_3742/master/4678.jpg?width=1200&amp;height=630&amp;quality=85&amp;auto=format&amp;fit=crop&amp;precrop=40:21,offset-x50,offset-y0&amp;overlay-align=bottom%2Cleft&amp;overlay-width=100p&amp;overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&amp;enable=upscale&amp;s=1a7ad1c833428adafc056e7f188ca63a"></div>
+
 Математик Anthropic Левент Альпёге опубликовал заметку на личном сайте, в которой заявил, что Claude помог доказать гипотезу Римана примерно за шесть недель. По данным The Guardian, эксперты подтверждают проверку результата. В материале также упоминается около 17 миллионов строк кода Lean и заявление представителей Lean и Mathlib об успешной проверке. Полноценное общепринятое математическое признание и доступное человеку изложение ещё требуют времени.
 
 rss · The Guardian — AI · Nov 21, 20:15
@@ -185,6 +199,8 @@ rss · The Guardian — AI · Nov 21, 20:15
 
 <a id="item-ailina-7"></a>
 ### [OpenRouter: инциденты обработки данных у провайдеров инференса](https://openrouter.ai/blog/announcements/data-processing-incidents-on-inference-providers/) ⭐️ 7.0/10
+
+<div class="ailina-preview-data" data-image="https://openrouter.ai/og.png"></div>
 
 OpenRouter опубликовал сообщение об инцидентах обработки данных у провайдеров инференса. По обсуждению, часть провайдеров пересылала промпты upstream — упоминается MiniMax, — что ставит под вопрос обещания zero-data-retention. В комментариях также называют AtlasCloud, Novita и StreamLake; полный список и детали в переданном тексте не раскрыты.
 
@@ -207,6 +223,8 @@ hackernews · sdko · Nov 22, 02:14 · [Обсуждение](https://news.ycomb
 <a id="item-ailina-9"></a>
 ### [Google Mirror Dimension: симулированный интернет для проверки ИИ-агентов](https://blog.google/security/mirror-dimension-for-agents/) ⭐️ 7.0/10
 
+<div class="ailina-preview-data" data-image="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Mirror_Dimension_BlogHeader-02_1CJNOls.width-1300.png"></div>
+
 Google представил проект Mirror Dimension — симулированную среду с тысячами поддельных сайтов: магазинами, соцсетями, банками и другими сервисами. Внутри неё ИИ-агенты выполняют поручения людей, например совершают покупки, и одновременно проверяются на устойчивость к обману. По описанию из поста, симуляция достаточно реалистична, чтобы агенты не распознавали её как тестовую среду. Детали методики, ограничений и доступности проекта в исходном материале не раскрыты.
 
 telegram · neurohub · Nov 22, 06:02 · [Пост в Telegram](https://telegram.me/neurohub/8190) · просмотры: 202
@@ -223,6 +241,8 @@ telegram · neurohub · Nov 22, 06:02 · [Пост в Telegram](https://telegram
 
 <a id="item-ailina-10"></a>
 ### [Шаблон dependency-cooldown для Claude Code: блокировка свежих пакетов](https://www.aitmpl.com/component/settings/environment/dependency-cooldown) ⭐️ 6.0/10
+
+<div class="ailina-preview-data" data-image="https://www.aitmpl.com/og/settings/environment/dependency-cooldown.png"></div>
 
 В сети распространяют сторонний шаблон настроек dependency-cooldown для Claude Code. Он блокирует установку версий пакетов через npm, pnpm или uv, опубликованных менее 7 дней назад. Ограничение также распространяется на MCP-серверы и хуки, запускаемые Claude Code. Установка на уровне пользователя выполняется командой npx claude-code-templates@latest --setting environment/dependency-cooldown; это не официальная функция Anthropic, и независимой проверки эффективности шаблона нет.
 
@@ -243,6 +263,8 @@ telegram · vibecoding\_tg · Nov 22, 06:14 · [Пост в Telegram](https://te
 <a id="item-ailina-13"></a>
 ### [PcapAnalyzer: самостоятельный анализатор pcap с 27 детекторами проблем](https://github.com/sebaandrada-cell/PcapAnalyzer) ⭐️ 6.0/10
 
+<div class="ailina-preview-data" data-image="https://opengraph.githubassets.com/997ac32e52f5501e7a29b756700b5c5328cffc7cee9699217069c64e074ee81d/sebaandrada-cell/PcapAnalyzer"></div>
+
 На GitHub появился проект PcapAnalyzer — самостоятельный \(self-hosted\) анализатор файлов pcap с 27 детекторами проблем. Проект обсуждается на Hacker News; в комментариях спрашивают, какие данные раскрываются при использовании AI-функции и возможна ли двусторонняя редакция чувствительных частей захвата \(IP, MAC, данные\), а также можно ли установить приложение через uv, если Docker не выбран. Ответов на эти вопросы в материале нет.
 
 hackernews · sebaandrada · Nov 21, 22:09 · [Обсуждение](https://news.ycombinator.com/item?id=50594132)
@@ -261,6 +283,8 @@ hackernews · sebaandrada · Nov 21, 22:09 · [Обсуждение](https://new
 
 <a id="item-ailina-14"></a>
 ### [MCP Events: ИИ-агенты смогут подписываться на внешние события](https://github.com/modelcontextprotocol/ext-events) ⭐️ 6.0/10
+
+<div class="ailina-preview-data" data-image="https://opengraph.githubassets.com/0ee8ed054d279ebe68bbe1d96ffe53ebb48d17081884329ad17362f9bd2d2975/modelcontextprotocol/ext-events"></div>
 
 Представлено расширение MCP Events: оно позволяет ИИ-агентам подписываться на внешние события и реагировать на них без запроса пользователя. Поддерживаются три способа доставки: Poll \(периодический опрос сервера\), Push \(отправка событий сервером клиенту\) и Webhook \(уведомление через вебхук\). В качестве примера указано отслеживание репозитория на GitHub с автоматическим запуском проверки кода и тестов при новом пул-реквесте. Статус расширения — экспериментальное или стабильное — в материале не уточняется.
 
@@ -281,6 +305,8 @@ telegram · vibecoding\_tg · Nov 21, 15:18 · [Пост в Telegram](https://te
 <a id="item-ailina-15"></a>
 ### [Советую внимательно посмотреть это видео Мэтта. За 70 минут он на практике показ](https://youtu.be/jVBlkOF8sHk?si=5t54td6l-vP9E2SC) ⭐️ 6.0/10
 
+<div class="ailina-preview-data" data-image=""></div>
+
 Telegram-канал рекомендует 70-минутное видео, где автор на практике показывает процесс работы с большим PR \(21 тыс. строк\) через собственные слэш-команды, ручное ревью и итеративное улучшение стандартов проверки.
 
 telegram · vibecoding\_tg · Nov 21, 17:19 · [Пост в Telegram](https://telegram.me/vibecoding_tg/4398) · просмотры: 16 100
@@ -294,6 +320,8 @@ telegram · vibecoding\_tg · Nov 21, 17:19 · [Пост в Telegram](https://te
 <a id="item-ailina-16"></a>
 ### [Upload2Shell \(CVE-2026-125396\)](https://pwn.ai/upload2shell) ⭐️ 6.0/10
 
+<div class="ailina-preview-data" data-image="https://pwn.ai/upload2shell-share.png?v=2"></div>
+
 Разбор уязвимости Upload2Shell \(CVE-2026-125396\), связанной с обработкой недоверенных файлов в утилитах вроде Ghostscript, ImageMagick и ffmpeg, с критикой нечитаемого формата страницы.
 
 hackernews · f311a · Nov 21, 18:29 · [Обсуждение](https://news.ycombinator.com/item?id=50592097)
@@ -306,6 +334,8 @@ hackernews · f311a · Nov 21, 18:29 · [Обсуждение](https://news.ycom
 
 <a id="item-ailina-17"></a>
 ### [PostgreSQL Extensions in Go](https://jespino.github.io/gopgext/) ⭐️ 6.0/10
+
+<div class="ailina-preview-data" data-image="https://jespino.github.io/gopgext/img/social.png"></div>
 
 Автор описывает подход к созданию расширений PostgreSQL на Go со ссылкой на проект и связанные работы \(модули ядра Linux на Go, plgo\).
 

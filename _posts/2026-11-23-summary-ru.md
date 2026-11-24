@@ -76,6 +76,8 @@ lang: ru
 <a id="item-ailina-2"></a>
 ### [Suno Visuals: клипы к ИИ-песням](https://suno.com/blog/introducing-visuals) ⭐️ 7.0/10
 
+<div class="ailina-preview-data" data-image="https://cdn.sanity.io/images/cl7b1q1i/production/89947c59d1f2c8fda3d2133d67c0f7e11da012c5-3840x2160.jpg?rect=0,72,3840,2016&amp;w=1200&amp;h=630&amp;fit=crop&amp;auto=format"></div>
+
 Suno добавил раздел Visuals: трек из библиотеки можно превратить в обложку, видео с текстом или клип до 15 секунд с липсинком. Доступно на сайте, iOS и Android. Можно выбрать готового персонажа или загрузить своё фото. Кредиты на видео покупаются отдельно от кредитов на песни, а фильтры блокируют попытки вставить в ролик известных артистов.
 
 telegram · AI\_Money\_Maker · Nov 23, 09:23 · [Пост в Telegram](https://telegram.me/AI_Money_Maker/2317) · просмотры: 126
@@ -94,6 +96,8 @@ telegram · AI\_Money\_Maker · Nov 23, 09:23 · [Пост в Telegram](https://
 
 <a id="item-ailina-3"></a>
 ### [Chatterbox Multilingual: бесплатное клонирование голоса и эмоциональная озвучка на 23 языках](https://github.com/resemble-ai/chatterbox?tab=readme-ov-file) ⭐️ 7.0/10
+
+<div class="ailina-preview-data" data-image="https://opengraph.githubassets.com/6e55fb23dfe8600cad64d5e4f463ff9dbf1ac0a29fd4870f7f719c89ec4447d9/resemble-ai/chatterbox"></div>
 
 В Telegram-канале aisetii появился анонс open-source-проекта Chatterbox Multilingual от resemble-ai со ссылкой на GitHub. По описанию, сервис клонирует голос по короткой записи, озвучивает текст с эмоциями через специальные настройки и поддерживает 23 языка, включая русский. Доступны онлайн-демо и локальный запуск, проект бесплатный. Детали о лицензии, качестве клонирования, требованиях к железу и ограничениях в посте не раскрыты.
 
@@ -114,6 +118,8 @@ telegram · aisetii · Nov 23, 14:52 · [Пост в Telegram](https://telegram.
 <a id="item-ailina-4"></a>
 ### [Hugging Face: как строить и поддерживать агентные evals](https://huggingface.co/blog/agentic-evals) ⭐️ 7.0/10
 
+<div class="ailina-preview-data" data-image="https://huggingface.co/blog/assets/agentic-evals/thumbnail.png"></div>
+
 Блог Hugging Face опубликовал руководство о том, как строить и поддерживать оценку \(evals\) агентных систем. Материал посвящён методологии оценки агентов, а не конкретным версиям, цифрам или результатам. В присланных метаданных нет данных о доступности, ограничениях или практических примерах из статьи.
 
 rss · Hugging Face Blog · Nov 23, 00:00
@@ -130,6 +136,8 @@ rss · Hugging Face Blog · Nov 23, 00:00
 
 <a id="item-ailina-6"></a>
 ### [GLM-5.4 от Zhipu: loop transformer и фокус на коде](https://z.ai/blog/glm-5.4) ⭐️ 7.0/10
+
+<div class="ailina-preview-data" data-image="https://z-ai-bj.oss-cn-beijing.aliyuncs.com/prompts-rich-media-resources/5.4-blog/20261123-173242.jpeg?w=1280&amp;h=720&amp;fit=fill"></div>
 
 Zhipu выпустила GLM-5.4 — модель с поддержкой анализа изображений и улучшенной генерацией кода. В основе лежит loop transformer: 28 средних слоёв базовой GLM-5 прогоняются дважды с общими весами, что увеличивает глубину без роста числа параметров. Всего 750B параметров; Z.ai утверждает, что по «интеллекту» модель сравнима с моделями на 2–3T, но полноценных бенчмарков пока нет — в блогпосте приведены цифры только для тестовой модели на 30B. Доступна в GLM Coding Plan, ZCode и Z.ai Chat; для Claude Code нужно выбрать glm-5.4\[1m\], в остальных инструментах — glm-5.4.
 
@@ -152,6 +160,8 @@ hackernews · foohis · Nov 23, 10:06 · [Пост в Telegram](https://telegram
 <a id="item-ailina-7"></a>
 ### [MoRI UMBP: агентный KV-кэш на NVMe без DRAM-тира](https://vllm.ai/blog/2026-11-23-skip-the-dram-tier) ⭐️ 7.0/10
 
+<div class="ailina-preview-data" data-image="https://vllm.ai/blog-assets/figures/2026-11-23-skip-the-dram-tier/hero.png"></div>
+
 Блог vLLM описывает MoRI UMBP — KV-пул из открытой библиотеки AMD, который позволяет держать агентный KV-кэш на локальных NVMe вместо DRAM. В тестах на AMD Instinct MI355X с Kimi-K3 пул на 1,8 ТБ NVMe показал пропускную способность в пределах 1% от DRAM-пула того же размера при 48, 70 и 96 одновременных сессиях; на нагрузке с более длинными промптами NVMe также уложился в 1% при 70 сессиях. DRAM в этой схеме не отдельный тир, а буфер записи на 64 ГБ и staging-буфер чтения на 16 ГиБ — около 80 ГБ, менее 5% пула. Ограничение: каждый вычисленный блок KV пишется на диски, что изнашивает их; в планах — распределённая версия пула на большее число SSD.
 
 rss · vLLM Blog · Nov 23, 00:00
@@ -170,6 +180,8 @@ rss · vLLM Blog · Nov 23, 00:00
 
 <a id="item-ailina-8"></a>
 ### [Снижение регрессивности ML-оценки недвижимости: исследование с Cook County](https://arxiv.org/abs/2611.27009) ⭐️ 7.0/10
+
+<div class="ailina-preview-data" data-image="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png"></div>
 
 Исследование с Cook County Assessor&\#x27;s Office \(CCAO\) предлагает два метода обучения, снижающих регрессивность ML-оценки недвижимости при сохранении точности. Direct-метод штрафует квадрат ковариации между логарифмическими ошибками оценки и логарифмическими ценами продаж; Surrogate-метод даёт взвешенную квадратичную ошибку. Оба метода проверены на модели LightGBM в рамках рабочего процесса CCAO: на отложенных продажах регрессивность \(по величине price-related bias, PRB\) падает примерно на 49%, на продажах 2025 года — на 39% при настройке Surrogate, выбранной кросс-валидацией. Log-price RMSE растёт на 3,1% и 1,7% соответственно, а price-scale R² почти не меняется \(0,893→0,897 и 0,904→0,908\). Direct-метод уже включён в публичное ПО CCAO для оценки жилья; в дополнительном бенчмарке на восьми округах оба метода снижали регрессивность в каждом округе.
 
@@ -190,6 +202,8 @@ rss · arXiv — Machine Learning · Nov 23, 05:00
 <a id="item-ailina-9"></a>
 ### [Ruby: предиктор potency на структурной foundation-модели Pearl и открытый датасет GenesisPotency-2026](https://arxiv.org/abs/2611.27015) ⭐️ 7.0/10
 
+<div class="ailina-preview-data" data-image="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png"></div>
+
 Опубликован препринт arXiv:2611.27015v1, в котором представлен Ruby — предиктор potency \(Robust Universal Binding affinitY predictor\). Ruby использует промежуточные представления структурной foundation-модели Pearl и не требует явной позы связывания для каждого соединения. Модель обучена на проприетарных данных и на открытом датасете GenesisPotency-2026, который выпущен под лицензией CC BY-SA 4.0 с построчной provenance и аудиторскими аннотациями для академического и коммерческого использования. По данным авторов, Ruby показывает лучшую агрегированную раннюю обогащённость на семи публичных целях hit-identification, лучшие средние корреляции на четырёх публичных бенчмарках \(OpenFE, CASP16, FEP+ 4, OpenBind\) и значительное преимущество в zero-shot прогнозе на восьми биохимических и клеточных анализах из пяти текущих программ Genesis-Incyte. Независимой проверки результатов и полных деталей в доступном тексте нет: аннотация обрывается на фразе о «highest ag…».
 
 rss · arXiv — Machine Learning · Nov 23, 05:00
@@ -208,6 +222,8 @@ rss · arXiv — Machine Learning · Nov 23, 05:00
 
 <a id="item-ailina-10"></a>
 ### [CORE Score: согласованность ансамбля как индикатор надёжности предсказаний co-folding](https://arxiv.org/abs/2611.27058) ⭐️ 7.0/10
+
+<div class="ailina-preview-data" data-image="https://arxiv.org/static/browse/0.3.4/images/arxiv-logo-fb.png"></div>
 
 В препринте arXiv:2611.27058 авторы проверили, насколько confidence-скоры моделей co-folding помогают выбирать верные предсказания структур белок–лиганд. На семи моделях они показали, что отбор по уверенности даёт мало выигрыша по сравнению со случайным выбором: примерно для трёх четвертей структур предсказания либо все верны, либо все неверны, и ранжировать нечего. В качестве альтернативы предложена метрика CORE Score \(Concentration of Repeated Ensembles\), объединяющая плотность кластеров и поддержку ансамбля. По данным авторов, CORE Score различает успех top-1 и oracle-успех со средними ROC AUC 0,866 и 0,838 против 0,757 и 0,759 у ipTM, и обходит меры сходства с обучающей выборкой, не требуя экспериментальной позы лиганда.
 
@@ -228,6 +244,8 @@ rss · arXiv — Machine Learning · Nov 23, 05:00
 <a id="item-ailina-11"></a>
 ### [Ant Group выпустила открытую медицинскую ИИ-модель LingSante-3.1-air-VL](https://huggingface.co/inclusionAI/LingSante-3.1-air-VL) ⭐️ 7.0/10
 
+<div class="ailina-preview-data" data-image="https://cdn-thumbnails.huggingface.co/social-thumbnails/models/inclusionAI/LingSante-3.1-air-VL.png"></div>
+
 Ant Group опубликовала на Hugging Face открытую медицинскую мультимодальную модель LingSante-3.1-air-VL. Это MoE-модель на 124 млрд параметров, из которых при обработке каждого токена активны 5,5 млрд; контекстное окно — 256 тыс. токенов. Модель работает с текстом и изображениями: заявлены анализ рентгеновских снимков, медицинских документов, кожных заболеваний и результатов анализов. Веса доступны под лицензией MIT, запуск поддерживается через SGLang и vLLM; модель предназначена для исследований и не заменяет врача.
 
 telegram · ai\_machinelearning\_big\_data · Nov 23, 16:16 · [Пост в Telegram](https://telegram.me/ai_machinelearning_big_data/11418) · просмотры: 3 360
@@ -246,6 +264,8 @@ telegram · ai\_machinelearning\_big\_data · Nov 23, 16:16 · [Пост в Tele
 
 <a id="item-ailina-12"></a>
 ### [OpenAI: вход через ChatGPT для локальных и open-source инструментов](https://github.com/openai/sign-in-with-chatgpt-devkit) ⭐️ 7.0/10
+
+<div class="ailina-preview-data" data-image="https://opengraph.githubassets.com/a11b325b60297bb9b945b30a36ee65f16ac25c8f933f9e488a7675c3c4bd53e8/openai/sign-in-with-chatgpt-devkit"></div>
 
 OpenAI выпустила devkit, который позволяет локальным и open-source инструментам авторизовывать пользователей через учётную запись ChatGPT и выполнять поддерживаемые запросы к Responses API в рамках подписки ChatGPT — без API-ключа. В репозитории показано, как добавить в инструмент модуль авторизации и модуль отправки запросов. По описанию, плагины смогут использовать лимиты подписки ChatGPT, но доступа к истории чатов не получают. Детали условий подписки и доступности в исходном посте не раскрыты.
 
@@ -266,6 +286,8 @@ telegram · vibecoding\_tg · Nov 23, 04:33 · [Пост в Telegram](https://te
 <a id="item-ailina-13"></a>
 ### [MWS AI и ИТМО открыли код CoSpaDi для сжатия LLM без дообучения](https://github.com/mts-ai/CoSpaDi) ⭐️ 7.0/10
 
+<div class="ailina-preview-data" data-image="https://opengraph.githubassets.com/db2083d86907654643f059675fc0f409fc3b71582fa761bf3d3da52b10a43506/mts-ai/CoSpaDi"></div>
+
 MWS AI и Университет ИТМО представили метод CoSpaDi для сжатия больших языковых моделей без дообучения и открыли его код на GitHub. Метод хранит веса компактнее: каждый столбец матрицы представляется комбинацией небольшого числа компонент из заранее подобранного словаря. На моделях Llama и Qwen размером от 0,6 до 14 млрд параметров при сжатии на 20–40% CoSpaDi в среднем показал более высокую точность ответов, чем SVD-LLM на основе низкорангового приближения. Результаты заявлены авторами, независимой проверки в материале не приводится.
 
 telegram · ict\_moscow\_ai · Nov 23, 13:59 · [Пост в Telegram](https://telegram.me/ict_moscow_ai/5713) · просмотры: 401
@@ -284,6 +306,8 @@ telegram · ict\_moscow\_ai · Nov 23, 13:59 · [Пост в Telegram](https://t
 
 <a id="item-ailina-14"></a>
 ### [Локальный ИИ для начинающих: Qwen, Unsloth и бюджетное железо](https://www.gpupartner.com/blog/beginners-guide-local-ai-inkling-qwen-unsloth) ⭐️ 6.0/10
+
+<div class="ailina-preview-data" data-image="https://www.gpupartner.com/blog/beginners-guide-local-ai-inkling-qwen-unsloth/opengraph-image-17m7t5?6653c98c6cd84ba6"></div>
 
 На Hacker News обсуждают блог-руководство для начинающих по запуску локальных ИИ-моделей, в частности Qwen и Unsloth. В комментариях делятся опытом подбора бюджетных конфигураций железа и запуска моделей на потребительских GPU. Часть упомянутых в обсуждении названий моделей и инструментов выглядит непроверяемой, а исходный материал — это блог-гайд без независимой проверки.
 
@@ -306,6 +330,8 @@ hackernews · Retell15 · Nov 22, 21:01 · [Обсуждение](https://news.y
 <a id="item-ailina-16"></a>
 ### [Полезная находка для тех, кто пользуется Bitwarden или Vaultwarden.](https://github.com/bitwarden/agent-access) ⭐️ 6.0/10
 
+<div class="ailina-preview-data" data-image="https://opengraph.githubassets.com/4ccf14ed6b4d48af1b3d5d649b900d35a629bc17ee3d679339e29419ff0bfaff/bitwarden/agent-access"></div>
+
 На GitHub появился Bitwarden Agent Access — инструмент, позволяющий ИИ-агентам получать нужные учётные данные без доступа ко всему хранилищу, с открытым протоколом, CLI и набором инструментов для разработчиков.
 
 telegram · vibecoding\_tg · Nov 22, 19:21 · [Пост в Telegram](https://telegram.me/vibecoding_tg/4405) · просмотры: 20 200
@@ -319,6 +345,8 @@ telegram · vibecoding\_tg · Nov 22, 19:21 · [Пост в Telegram](https://te
 <a id="item-ailina-17"></a>
 ### [Ускорение локальных ИИ-моделей от 30% до 5 раз. Разработчик представил скилл для](https://github.com/sybil-solutions/inference-optimisation-skill) ⭐️ 6.0/10
 
+<div class="ailina-preview-data" data-image="https://opengraph.githubassets.com/445009c489b6e79db6df0c84d55d11fe89b27db117c4829a9073841821cad08f/sybil-solutions/inference-optimisation-skill"></div>
+
 Telegram-канал сообщает о скилле с открытым репозиторием для оптимизации инференса локальных ИИ-моделей, с заявленным ускорением 30%–5x на основе пользовательских отчётов.
 
 telegram · vibecoding\_tg · Nov 23, 06:01 · [Пост в Telegram](https://telegram.me/vibecoding_tg/4407) · просмотры: 17 500
@@ -331,6 +359,8 @@ telegram · vibecoding\_tg · Nov 23, 06:01 · [Пост в Telegram](https://te
 
 <a id="item-ailina-18"></a>
 ### [🌐 Браузер, где ИИ-агенты не отбирают у вас мышку](https://github.com/citrolabs/ego-lite) ⭐️ 6.0/10
+
+<div class="ailina-preview-data" data-image="https://repository-images.githubusercontent.com/1212503250/1e62fd1c-4ca2-40f1-aae4-6aec4614e726"></div>
 
 Анонс бесплатного браузера Ego Lite для Windows и macOS, в котором ИИ-агенты работают в изолированных пространствах параллельно с пользователем, с импортом данных из Chrome и требованием внешнего агента с CLI.
 

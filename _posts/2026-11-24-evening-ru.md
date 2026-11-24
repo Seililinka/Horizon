@@ -45,6 +45,8 @@ edition: evening
 <a id="item-ailina-2"></a>
 ### [Claude Ship: агенты Anthropic для pull request&\#x27;ов](https://www.theverge.com/ai-artificial-intelligence/1040134/anthropic-claude-ship-ai-pull-requests) ⭐️ 7.0/10
 
+<div class="ailina-preview-data" data-image="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/STKB364_CLAUDE_2_C_96d15c-1.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200"></div>
+
 Anthropic анонсировала продукт Claude Ship, в рамках которого Claude теперь может проверять, исправлять и одобрять pull request&\#x27;ы. Новые агенты PR Steward и Claude Approvals запускаются в бете. У Claude уже была функция Code Review: её представили в марте и вывели в общий доступ в октябре. PR Steward, по описанию, подключается к падающим CI-проверкам, конфликтам слияния и отзывам на ревью. Полный текст материала The Verge обрезан, поэтому детали работы и условия доступа ограничены.
 
 rss · The Verge — AI · Nov 23, 20:00
@@ -63,6 +65,8 @@ rss · The Verge — AI · Nov 23, 20:00
 
 <a id="item-ailina-3"></a>
 ### [GLM-5.4 от Z.ai: первая модель на loop transformer](https://simonwillison.net/2026/Nov/23/glm-54/) ⭐️ 7.0/10
+
+<div class="ailina-preview-data" data-image="https://static.simonwillison.net/static/2026/glm-family-4.webp"></div>
 
 Z.ai выпустила GLM-5.4 — свою первую модель на архитектуре loop transformer. В такой схеме группа слоёв с общими весами прогоняется несколько раз, углубляя вычисления без роста числа параметров. Модель пока недоступна в виде открытых весов: Simon Willison получил к ней доступ через API Z.ai, оформив подписку Coding Plan, поскольку через обычный API 5.4 сейчас не открывается. Бенчмарков, лицензии, цены и ограничений в материале нет.
 
@@ -83,6 +87,8 @@ rss · Simon Willison · Nov 23, 23:40
 <a id="item-ailina-4"></a>
 ### [DeepMind: рои агентов Gemini 4 ускорили квантовые алгоритмы](https://deepmind.google/blog/finding-faster-quantum-algorithms-with-agents-and-formal-verification/) ⭐️ 7.0/10
 
+<div class="ailina-preview-data" data-image="https://lh3.googleusercontent.com/jIoM2lo98EDqLMQjIaXBlXPmXgPbUPpM2GgtXcDsGekZBOPUY41IjBsnuZIhLac7MSOuRkklNBsp20a5M25oDz-xTIY0BIqoBxUqmmXvEHwlM3MJJw=w1200-h630-n-nu-rw"></div>
+
 DeepMind и Google Quantum AI применили несколько независимых роев агентов Gemini 4 для поиска более дешёвых квантовых схем. Каждая команда работала по протоколу и должна была математически проверять идеи в Lean. Примерно через 180 итераций исследователи сообщили об ускорении процедуры арксинуса в 290 раз, моделирования термоядерного синтеза — в 11,8 раза \(с сокращением требуемой памяти с 5 650 до 4 338 кубитов с коррекцией ошибок\), симуляции светочувствительной молекулы — в 8 раз, а одной из реализаций алгоритма Гровера — в 2,57 раза. Пока это теоретические результаты: ни один существующий компьютер не способен запустить эти схемы.
 
 telegram · Google DeepMind · Nov 23, 20:34 · [Пост в Telegram](https://telegram.me/data_secrets/10415) · просмотры: 9 310
@@ -99,6 +105,8 @@ telegram · Google DeepMind · Nov 23, 20:34 · [Пост в Telegram](https://t
 
 <a id="item-ailina-5"></a>
 ### [Google Research: DeepCrossAttention меняет residual connections в трансформерах](https://research.google/blog/supercharging-transformer-residual-connections/) ⭐️ 7.0/10
+
+<div class="ailina-preview-data" data-image="https://storage.googleapis.com/gweb-research2023-media/images/HO_previewImage1.width-800.format-jpeg.jpg"></div>
 
 Google Research представила DeepCrossAttention \(DCA\) — модификацию residual connections в трансформерах. Вместо простого сложения выхода слоя с его входом каждый токен через cross-attention обращается к представлениям предыдущих слоёв и сам выбирает нужную информацию. На C4 и LM1B в отдельных конфигурациях DCA достигала качества обычного трансформера за в 5 раз меньшее число шагов обучения; для perplexity ниже 14 на LM1B стандартной модели понадобилось 42 слоя, а DCA хватило 30 — на 29% меньше глубины и параметров. Архитектура добавляет менее 0,2% параметров и, по данным источника, может внедряться в уже предобученный трансформер с продолжением обучения. Это исследовательская работа \(ICML 2025\), а не доступный продукт; цифра «до 5 раз» относится к отдельным конфигурациям.
 
@@ -119,6 +127,8 @@ telegram · Google Research · Nov 23, 18:56 · [Пост в Telegram](https://t
 <a id="item-ailina-7"></a>
 ### [Diagram Design: генерация диаграмм в Claude Code одним промптом](http://draw.io/) ⭐️ 6.0/10
 
+<div class="ailina-preview-data" data-image=""></div>
+
 В Telegram-канале описан скилл Diagram Design, который по одному промпту в Claude Code строит диаграммы и собирает их в один HTML-файл. Заявлены 52 типа диаграмм, экспорт в SVG/PNG, импорт из Mermaid, draw.io и Excalidraw, а также работа в Codex, Cursor и GitHub Copilot. Утверждение о «70 тысячах звёзд» на GitHub и полный список возможностей в самом посте не подтверждены, прямой ссылки на первоисточник нет — ссылка ведёт на draw.io.
 
 telegram · bugnotfeature · Nov 23, 21:59 · [Пост в Telegram](https://telegram.me/bugnotfeature/29272) · просмотры: 6 780
@@ -137,6 +147,8 @@ telegram · bugnotfeature · Nov 23, 21:59 · [Пост в Telegram](https://tel
 
 <a id="item-ailina-9"></a>
 ### [Ladybird перешёл в альфа-стадию](https://ladybird.org/posts/alpha/) ⭐️ 6.0/10
+
+<div class="ailina-preview-data" data-image="https://ladybird.org/assets/img/logo-new.webp"></div>
 
 Команда Ladybird объявила о выходе браузера в альфа-версию. В обсуждении на Hacker News пользователи сообщают, что многие сайты отображаются корректно, включая сложные страницы и веб-интерфейсы вроде Proxmox/NoVNC. Из мелких проблем называют заметную, но небольшую рывковость прокрутки страниц. Других деталей о функциях, ограничениях и доступности в исходном посте нет.
 
@@ -159,6 +171,8 @@ hackernews · janvdberg · Nov 23, 16:13 · [Обсуждение](https://news.
 <a id="item-ailina-10"></a>
 ### [Stalwart заявляет о технической замене Microsoft Exchange](https://stalw.art/blog/microsoft-exchange-replacement/) ⭐️ 6.0/10
 
+<div class="ailina-preview-data" data-image="https://stalw.art/og/blog/microsoft-exchange-replacement.png"></div>
+
 Проект Stalwart опубликовал в своём блоге заявление о том, что теперь является технической drop-in заменой Microsoft Exchange для почтовых серверов. В обсуждении на Hacker News участники уточняют ограничения: проблемы с доставляемостью писем, блокировки по диапазону /24 со стороны Outlook и вопросы к условиям бесплатной версии. Отдельно отмечается, что Stalwart используется в Thundermail от Mozilla. Подробности о конкретных функциях, версии и условиях доступности в исходном материале не раскрыты.
 
 hackernews · shaunpud · Nov 23, 22:32 · [Обсуждение](https://news.ycombinator.com/item?id=50620349)
@@ -180,6 +194,8 @@ hackernews · shaunpud · Nov 23, 22:32 · [Обсуждение](https://news.y
 <a id="item-ailina-11"></a>
 ### [Anthropic формализовала VP ≠ VNP над любым полем](https://github.com/anthropics/formal-math/tree/main/vp-vnp) ⭐️ 6.0/10
 
+<div class="ailina-preview-data" data-image="https://opengraph.githubassets.com/546032f43bab7783f03e688817d483ac01254d7efb51dc2849074af497ccf163/anthropics/formal-math"></div>
+
 В репозитории Anthropic formal-math опубликован формализованный результат VP ≠ VNP над любым полем. Участник обсуждения на Hacker News независимо перепроверил утверждения и подтвердил, что теоремы действительно влекут заявленную формулировку. В самой работе отмечено, что авторы не анализировали связь результата с релятивизацией и алгебраизацией.
 
 hackernews · mikeryan52 · Nov 23, 22:09 · [Обсуждение](https://news.ycombinator.com/item?id=50620102)
@@ -199,6 +215,8 @@ hackernews · mikeryan52 · Nov 23, 22:09 · [Обсуждение](https://news
 <a id="item-ailina-12"></a>
 ### [OpenAI и Cisco представили Shirudo — open-source runtime для Linux](https://openai.com/index/introducing-shirudo) ⭐️ 6.0/10
 
+<div class="ailina-preview-data" data-image="https://images.ctfassets.net/kftzwdyauwt9/5K7gFDr3r8vgjdIcsW6RVY/aba5325ce7902e5d1499b907f8e78f0b/shirudo-partner-logos-landscape-2x.png?w=1600&amp;h=900&amp;fit=fill"></div>
+
 OpenAI и Cisco представили Shirudo — open-source runtime для Linux. По описанию, он помогает командам защищать работающие системы во время раскатки патчей. Других деталей в анонсе нет: не указаны дата релиза, доступность, ограничения и механика работы.
 
 rss · OpenAI News · Nov 23, 21:20
@@ -215,6 +233,8 @@ rss · OpenAI News · Nov 23, 21:20
 
 <a id="item-ailina-13"></a>
 ### [Google расширяет Personal Intelligence в AI Mode на Wallet, Drive и приложение Gemini](https://blog.google/products-and-platforms/products/search/google-search-personal-intelligence-apps/) ⭐️ 6.0/10
+
+<div class="ailina-preview-data" data-image="https://storage.googleapis.com/gweb-uniblog-publish-prod/images/Blog_pContext_Drive_1118.width-1300.png"></div>
 
 Google объявил, что при добровольном согласии пользователи смогут подключить Google Wallet, Drive и приложение Gemini к Personal Intelligence в AI Mode. Это должно сделать ответы поиска более персонализированными за счёт данных, которые уже хранятся в экосистеме Google. В анонсе нет сроков запуска, списка регионов и подробностей об ограничениях.
 
@@ -233,6 +253,8 @@ rss · Google AI · Nov 23, 17:00
 <a id="item-ailina-14"></a>
 ### [Amazon покупает технологию оптимизации ИИ и команду Decart](https://techcrunch.com/2026/11/23/amazon-snaps-up-decarts-ai-optimization-tech-for-7-5b-as-it-prepares-to-sell-trainium-chips/) ⭐️ 6.0/10
 
+<div class="ailina-preview-data" data-image="https://techcrunch.com/wp-content/uploads/2024/12/Decart-Founders-Dean-Leitersdorf-CEO-and-Moshe-Shalev-CPO.jpg?resize=1200,800"></div>
+
 TechCrunch сообщает, что Amazon приобретает технологию оптимизации ИИ и исследовательскую команду Decart. Сумма сделки указана как $7.5 млрд, но в материале она приводится со ссылкой на сообщение, то есть не подтверждена первоисточником. Других деталей — что именно за технология, какие у неё ограничения и как она повлияет на пользователей — в исходнике нет. Сделка упоминается на фоне подготовки Amazon к продаже чипов Trainium.
 
 rss · TechCrunch — AI · Nov 23, 17:14
@@ -250,6 +272,8 @@ rss · TechCrunch — AI · Nov 23, 17:14
 <a id="item-ailina-15"></a>
 ### [Oregon and Virginia sue SpaceX over Grok’s porn deepfakes](https://www.theverge.com/ai-artificial-intelligence/1040255/x-grok-ai-deepfakes-oregon-virginia-lawsuit) ⭐️ 6.0/10
 
+<div class="ailina-preview-data" data-image="https://platform.theverge.com/wp-content/uploads/sites/2/2025/06/STK419_DEEPFAKE_CVIRGINIA_F.jpg?quality=90&amp;strip=all&amp;crop=0%2C10.732984293194%2C100%2C78.534031413613&amp;w=1200"></div>
+
 Прокуратуры Орегона и Вирджинии подали отдельные иски против SpaceX, обвиняя компанию в нарушении законов о защите потребителей из-за порно-дипфейков Grok и ложных заявлений о безопасности X и Grok.
 
 rss · The Verge — AI · Nov 23, 18:26
@@ -262,6 +286,8 @@ rss · The Verge — AI · Nov 23, 18:26
 
 <a id="item-ailina-16"></a>
 ### [RoboTrack: Point tracking for real-world robotic manipulation](https://huggingface.co/blog/allenai/robotrack) ⭐️ 6.0/10
+
+<div class="ailina-preview-data" data-image="https://cdn-uploads.huggingface.co/production/uploads/638e39b249de7ae552d977b5/0KlbITzhyUGtGPyvi09um.png"></div>
 
 Блог Hugging Face представляет RoboTrack — подход к трекингу точек для манипуляций роботов в реальных условиях.
 
@@ -276,6 +302,8 @@ rss · Hugging Face Blog · Nov 23, 17:20
 <a id="item-ailina-17"></a>
 ### [GPUI is getting its own repository](https://github.com/zed-industries/gpui) ⭐️ 5.0/10
 
+<div class="ailina-preview-data" data-image="https://opengraph.githubassets.com/572569801778c773da2a6fc8f4fba1b16ab3255dc0db6d17a9084b59cd2a6cb8/zed-industries/gpui"></div>
+
 Zed&\#x27;s GPUI Rust UI framework is being split into its own GitHub repository, a housekeeping/accessibility change for developers rather than a new AI capability.
 
 hackernews · EvilGoose · Nov 23, 20:52 · [Обсуждение](https://news.ycombinator.com/item?id=50619103)
@@ -288,6 +316,8 @@ hackernews · EvilGoose · Nov 23, 20:52 · [Обсуждение](https://news.
 
 <a id="item-ailina-18"></a>
 ### [Kagi Mail \(public beta\)](https://blog.kagi.com/kagi-mail-public-beta) ⭐️ 5.0/10
+
+<div class="ailina-preview-data" data-image="https://blog.kagi.com/og-image.png"></div>
 
 Kagi announced the public beta of Kagi Mail, an email service with AI as a headline feature, drawing mixed HN discussion about privacy and product focus.
 
