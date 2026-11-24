@@ -1,28 +1,17 @@
-name: AiLina — Morning & Evening AI Digest
+name: AiLina — Daily 08:00 AI Digest
 
 on:
   push:
     paths:
       - 'data/ailina-refresh-request.txt'
   schedule:
-    # Morning and evening editions near 09:00 and 19:00 Moscow (UTC+3).
-    # Two retries per edition recover delayed or missed scheduled starts.
-    - cron: '55 5 * * *'
-    - cron: '25 6 * * *'
-    - cron: '55 6 * * *'
-    - cron: '55 15 * * *'
-    - cron: '25 16 * * *'
-    - cron: '55 16 * * *'
+    # TAAFT automation starts at 08:00 Moscow and triggers the digest after
+    # checking mail. These morning-only fallbacks recover missed triggers.
+    - cron: '45 5 * * *'
+    - cron: '15 6 * * *'
   workflow_dispatch:
-    inputs:
-      edition:
-        description: "Select AiLina edition"
-        type: choice
-        options: [morning, evening]
-        default: morning
-        required: true
 
-# Serialise both editions to prevent concurrent deploys.
+# Serialize all daily triggers; skip a date already published.
 concurrency:
   group: ailina-daily-digest
   cancel-in-progress: false
@@ -39,38 +28,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: Determine edition and target post
+      - name: Determine daily target post
         id: edition
-        env:
-          SCHEDULE_EXPR: ${{ github.event.schedule }}
-          MANUAL_EDITION: ${{ inputs.edition }}
         run: |
-          if [[ "$GITHUB_EVENT_NAME" == "schedule" ]]; then
-            case "$SCHEDULE_EXPR" in
-              '55 15 * * *'|'25 16 * * *'|'55 16 * * *') edition=evening ;;
-              *) edition=morning ;;
-            esac
-          elif [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" ]]; then
-            edition="${MANUAL_EDITION:-morning}"
-          else
-            hour=$(TZ=Europe/Moscow date +%H)
-            if (( 10#$hour >= 16 )); then edition=evening; else edition=morning; fi
-          fi
           today=$(TZ=Europe/Moscow date +%Y-%m-%d)
-          echo "name=$edition" >> "$GITHUB_OUTPUT"
+          echo "name=morning" >> "$GITHUB_OUTPUT"
           echo "today=$today" >> "$GITHUB_OUTPUT"
-          if [[ "$edition" == "evening" ]]; then
-            echo "post=_posts/${today}-evening-ru.md" >> "$GITHUB_OUTPUT"
-            echo "hours=12" >> "$GITHUB_OUTPUT"
-          else
-            echo "post=_posts/${today}-summary-ru.md" >> "$GITHUB_OUTPUT"
-            echo "hours=24" >> "$GITHUB_OUTPUT"
-          fi
-          echo "AiLina $edition edition for $today"
+          echo "post=_posts/${today}-summary-ru.md" >> "$GITHUB_OUTPUT"
+          echo "hours=24" >> "$GITHUB_OUTPUT"
+          echo "AiLina daily edition for $today"
 
       - name: Check whether today's digest is already published
         id: published
-        if: ${{ github.event_name == 'schedule' }}
         run: |
           git fetch --no-tags --depth=1 origin gh-pages
           target="${{ steps.edition.outputs.post }}"
@@ -163,12 +132,7 @@ jobs:
         run: |
           mkdir -p .ailina-history
           git fetch --no-tags --depth=1 origin gh-pages
-          # Evening excludes today's morning stories. Both runs deduplicate
-          # against both editions of the previous three days.
-          if [[ "${{ steps.edition.outputs.name }}" == "evening" ]]; then
-            today="${{ steps.edition.outputs.today }}"
-            git show "FETCH_HEAD:_posts/${today}-summary-ru.md" > ".ailina-history/${today}-summary-ru.md" 2>/dev/null || rm -f ".ailina-history/${today}-summary-ru.md"
-          fi
+          # Include both historic editions so old evening stories do not repeat.
           for offset in 1 2 3; do
             day=$(TZ=Europe/Moscow date -d "$offset day ago" +%Y-%m-%d)
             for part in summary evening; do
@@ -182,18 +146,10 @@ jobs:
         if: ${{ steps.published.outputs.skip != 'true' }}
         run: |
           today="${{ steps.edition.outputs.today }}"
-          if [[ "${{ steps.edition.outputs.name }}" == "evening" ]]; then
-            python scripts/ailina_postprocess.py \
-              --current "docs/_posts/${today}-summary-ru.md" \
-              --output "docs/_posts/${today}-evening-ru.md" \
-              --edition evening \
-              --history-dir .ailina-history
-          else
-            python scripts/ailina_postprocess.py \
-              --current "docs/_posts/${today}-summary-ru.md" \
-              --edition morning \
-              --history-dir .ailina-history
-          fi
+          python scripts/ailina_postprocess.py \
+            --current "docs/_posts/${today}-summary-ru.md" \
+            --edition morning \
+            --history-dir .ailina-history
 
       - name: Add optional publisher previews without AI
         if: ${{ steps.published.outputs.skip != 'true' }}
