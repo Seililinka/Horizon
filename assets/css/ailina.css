@@ -167,3 +167,18 @@ body{font-size:17px;line-height:1.72}
   .mini-note{font-size:14px}
   .aside-card p:not(.aside-eyebrow){font-size:15px}
 }
+
+/* Compact publisher previews. Keep the reading column wide on iPhone. */
+.is-issue .story-card.with-preview{display:flow-root}
+.story-preview{position:relative;float:right;width:clamp(128px,28%,205px);aspect-ratio:16/10;margin:5px 0 12px 17px;border-radius:13px;overflow:hidden;background:#f0e9fc;border:1px solid #e9def8}
+.story-preview-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:radial-gradient(ellipse at 12% 0%,#ded0f8,transparent 70%),linear-gradient(145deg,#f6f0ff,#e8def9);color:#8264b6}
+.story-preview-motif{font-size:32px;line-height:1;font-weight:500;color:#a08acb}
+.story-preview-label{font-size:9px;font-weight:800;letter-spacing:1.2px;text-align:center;padding:0 7px}
+.story-preview img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;visibility:hidden}
+.story-preview.has-image img{visibility:visible}
+.story-preview.has-image .story-preview-fallback{visibility:hidden}
+@media(max-width:640px){
+  .story-preview{width:110px;margin:5px 0 10px 12px;border-radius:10px}
+  .story-preview-motif{font-size:25px}
+  .story-preview-label{font-size:8px;letter-spacing:.5px}
+}
