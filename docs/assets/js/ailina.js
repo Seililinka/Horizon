@@ -29,6 +29,51 @@
     if (toc) toc.setAttribute("aria-label", "Темы выпуска");
   }
 
+  function addStoryPreviews() {
+    document.querySelectorAll(".story-card .ailina-preview-data").forEach(function (marker) {
+      const card = marker.closest(".story-card");
+      const heading = card.querySelector("h3");
+      const title = heading ? heading.textContent.toLowerCase() : "";
+      const label = /промпт|prompt/.test(title) ? "ПРАКТИКА" :
+        /исследован|arxiv|research|benchmark/.test(title) ? "НАУКА" :
+        /робот|гаджет|устройств|robot|hardware/.test(title) ? "УСТРОЙСТВА" :
+        /модел|llm|model|claude|gemini|gpt/.test(title) ? "МОДЕЛИ" : "ИИ-РАДАР";
+      const preview = document.createElement("figure");
+      preview.className = "story-preview";
+      const fallback = document.createElement("span");
+      fallback.className = "story-preview-fallback";
+      fallback.setAttribute("aria-hidden", "true");
+      const motif = document.createElement("span");
+      motif.className = "story-preview-motif";
+      motif.textContent = "✳";
+      const caption = document.createElement("span");
+      caption.className = "story-preview-label";
+      caption.textContent = label;
+      fallback.append(motif, caption);
+      preview.append(fallback);
+      const url = marker.dataset.image || "";
+      if (/^https:\/\//i.test(url)) {
+        const img = document.createElement("img");
+        img.alt = "Превью из источника новости";
+        img.loading = "lazy";
+        img.decoding = "async";
+        img.referrerPolicy = "no-referrer";
+        img.addEventListener("load", function () {
+          if (img.naturalWidth >= 100 && img.naturalHeight >= 60) {
+            preview.classList.add("has-image");
+          } else {
+            img.remove();
+          }
+        });
+        img.addEventListener("error", function () { img.remove(); });
+        img.src = url;
+        preview.append(img);
+      }
+      marker.replaceWith(preview);
+      card.classList.add("with-preview");
+    });
+  }
+
   function styleScores() {
     const scoreRegex = /⭐️\s*(\d+(?:\.\d+)?)\/10/;
     document.querySelectorAll(".content-panel h3, .content-panel ol li").forEach(function (el) {
@@ -58,6 +103,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     groupStories();
+    addStoryPreviews();
     styleScores();
     styleMeta();
   });
