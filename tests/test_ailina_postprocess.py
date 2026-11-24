@@ -188,3 +188,26 @@ def test_workflow_runs_one_daily_edition_with_morning_retries():
     assert "github.event_name == 'schedule'" not in workflow
     assert "git show" in workflow
     assert "cancel-in-progress: false" in workflow
+
+
+def test_all_repeat_morning_does_not_publish_old_stories(tmp_path, monkeypatch):
+    import sys
+    from scripts.ailina_postprocess import main
+
+    history = tmp_path / "history"
+    history.mkdir()
+    (history / "2026-11-21-summary-ru.md").write_text(
+        digest("21", [story("item-ailina-1", "Already published", "https://example.org/old")]),
+        encoding="utf-8",
+    )
+    generated = tmp_path / "2026-11-22-summary-ru.md"
+    generated.write_text(
+        digest("22", [story("item-ailina-1", "Already published", "https://example.org/old")]),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(sys, "argv", [
+        "ailina_postprocess", "--current", str(generated),
+        "--history-dir", str(history), "--edition", "morning",
+    ])
+    main()
+    assert "Already published" not in generated.read_text(encoding="utf-8")
