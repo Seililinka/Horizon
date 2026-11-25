@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'data/ailina-refresh-request.txt'
+      - 'data/taaft-feed.xml'
   schedule:
     # TAAFT automation starts at 08:00 Moscow and triggers the digest after
     # checking mail. These morning-only fallbacks recover missed triggers.
