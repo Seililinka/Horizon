@@ -6,6 +6,62 @@
     <description>Краткие пересказы новостей TAAFT для ИИ-радара AiLina. Без рекламных вставок и персональных трекинговых ссылок.</description>
     <language>ru</language>
     <item>
+      <title>Почему языковые модели генерируют одинаковых персонажей и советы</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-24-llm-same-answers</guid>
+      <pubDate>Tue, 24 Nov 2026 16:49:31 +0000</pubDate>
+      <category>taaft</category>
+      <description>В рассылке TAAFT описан эксперимент с 65 моделями: при недостатке контекста ответы на открытые вопросы часто совпадали, а уточнение личных предпочтений повышало разнообразие. Практический вывод — задавать контекст и просить несколько альтернатив. Числа приведены по описанию рассылки.</description>
+    </item>
+    <item>
+      <title>TAAFT: Дженсен Хуанг возвращается к руководству NVIDIA</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-24-nvidia-huang-return</guid>
+      <pubDate>Tue, 24 Nov 2026 16:49:31 +0000</pubDate>
+      <category>taaft</category>
+      <description>По сообщению рассылки со ссылкой на NVIDIA, совет директоров одобрил возвращение Хуанга на должность CEO. Детали следует проверять по официальному объявлению компании.</description>
+    </item>
+    <item>
+      <title>Исследование ИИ для более раннего выявления риска рака мочевого пузыря</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-24-plymouth-bladder-cancer</guid>
+      <pubDate>Tue, 24 Nov 2026 16:49:31 +0000</pubDate>
+      <category>taaft</category>
+      <description>По сообщению TAAFT об исследовании Университета Плимута, модель анализирует медицинские записи и выделяет признаки повышенного риска до постановки диагноза. Для клинического применения требуется внешняя валидация; это не готовый диагностический тест.</description>
+    </item>
+    <item>
+      <title>Sutyo Cue: очки с ИИ-памятью разговоров</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-24-sutyo-cue</guid>
+      <pubDate>Tue, 24 Nov 2026 16:49:31 +0000</pubDate>
+      <category>taaft-device</category>
+      <description>Устройство передаёт звук на телефон, где, согласно описанию производителя, формируется текстовая память разговоров. В заявленных функциях — поиск обещаний и договорённостей, локальная обработка и приватный режим. Условия обработки данных следует проверять отдельно.</description>
+    </item>
+    <item>
+      <title>Open Code Review: ИИ-комментарии к изменениям кода</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-24-open-code-review</guid>
+      <pubDate>Tue, 24 Nov 2026 16:49:31 +0000</pubDate>
+      <category>taaft</category>
+      <description>Открытый инструмент проверяет изменения в коде и оставляет замечания на конкретных строках. По описанию TAAFT поддерживает подключение разных моделей и кодовых агентов.</description>
+    </item>
+    <item>
+      <title>Sure: самостоятельное размещение финансового приложения с ИИ-помощником</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-24-sure-finance</guid>
+      <pubDate>Tue, 24 Nov 2026 16:49:31 +0000</pubDate>
+      <category>taaft</category>
+      <description>Открытое приложение объединяет данные о личных финансах и позволяет задавать вопросы помощнику. Вариант самостоятельного размещения полезен для контроля над хранением данных.</description>
+    </item>
+    <item>
+      <title>Промпт дня TAAFT: подготовка предложения о сотрудничестве с брендом</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-24-brand-deal-prompt</guid>
+      <pubDate>Tue, 24 Nov 2026 16:49:31 +0000</pubDate>
+      <category>taaft-prompt</category>
+      <description>Сценарий помогает описать аудиторию и контент, подобрать подходящие бренды, составить медиакит, первое предложение и последующее сообщение. Итог можно использовать для подготовки к переговорам.</description>
+    </item>
+    <item>
       <title>Tesla FSD v15 визуализирует дорожную обстановку с помощью ИИ</title>
       <link>https://www.theverge.com/transportation/1039919/tesla-fsd-v15-reality-view-gta-nhtsa-safety-rollout</link>
       <guid isPermaLink="false">taaft-2026-11-23-tesla-fsd-v15-reality-view</guid>
