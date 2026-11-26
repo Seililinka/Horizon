@@ -1,0 +1,30 @@
+{
+  "framework": null,
+  "installCommand": "echo AiLina dependencies are installed by the build script",
+  "buildCommand": "bash vercel-build.sh",
+  "outputDirectory": "public",
+  "headers": [
+    {
+      "source": "/archive.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        }
+      ]
+    }
+  ]
+}
