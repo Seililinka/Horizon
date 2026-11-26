@@ -6,6 +6,62 @@
     <description>Краткие пересказы новостей TAAFT для ИИ-радара AiLina. Без рекламных вставок и персональных трекинговых ссылок.</description>
     <language>ru</language>
     <item>
+      <title>Google патентует персональный телеканал с аватаром зрителя</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-25-google-my-channel</guid>
+      <pubDate>Wed, 25 Nov 2026 16:52:18 +0000</pubDate>
+      <category>taaft</category>
+      <description>В описанном TAAFT патенте генеративная видеомодель создаёт передачи с цифровым образом зрителя на основе его предпочтений, фотографий и голоса. Это патентная концепция, а не анонс доступного продукта.</description>
+    </item>
+    <item>
+      <title>Claude расширяет управление действиями подключённых приложений</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-25-claude-connectors</guid>
+      <pubDate>Wed, 25 Nov 2026 16:52:18 +0000</pubDate>
+      <category>taaft</category>
+      <description>По сообщению TAAFT, интеграции Claude получают дополнительные подтверждения рискованных операций, поддержку длительных задач и инструкции от разработчиков приложений. Доступность отдельных функций зависит от интеграции.</description>
+    </item>
+    <item>
+      <title>Claude Ship помогает исправлять и согласовывать изменения кода</title>
+      <link>https://www.theverge.com/ai-artificial-intelligence/1040134/anthropic-claude-ship-ai-pull-requests</link>
+      <guid isPermaLink="false">taaft-2026-11-25-claude-ship</guid>
+      <pubDate>Wed, 25 Nov 2026 16:52:18 +0000</pubDate>
+      <category>taaft</category>
+      <description>Для Team и Enterprise представлены агенты, которые помогают исправлять сбои CI и конфликты слияния, а также согласовывать типовые pull request по правилам команды. Ответственность за настройки и контроль изменений остаётся у разработчиков.</description>
+    </item>
+    <item>
+      <title>Почему математические доказательства стали тестом для языковых моделей</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-25-math-reasoning</guid>
+      <pubDate>Wed, 25 Nov 2026 16:52:18 +0000</pubDate>
+      <category>taaft</category>
+      <description>Формальные проверяющие системы вроде Lean позволяют оценивать корректность доказательств и использовать проверяемую обратную связь при обучении моделей. Успех в математике сам по себе не гарантирует надёжности агента в бытовых или рабочих задачах.</description>
+    </item>
+    <item>
+      <title>Микроробот MIT летает с собственными датчиками</title>
+      <link>https://tsnmedia.org/mit-microrobot-onboard-sensing/</link>
+      <guid isPermaLink="false">taaft-2026-11-25-mit-microrobot</guid>
+      <pubDate>Wed, 25 Nov 2026 16:52:18 +0000</pubDate>
+      <category>taaft-device</category>
+      <description>Исследовательский прототип оценивает своё положение и стабилизирует полёт без внешней системы камер, однако получает питание по проводу и принимает команды оператора. Полностью самостоятельная навигация с камерой ещё не реализована; использование нейросетей в текущем контроллере не подтверждено.</description>
+    </item>
+    <item>
+      <title>Nod от n8n: персональный агент на собственном компьютере</title>
+      <link>https://nod.n8n.io/</link>
+      <guid isPermaLink="false">taaft-2026-11-25-nod-agent</guid>
+      <pubDate>Wed, 25 Nov 2026 16:52:18 +0000</pubDate>
+      <category>taaft</category>
+      <description>Открытый экспериментальный агент работает с почтой, календарём и сайтами через подключённые приложения и браузер, поддерживает выбор модели и подтверждение действий. Локальное хранение не исключает передачи необходимых данных внешним модельным сервисам.</description>
+    </item>
+    <item>
+      <title>Промпт дня TAAFT: превратить свои знания в первый продукт</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-25-prompt-first-product</guid>
+      <pubDate>Wed, 25 Nov 2026 16:52:18 +0000</pubDate>
+      <category>taaft-prompt</category>
+      <description>Сценарий помогает определить полезный навык, аудиторию и выбрать формат небольшого продукта — например, шаблон, пособие или мини-курс. Получившуюся идею и план стоит проверить на реальном спросе до начала разработки.</description>
+    </item>
+    <item>
       <title>Почему языковые модели генерируют одинаковых персонажей и советы</title>
       <link>https://newsletter.theresanaiforthat.com/</link>
       <guid isPermaLink="false">taaft-2026-11-24-llm-same-answers</guid>
