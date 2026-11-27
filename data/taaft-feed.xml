@@ -6,6 +6,62 @@
     <description>Краткие пересказы новостей TAAFT для ИИ-радара AiLina. Без рекламных вставок и персональных трекинговых ссылок.</description>
     <language>ru</language>
     <item>
+      <title>Карпаты создал интерактивную карту США с Claude</title>
+      <link>https://karpathy.ai/usaciv/</link>
+      <guid isPermaLink="false">taaft-2026-11-26-karpathy-usaciv</guid>
+      <pubDate>Thu, 26 Nov 2026 16:19:10 +0000</pubDate>
+      <category>taaft</category>
+      <description>Проект USACiv превращает открытые статистические данные США в карту в стиле Civilization. По словам Карпаты, Claude объединил 31 источник за семь часов; это визуализатор данных, а не полноценная игра.</description>
+    </item>
+    <item>
+      <title>Codex помогает любителям астрономии искать экзопланеты</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-26-codex-exoplanets</guid>
+      <pubDate>Thu, 26 Nov 2026 16:19:10 +0000</pubDate>
+      <category>taaft</category>
+      <description>По сообщению TAAFT, два энтузиаста использовали ИИ для анализа изменений яркости звёзд и выявили кандидатов в экзопланеты. Сигналы требуют независимой проверки: обнаружение кандидата ещё не означает открытие планеты.</description>
+    </item>
+    <item>
+      <title>Neuralink объявила о разрешении на ключевое клиническое исследование</title>
+      <link>https://neuralink.com/updates/neuralink-receives-fda-approval-to-launch-link-pivotal-study/</link>
+      <guid isPermaLink="false">taaft-2026-11-26-neuralink-link</guid>
+      <pubDate>Thu, 26 Nov 2026 16:19:10 +0000</pubDate>
+      <category>taaft-device</category>
+      <description>Компания сообщила о разрешении FDA начать исследование LINK для людей с тяжёлым параличом при БАС: имплант декодирует нейронные сигналы для управления цифровыми устройствами. Это разрешение на испытание, а не на коммерческую продажу.</description>
+    </item>
+    <item>
+      <title>Tiiny Pocket запускает языковые модели локально</title>
+      <link>https://www.tiiny.ai/products/tiiny-pocket/</link>
+      <guid isPermaLink="false">taaft-2026-11-26-tiiny-pocket</guid>
+      <pubDate>Thu, 26 Nov 2026 16:19:10 +0000</pubDate>
+      <category>taaft-device</category>
+      <description>Компактный вычислитель подключается к ПК и выполняет инференс без облака после загрузки модели; производитель заявляет поддержку отдельных моделей класса 120 млрд параметров. Устройство вышло за стадию прототипа, однако первая розничная партия на официальном сайте отмечена как распроданная.</description>
+    </item>
+    <item>
+      <title>Meshy превращает фотографии в редактируемые 3D-модели</title>
+      <link>https://docs.meshy.ai/en/webapp/image-to-3d</link>
+      <guid isPermaLink="false">taaft-2026-11-26-meshy-image-3d</guid>
+      <pubDate>Thu, 26 Nov 2026 16:19:10 +0000</pubDate>
+      <category>taaft</category>
+      <description>Сервис реконструирует трёхмерную геометрию по фотографии, а Meshy 7.1 поддерживает до четырёх ракурсов. Результат можно экспортировать для дальнейшей обработки или печати после проверки геометрии.</description>
+    </item>
+    <item>
+      <title>Elementor проверяет готовность сайтов к ИИ-агентам</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-26-elementor-agent-scanner</guid>
+      <pubDate>Thu, 26 Nov 2026 16:19:10 +0000</pubDate>
+      <category>taaft</category>
+      <description>По описанию TAAFT, Agent Ready Scanner анализирует доступность сайта для агентных систем и предлагает исправления. Оценка сканера не гарантирует, что конкретный агент успешно выполнит пользовательскую задачу.</description>
+    </item>
+    <item>
+      <title>Промпт дня: ускорить компьютер без покупки нового</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-26-prompt-computer-tuneup</guid>
+      <pubDate>Thu, 26 Nov 2026 16:19:10 +0000</pubDate>
+      <category>taaft-prompt</category>
+      <description>Сценарий помогает определить причины замедления компьютера и составить последовательный план оптимизации под привычки пользователя. Перед удалением файлов или изменением системных настроек необходимо проверить рекомендации и сделать резервную копию.</description>
+    </item>
+    <item>
       <title>Google патентует персональный телеканал с аватаром зрителя</title>
       <link>https://newsletter.theresanaiforthat.com/</link>
       <guid isPermaLink="false">taaft-2026-11-25-google-my-channel</guid>
@@ -276,48 +332,6 @@
       <pubDate>Sat, 21 Nov 2026 03:58:12 +0000</pubDate>
       <category>taaft-prompt</category>
       <description>Предложите ИИ найти пробелы в понимании темы, объяснять её на близких примерах и задавать по одному проверочному вопросу. Это полезно для самостоятельного обучения, но ответы модели и факты следует перепроверять по надёжным источникам.</description>
-    </item>
-    <item>
-      <title>TAAFT: Фраза «think hard» не всегда улучшает ответы Claude</title>
-      <link>https://newsletter.theresanaiforthat.com/p/claude-ignores-your-think-hard</link>
-      <guid isPermaLink="false">taaft-2026-11-20-claude-prompt</guid>
-      <pubDate>Fri, 20 Nov 2026 04:10:31 +0000</pubDate>
-      <description>В выпуске TAAFT разбирается, почему команда «think hard» в некоторых сценариях увеличивает ожидание, но не обязательно качество ответа. Практический вывод: задавать критерии результата и выбирать настройки глубины рассуждений по сложности задачи.</description>
-      <author>TAAFT editorial</author>
-    </item>
-    <item>
-      <title>TAAFT: Робот Stanford выполняет бытовые задачи почти с человеческой скоростью</title>
-      <link>https://newsletter.theresanaiforthat.com/p/claude-ignores-your-think-hard</link>
-      <guid isPermaLink="false">taaft-2026-11-20-stanford-robot</guid>
-      <pubDate>Fri, 20 Nov 2026 04:10:31 +0000</pubDate>
-      <description>TAAFT описывает подход Stanford: обучение робота непосредственным управлением его руками в темпе человека. По изложенным в рассылке данным, около 50 демонстраций на задачу дали успешность свыше 80% в показанных упражнениях; эти числа требуют проверки в первоисточнике.</description>
-      <author>TAAFT editorial</author>
-    </item>
-    <item>
-      <title>TAAFT: Умеренная персональность чат-бота влияет на доверие</title>
-      <link>https://newsletter.theresanaiforthat.com/p/claude-ignores-your-think-hard</link>
-      <guid isPermaLink="false">taaft-2026-11-20-chatbot-personality</guid>
-      <pubDate>Fri, 20 Nov 2026 04:10:31 +0000</pubDate>
-      <description>TAAFT пересказывает эксперимент Northeastern University с 150 участниками, планировавшими поездку с чат-ботом. Умеренно выраженный стиль общения оценивали лучше, чем слишком холодный или навязчиво дружелюбный. Вывод относится к условиям описанного исследования.</description>
-      <author>TAAFT editorial</author>
-    </item>
-    <item>
-      <title>Промпт дня TAAFT: как использовать ИИ для диагностики бытовой техники</title>
-      <link>https://newsletter.theresanaiforthat.com/p/claude-ignores-your-think-hard</link>
-      <guid isPermaLink="false">taaft-2026-11-20-prompt-help-me-fix-it</guid>
-      <pubDate>Fri, 20 Nov 2026 04:10:31 +0000</pubDate>
-      <category>taaft-prompt</category>
-      <description>Практический сценарий: объясните ИИ симптомы неисправности, попросите предложить безопасные проверки, список нужных инструментов и условия, когда следует вызвать мастера. Опасные работы с электричеством, газом и внутренними компонентами техники без специалиста не выполняйте.</description>
-      <author>TAAFT editorial</author>
-    </item>
-    <item>
-      <title>ИИ-гаджет TRAPCUBE: ловушка для комаров с анализом звука крыльев</title>
-      <link>https://www.ces.tech/ces-innovation-awards/2027/trapcube-ai-powered-mosquito-trap-with-risk-alerts/</link>
-      <guid isPermaLink="false">taaft-2026-11-20-device-trapcube</guid>
-      <pubDate>Fri, 20 Nov 2026 04:10:31 +0000</pubDate>
-      <category>taaft-device</category>
-      <description>В TAAFT описано устройство HAVACAM TRAPCUBE, которое сочетает световую приманку, вентилятор, микрофон и анализ событий при помощи ИИ. Производитель заявляет подсчёт комаров и уведомления о росте активности; доступность и реальная эффективность требуют отдельной проверки.</description>
-      <author>TAAFT editorial</author>
     </item>
   </channel>
 </rss>
