@@ -6,6 +6,62 @@
     <description>Краткие пересказы новостей TAAFT для ИИ-радара AiLina. Без рекламных вставок и персональных трекинговых ссылок.</description>
     <language>ru</language>
     <item>
+      <title>Потоковая выдача ответа влияет на оценку LLM</title>
+      <link>https://arxiv.org/abs/2611.33050</link>
+      <guid isPermaLink="false">taaft-2026-11-27-streaming-bias</guid>
+      <pubDate>Fri, 27 Nov 2026 16:43:40 +0000</pubDate>
+      <category>taaft</category>
+      <description>В препринте от 24 ноября один и тот же текст выигрывал 57% решающих голосований при потоковом выводе и 29% при мгновенном показе. Результат указывает на возможное смещение пользовательских рейтингов моделей из-за интерфейса, а не качества текста.</description>
+    </item>
+    <item>
+      <title>Генеративный ИИ помогает визуализировать нарушения восприятия лиц</title>
+      <link>https://pbs.dartmouth.edu/news/2026/11/after-brain-surgery-man-sees-cats-eyes-human-faces</link>
+      <guid isPermaLink="false">taaft-2026-11-27-face-perception</guid>
+      <pubDate>Fri, 27 Nov 2026 16:43:40 +0000</pubDate>
+      <category>taaft</category>
+      <description>Исследователи использовали генерацию изображений, чтобы воспроизвести описанные пациентом зрительные искажения после операции на мозге. Это иллюстрация субъективного восприятия в отдельном клиническом случае, а не диагностический метод.</description>
+    </item>
+    <item>
+      <title>Вымышленный групповой чат ИИ как эксперимент с памятью</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-27-memory-fiction</guid>
+      <pubDate>Fri, 27 Nov 2026 16:43:40 +0000</pubDate>
+      <category>taaft</category>
+      <description>TAAFT описывает сценарий, в котором модель имитирует обсуждение пользователя несколькими чат-ботами на основе доступного контекста. Такой диалог является художественной генерацией и не доказывает существование скрытого общения между сервисами.</description>
+    </item>
+    <item>
+      <title>Genspark VoicePad: физический контроллер для ИИ и диктовки</title>
+      <link>https://shop.genspark.ai/pages/voicepad</link>
+      <guid isPermaLink="false">taaft-2026-11-27-voicepad</guid>
+      <pubDate>Fri, 27 Nov 2026 16:43:40 +0000</pubDate>
+      <category>taaft-device</category>
+      <description>Устройство с пятью клавишами позволяет запускать приложения, голосовой ввод и агентные действия через программное обеспечение Genspark; автономная запись звука не означает локальный запуск моделей. Продукт представлен на стадии краудфандинга, начало поставок заявлено на январь 2027 года.</description>
+    </item>
+    <item>
+      <title>Make-it генерирует проекты электронных устройств</title>
+      <link>https://make-it.ai/</link>
+      <guid isPermaLink="false">taaft-2026-11-27-make-it</guid>
+      <pubDate>Fri, 27 Nov 2026 16:43:40 +0000</pubDate>
+      <category>taaft</category>
+      <description>Сервис по текстовому описанию формирует перечень компонентов, схему соединений и программный код для DIY-электроники. Перед сборкой необходимо проверить совместимость деталей, питание и безопасность схемы.</description>
+    </item>
+    <item>
+      <title>Talklet помогает обсуждать решения с ИИ-собеседниками</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-27-talklet</guid>
+      <pubDate>Fri, 27 Nov 2026 16:43:40 +0000</pubDate>
+      <category>taaft</category>
+      <description>По описанию TAAFT, инструмент предлагает голосовое обсуждение с ИИ-собеседниками, которые оспаривают аргументы, и формирует краткое резюме решения. Независимо не подтверждены условия конфиденциальности и качество рекомендаций.</description>
+    </item>
+    <item>
+      <title>Промпт дня: подготовить запрос на возврат денег</title>
+      <link>https://newsletter.theresanaiforthat.com/</link>
+      <guid isPermaLink="false">taaft-2026-11-27-prompt-refund</guid>
+      <pubDate>Fri, 27 Nov 2026 16:43:40 +0000</pubDate>
+      <category>taaft-prompt</category>
+      <description>Сценарий помогает собрать обстоятельства спорного платежа или возврата, подготовить обращение и план дальнейших действий при отказе. Следует самостоятельно проверить сроки, условия договора и применимые нормы, не передавая модели платёжные реквизиты.</description>
+    </item>
+    <item>
       <title>Карпаты создал интерактивную карту США с Claude</title>
       <link>https://karpathy.ai/usaciv/</link>
       <guid isPermaLink="false">taaft-2026-11-26-karpathy-usaciv</guid>
@@ -284,54 +340,6 @@
       <pubDate>Sun, 22 Nov 2026 04:46:02 +0000</pubDate>
       <category>taaft-prompt</category>
       <description>ИИ последовательно уточняет маршрут и транспорт, затем помогает составить список вещей, график сборов и запасной план при задержках. Время выезда, правила перевозки и расписание нужно сверять с официальными источниками.</description>
-    </item>
-    <item>
-      <title>Роботакси Zoox начали принимать заказы через Uber в Лас-Вегасе</title>
-      <link>https://www.uber.com/us/en/newsroom/zoox-on-uber/</link>
-      <guid isPermaLink="false">taaft-2026-11-21-zoox-uber-las-vegas</guid>
-      <pubDate>Sat, 21 Nov 2026 03:58:12 +0000</pubDate>
-      <category>taaft-device</category>
-      <description>С 16 ноября пассажиру Uber в Лас-Вегасе могут назначить беспилотный электромобиль Zoox: система автономного вождения распознаёт дорожную обстановку и планирует движение. Это уже действующая услуга в ограниченной зоне, а не прототип; выбрать конкретное роботакси пока нельзя.</description>
-    </item>
-    <item>
-      <title>Uber Eats и Zipline запустили доставку еды автономными дронами</title>
-      <link>https://newsletter.theresanaiforthat.com/</link>
-      <guid isPermaLink="false">taaft-2026-11-21-zipline-uber-eats-drone</guid>
-      <pubDate>Sat, 21 Nov 2026 03:58:12 +0000</pubDate>
-      <category>taaft-device</category>
-      <description>В пригороде Хьюстона Uber Eats предлагает доставку заказов дронами Zipline: автономная навигация и обнаружение воздушных препятствий помогают выполнить полёт, а заказ опускается на тросе. Сервис уже запущен для ограниченного круга адресов и ресторанов; обещание доставки менее чем за 10 минут не гарантируется каждому клиенту.</description>
-    </item>
-    <item>
-      <title>Google показала реконструкцию строительства Эйфелевой башни силами ИИ-агентов</title>
-      <link>https://x.com/Google/status/2122858128584720489</link>
-      <guid isPermaLink="false">taaft-2026-11-21-google-gemini-eiffel</guid>
-      <pubDate>Sat, 21 Nov 2026 03:58:12 +0000</pubDate>
-      <category>taaft</category>
-      <description>По сообщению Google, 32 агента Gemini в Antigravity сопоставили 70 исторических чертежей и фотографий, чтобы создать интерактивную 3D-реконструкцию возведения башни. Это демонстрация координации агентов и работы с архивами, а не независимая оценка точности модели.</description>
-    </item>
-    <item>
-      <title>MiniMind: открытый проект для обучения небольшой языковой модели</title>
-      <link>https://newsletter.theresanaiforthat.com/</link>
-      <guid isPermaLink="false">taaft-2026-11-21-minimind-open-training</guid>
-      <pubDate>Sat, 21 Nov 2026 03:58:12 +0000</pubDate>
-      <category>taaft</category>
-      <description>MiniMind предлагает воспроизвести основные этапы обучения компактной языковой модели на собственном оборудовании. Авторы обещают сравнительно быстрый запуск на одной видеокарте, однако время обучения зависит от GPU и выбранной конфигурации.</description>
-    </item>
-    <item>
-      <title>Diagram Design помогает Claude Code и Codex создавать схемы</title>
-      <link>https://github.com/cathrynlavery/diagram-design</link>
-      <guid isPermaLink="false">taaft-2026-11-21-diagram-design-agent-skill</guid>
-      <pubDate>Sat, 21 Nov 2026 03:58:12 +0000</pubDate>
-      <category>taaft</category>
-      <description>Открытый навык Diagram Design превращает описание архитектуры или процесса в самостоятельную HTML/SVG-схему и поддерживает экспорт в графические форматы. Подойдёт для технической документации; корректность связей и данных всё равно нужно проверять вручную.</description>
-    </item>
-    <item>
-      <title>Промпт дня TAAFT: объяснять сложную тему до понимания</title>
-      <link>https://newsletter.theresanaiforthat.com/</link>
-      <guid isPermaLink="false">taaft-2026-11-21-prompt-explain-until-clicks</guid>
-      <pubDate>Sat, 21 Nov 2026 03:58:12 +0000</pubDate>
-      <category>taaft-prompt</category>
-      <description>Предложите ИИ найти пробелы в понимании темы, объяснять её на близких примерах и задавать по одному проверочному вопросу. Это полезно для самостоятельного обучения, но ответы модели и факты следует перепроверять по надёжным источникам.</description>
     </item>
   </channel>
 </rss>
